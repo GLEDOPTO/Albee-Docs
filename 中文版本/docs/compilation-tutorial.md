@@ -244,3 +244,7 @@ python scripts/release.py gledopto-robot --name gledopto-robot # 只构建指定
 - **反复 `Connecting...` 不成功**：手动进入下载模式 —— 按住 BOOT、短按 RESET、松开 BOOT，再重试烧录（见第 6 节）。
 - **串口监视器乱码 / 无输出**：确认波特率为 115200；设备同时支持 UART 和 USB-Serial-JTAG（`/dev/ttyACM0`）—— 换另一个串口试试。
 - **找不到 `idf.py`**：Linux 下终端未激活 IDF 环境 —— 先运行 `. ~/esp/esp-idf/export.sh`；Windows 下通过 `Terminal → ESP-IDF Terminal` 打开已激活的终端。
+
+---
+
+**文档最新修改时间：** 2026-09-10

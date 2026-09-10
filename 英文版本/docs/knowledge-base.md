@@ -50,3 +50,7 @@ In the agent's role configuration, tick the knowledge base feature under officia
 ### Step 4: Use It
 
 Now you can ask Albee by voice about the related content you uploaded.
+
+---
+
+**Last modified:** 2026-09-10

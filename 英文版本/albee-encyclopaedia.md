@@ -73,3 +73,7 @@
 - **I want to build a server / integrate the protocol:** [WebSocket](./docs/websocket.md) or [MQTT+UDP](./docs/mqtt-udp.md) → [MCP Protocol](./docs/mcp-protocol.md) → [MCP Usage](./docs/mcp-usage.md) → [OTA API](./docs/ota-api.md)
 
 > Shared images and downloadable assets live in [`../assets/`](../assets/) (images under `assets/img/`), used by both the Chinese and English versions.
+
+---
+
+**Last modified:** 2026-09-10

@@ -46,3 +46,7 @@
 3. 在串口日志中，找到约 **(550) ms** 行附近的 `wifi:mode : sta ( ... )` —— 该行显示的值（下方截图中蓝色高亮部分）即为 MAC 地址。
 
 ![在串口工具日志中找到 MAC 地址](../../assets/img/account-help/serial-tool-mac-address.png)
+
+---
+
+**文档最新修改时间：** 2026-09-10

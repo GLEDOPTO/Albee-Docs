@@ -56,3 +56,7 @@ Console: <https://xiaozhi.me/>
 **A:** Not currently. If you want to use another LLM API or a self-hosted model, you need to implement your own server.
 
 Open-source repository: <https://github.com/78/xiaozhi>
+
+---
+
+**Last modified:** 2026-09-10

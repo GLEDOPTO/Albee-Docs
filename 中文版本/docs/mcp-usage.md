@@ -196,3 +196,7 @@ mcp.AddTool("self.power.control",
 
 - 工具名、参数和返回值的权威来源是设备端的 `AddTool` 注册（见上文列出的注册位置）；运行时目录随时可通过 `tools/list` 获取。
 - 协议细节和高级用法请参见 [`mcp-protocol.md`](./mcp-protocol.md)。
+
+---
+
+**文档最新修改时间：** 2026-09-10

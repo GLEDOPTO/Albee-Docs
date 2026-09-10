@@ -180,3 +180,7 @@ curl -X POST http://192.168.1.50/api/wled/group/control \
 - **WLED not found by scanning**: confirm the WLED device is on the same LAN as the robot (watch out for routers with AP isolation enabled); you can also use Add Device to enter the IP manually.
 - **Voice commands with a group name get no response**: group names are exactly as shown on the web page; use `get_all_group_name` or the web page to check the actual names; overly casual phrasing may fall below the 80% similarity threshold.
 - **RF and WLED groups with the same name get controlled together "by mistake"**: this is by design (same-name groups are linked); rename them if you need independent control.
+
+---
+
+**Last modified:** 2026-09-10

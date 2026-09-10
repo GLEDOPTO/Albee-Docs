@@ -2,6 +2,9 @@
 
 首先进入控制台：<https://xiaozhi.me/>，然后点击**配置**
 
+> [!IMPORTANT]
+> 控制台的所有配置完成后，需要**重启设备**（长按电源键 3 秒关机，再长按 3 秒开机）才能生效。
+
 ![](../../assets/img/xiaozhi-console/1.png)
 
 ## 1. 设置语言
@@ -102,3 +105,7 @@ As we spend more time together, I'll keep learning and getting to know your pref
 ![](../../assets/img/xiaozhi-console/7.png)
 
 ![](../../assets/img/xiaozhi-console/8.png)
+
+---
+
+**文档最新修改时间：** 2026-09-10

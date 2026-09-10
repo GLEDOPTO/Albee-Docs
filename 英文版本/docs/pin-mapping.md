@@ -38,3 +38,7 @@ Complete GPIO pin mapping for the Albee desktop robot (ESP32-S3), covering every
 - **LCD**: 1.54-inch 240×240 ST7789, used for the 21 GIF emoji expressions and 4 status icons.
 - **Wi-Fi**: provided by the ESP32-S3's on-chip 2.4 GHz radio (cloud chat, WLED control, mDNS) — no external pin involved.
 - **Power**: the GEK100 power module supplies the system; the battery voltage is sampled via IO7 with a 3.1–4.1 V calibration table and low-battery auto shutdown.
+
+---
+
+**Last modified:** 2026-09-10

@@ -36,3 +36,7 @@ After authentication, developers unlock more large language models and higher qu
 **Step 3:** Once your GitHub account is bound successfully, all models and features are unlocked.
 
 ![GitHub account bound successfully](../../assets/img/developer-auth/bind-github-success.png)
+
+---
+
+**Last modified:** 2026-09-10

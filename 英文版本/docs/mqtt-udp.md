@@ -416,3 +416,7 @@ The MQTT + UDP hybrid protocol achieves efficient audio communication through:
 - **Performance** - UDP keeps audio latency low.
 
 The protocol is a good fit for low-latency voice interaction, at the cost of higher network complexity than pure WebSocket.
+
+---
+
+**Last modified:** 2026-09-10

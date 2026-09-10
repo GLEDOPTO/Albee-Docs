@@ -25,3 +25,7 @@ Home-MCP 是一个基于 [Model Context Protocol (MCP)](https://modelcontextprot
 ### 仓库与文档
 
 请参见：[Home MCP](https://github.com/shenjingnan/home-mcp)
+
+---
+
+**文档最新修改时间：** 2026-09-10

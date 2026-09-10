@@ -196,3 +196,7 @@ mcp.AddTool("self.power.control",
 
 - The authoritative source for tool names, parameters, and return values is the device-side `AddTool` registration (see the registration sites listed above); the runtime catalog is always available via `tools/list`.
 - See [`mcp-protocol.md`](./mcp-protocol.md) for protocol details and advanced usage.
+
+---
+
+**Last modified:** 2026-09-10

@@ -73,3 +73,7 @@ TODO
 (1) Check whether the device is powered on
 
 **For other issues not mentioned above, please contact us by email: service@gledopto.com.**
+
+---
+
+**Last modified:** 2026-09-10

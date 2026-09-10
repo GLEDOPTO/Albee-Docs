@@ -25,3 +25,7 @@ Home-MCP is a smart-home integration server based on the [Model Context Protocol
 ### Repository & Documentation
 
 Please see: [Home MCP](https://github.com/shenjingnan/home-mcp)
+
+---
+
+**Last modified:** 2026-09-10

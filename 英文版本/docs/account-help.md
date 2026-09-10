@@ -46,3 +46,7 @@ If you need to unbind multiple devices, download the template below, fill in the
 3. In the serial log, find the line `wifi:mode : sta ( ... )` at around the **(550) ms** line — the value shown there (highlighted in blue in the screenshot below) is the MAC address.
 
 ![Find the MAC address in the serial tool log](../../assets/img/account-help/serial-tool-mac-address.png)
+
+---
+
+**Last modified:** 2026-09-10

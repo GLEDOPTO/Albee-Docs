@@ -73,3 +73,7 @@
 - **想搭建服务器 / 对接协议：**[WebSocket](./docs/websocket.md) 或 [MQTT+UDP](./docs/mqtt-udp.md) → [MCP 协议](./docs/mcp-protocol.md) → [MCP 用法](./docs/mcp-usage.md) → [OTA API](./docs/ota-api.md)
 
 > 公用图片和可下载资源位于 [`../assets/`](../assets/)（图片在 `assets/img/` 下），中英文版本共用。
+
+---
+
+**文档最新修改时间：** 2026-09-10

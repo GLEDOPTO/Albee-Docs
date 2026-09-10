@@ -136,3 +136,7 @@ A: No. Interval/weekly reminders automatically schedule the next occurrence; onl
 
 **Q: Is "every day at 8" the same as "every Monday through Sunday at 8"?**
 A: They are equivalent. "Every day" means all weekdays are selected.
+
+---
+
+**Last modified:** 2026-09-10

@@ -50,3 +50,7 @@ Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
   "firmware": { "version": "1.0.0", "url": "https://example.com/firmware/1.0.0.bin" }
 }
 ```
+
+---
+
+**文档最新修改时间：** 2026-09-10

@@ -244,3 +244,7 @@ python scripts/release.py gledopto-robot --name gledopto-robot # build only the 
 - **Repeated `Connecting...` without success**: enter download mode manually — hold BOOT, short-press RESET, release BOOT, then retry flashing (see Section 6).
 - **Garbled text / no output in the serial monitor**: confirm the baud rate is 115200; the device supports both UART and USB-Serial-JTAG (`/dev/ttyACM0`) — try the other serial port.
 - **`idf.py` not found**: on Linux, the terminal has not activated the IDF environment — run `. ~/esp/esp-idf/export.sh` first; on Windows, open the pre-activated terminal via `Terminal → ESP-IDF Terminal`.
+
+---
+
+**Last modified:** 2026-09-10

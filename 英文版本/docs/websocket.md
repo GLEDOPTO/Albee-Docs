@@ -536,3 +536,7 @@ This protocol carries JSON text and binary Opus frames over a WebSocket connecti
 - **Extensibility**: extra fields in JSON, additional headers for authentication.
 
 Server and device must agree on the meaning, timing, and error handling of each message type so the session runs smoothly. The text above provides the baseline for integration, debugging, and extension.
+
+---
+
+**Last modified:** 2026-09-10

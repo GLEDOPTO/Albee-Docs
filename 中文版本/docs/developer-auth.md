@@ -36,3 +36,7 @@
 **第 3 步：** GitHub 账号绑定成功后，所有模型和功能全部解锁。
 
 ![GitHub 账号绑定成功](../../assets/img/developer-auth/bind-github-success.png)
+
+---
+
+**文档最新修改时间：** 2026-09-10

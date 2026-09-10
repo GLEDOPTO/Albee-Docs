@@ -1,8 +1,6 @@
 # Albee 百科全书文档 / Albee Documentation
 
-Albee 桌面机器人（ESP32-S3）教程文档仓库，中英双语，图片资源公用。
-
-This repository holds the bilingual documentation for the Albee desktop robot (ESP32-S3). Images and downloadable assets are shared between both language versions.
+Albee 桌面机器人（ESP32-S3）教程文档仓库，中英双语
 
 ## 语言 / Languages
 
@@ -26,3 +24,7 @@ This repository holds the bilingual documentation for the Albee desktop robot (E
     ├── img/           # 图片（按文档名分目录）
     └── account-help/  # 串口工具、解绑模板等
 ```
+
+---
+
+**文档最新修改时间 / Last modified:** 2026-09-10

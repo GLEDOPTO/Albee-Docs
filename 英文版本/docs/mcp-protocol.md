@@ -268,3 +268,7 @@ sequenceDiagram
 ```
 
 This document outlines the main MCP interaction flow in this project. For parameter details and tool functionality, refer to `McpServer::AddCommonTools` in `main/mcp_server.cc` and the board-level registration sites (robot motion, lights, reminders, power) listed in [`mcp-usage.md`](./mcp-usage.md).
+
+---
+
+**Last modified:** 2026-09-10

@@ -2,6 +2,9 @@
 
 First, go to the console: <https://xiaozhi.me/>, then click **Configure**
 
+> [!IMPORTANT]
+> After completing **all** configuration in the console, you need to **restart the device** (long-press the Power button for 3 seconds to power off, then long-press again for 3 seconds to power on) for the changes to take effect.
+
 ![](../../assets/img/xiaozhi-console/1.png)
 
 ## 1. Set the Language
@@ -102,3 +105,7 @@ When enabled, the robot no longer has to "get to know you from scratch" in every
 ![](../../assets/img/xiaozhi-console/7.png)
 
 ![](../../assets/img/xiaozhi-console/8.png)
+
+---
+
+**Last modified:** 2026-09-10
