@@ -16,14 +16,14 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 **Voice & Conversation**
 
-- Wi-Fi connectivity, with two communication protocols ([WebSocket](docs/websocket.md) or MQTT+UDP)
+- Wi-Fi connectivity, with two communication protocols ([WebSocket](docs/websocket.md) or [MQTT+UDP](docs/mqtt-udp.md))
 - Voice interaction based on streaming ASR + LLM + TTS architecture, OPUS audio codec
 - Wake by voice ("Hi Albee") or by short-pressing the function button
 - Real-time barge-in: no need to wait for the reply to finish — just speak to interrupt (double-click the function key to toggle)
 - Supports 38 languages
 - Speaker recognition, identifies the current speaker [3D Speaker](https://github.com/modelscope/3D-Speaker)
-- Role customization via the xiaozhi.me console: personality roles, voice/timbre, LLM selection (Qwen3 / DeepSeek / Doubao, etc.), short-term and long-term memory
-- Voiceprint recognition — Albee can recognize and remember who is talking
+- Role customization via the xiaozhi.me console: personality roles, voice/timbre, LLM selection (Qwen3 / DeepSeek / Doubao, etc.), memory mode (see the [XiaoZhi Console Configuration Guide](docs/xiaozhi-console.md))
+- Voiceprint recognition — Albee can recognize and remember who is talking (configuration in the [console guide · Voiceprint Recognition](docs/xiaozhi-console.md#6-voiceprint-recognition))
 
 **Motion & Interaction**
 
@@ -38,16 +38,17 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 **Light Control Hub**
 
-- Simultaneously manages 2.4G RF light groups and WLED smart lights by voice
-- Built-in web console for RF light pairing and WLED device scanning / room assignment
-- Per-light-group state (on/off, brightness, color) stored independently and retained after power loss
+- Simultaneously manages 2.4G RF light groups (compatible with all 2.4G RF LED strip controllers from GLEDOPTO) and WLED smart lights (WLED-series controllers) by voice
+- Built-in web console for RF light pairing and WLED device scanning / grouping, up to 4 groups each
+- Group names and on/off state stored independently in device NVS, retained after power loss
+- See the [Lighting Control Guide](docs/lighting-control.md) for voice commands and the HTTP API reference
 
 **Smart Home, MCP & Tools**
 
-- Device-side MCP for device control (Speaker, LED, Servo, GPIO, etc.)
-- Cloud-side MCP with dozens of services (weather, jokes, music, news, knowledge base, etc.) — up to 32 connected at the same time
-- Home Assistant integration via MCP plugins
-- Voice alarm & reminders: up to 5 active reminders, triggered by ring + emoji + on-screen text (any key stops it)
+- Device-side MCP for device control (speaker, screen, robot motion, lights, power, GPIO, etc.) — full tool catalog in the [MCP Usage Guide](docs/mcp-usage.md)
+- Cloud-side MCP with dozens of services (weather, jokes, music, news, knowledge base, etc.) — up to 32 connected at the same time; upload your own material as a [knowledge base](docs/knowledge-base.md) for the AI to consult
+- Home Assistant integration via MCP plugins — see the [Home Assistant Integration Guide](docs/home-assistant.md)
+- Voice alarms & reminders: one-time / daily / weekly / fixed-interval, up to 5 active at once; triggered by ring + emoji + on-screen text, stopped by key, touch, or voice (see the [Alarm & Reminder Guide](docs/alarm-reminder.md))
 
 **Power Management**
 
@@ -57,7 +58,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 **Customization**
 
-- Customizable emojis, and chat backgrounds with online web-based editing ([Custom Assets Generator](https://github.com/78/xiaozhi-assets-generator))
+- Customizable emojis and chat backgrounds: change online via the console, or replace the firmware emoji assets and rebuild (see the [Emoji Change Guide](docs/expression-change-guide.md)); online editing also available with the [Custom Assets Generator](https://github.com/78/xiaozhi-assets-generator)
 
 ## Hardware
 
@@ -75,6 +76,8 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 * Wireless charging
 * Type-C port
 
+See the [Pin Mapping](docs/pin-mapping.md) document for the complete GPIO assignment.
+
 ## Software
 
 ### Firmware Flashing
@@ -84,22 +87,26 @@ Please See：[Firmware Flashing Guide](./docs/firmware-flashing-guide.md)
 ### Development Environment
 
 - Cursor or VSCode
-- Install ESP-IDF plugin, select SDK version 5.4 or above
+- Install the ESP-IDF plugin and use v5.4.3 (dependencies require >= 5.3; the current sdkconfig is based on 5.4.3)
 - Linux is better than Windows for faster compilation and fewer driver issues
 - This project uses Google C++ code style, please ensure compliance when submitting code
+- For full environment setup, building, flashing, and release scripts, see the [Firmware Compilation Tutorial](docs/compilation-tutorial.md)
 
 ### Developer Documentation
 
-- [MCP Protocol IoT Control Usage](./docs/mcp-usage.md) - Learn how to control IoT devices via MCP protocol
+- [MCP Protocol IoT Control Usage](./docs/mcp-usage.md) - Learn how to control IoT devices via MCP protocol (full tool catalog)
 - [MCP Protocol Interaction Flow](docs/mcp-protocol.md) - Device-side MCP protocol implementation
 - [MQTT + UDP Hybrid Communication Protocol Document](docs/mqtt-udp.md)
 - [A detailed WebSocket communication protocol document](docs/websocket.md)
+- [OTA API](docs/ota-api.md) - Device firmware over-the-air upgrade interface
 
 ## Large Model Configuration
 
 If you already have a XiaoZhi AI chatbot device and have connected to the official server, you can log in to the [xiaozhi.me](https://xiaozhi.me) console for configuration.
 
-TODO
+- Language, voice/timbre, role introduction, model, and memory mode: see the [XiaoZhi Console Configuration Guide](docs/xiaozhi-console.md)
+- To unlock more models (Qwen3 / DeepSeek full / Doubao / GLM): see [Developer Authentication](docs/developer-auth.md)
+- **Restart the device** after completing all configuration for the changes to take effect
 
 ## Related Open Source Projects
 
@@ -120,7 +127,7 @@ Custom Assets Tools:
 
 # Albee Encyclopaedia
 
-Please See:  [Albee Encyclopaedia](./albee-encyclopaedia.md)
+Please See: [Albee Encyclopaedia](./albee-encyclopaedia.md) — the categorized index and reading paths for all documents; for everyday questions see the [FAQ](docs/faq.md).
 
 ## Product Manual
 
