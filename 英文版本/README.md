@@ -118,9 +118,9 @@ Custom Assets Tools:
 
 - [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) Custom Assets Generator (Wake words, fonts, emojis, backgrounds)
 
-# More documents
+# Albee Encyclopaedia
 
-Please See:  [More information about Albee](./albee-encyclopaedia.md)
+Please See:  [Albee Encyclopaedia](./albee-encyclopaedia.md)
 
 ## About the Project
 

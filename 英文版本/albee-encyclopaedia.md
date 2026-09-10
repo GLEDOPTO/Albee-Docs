@@ -12,7 +12,7 @@
 |---|---|---|
 | [Getting Started](#1-getting-started) | Unbox → flash → first conversation | Firmware Flashing Guide |
 | [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, knowledge base | 4 documents |
-| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, FAQ | 3 documents |
+| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ | 4 documents |
 | [Firmware & Hardware](#4-firmware--hardware-development) | Compiling from source, pin mapping, OTA API | 3 documents |
 | [Protocols & MCP](#5-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
 | [Smart Home](#6-smart-home-integration) | Home Assistant integration | 1 document |
@@ -38,6 +38,7 @@
 |---|---|
 | [Lighting Control Guide](./docs/lighting-control.md) | Control GLEDOPTO 2.4G RF LED strips and WLED controllers from the built-in web page (`http://<robot-ip>/light`), by voice, or via the HTTP API. Covers pairing, groups, naming, and the full API reference. |
 | [Alarm & Reminder Guide](./docs/alarm-reminder.md) | Voice-controlled reminders: one-time countdown, daily, weekly, and interval repeats. Trigger behavior (ring pattern, snooze, auto-stop), limits, and persistence. |
+| [Emoji Change Guide](./docs/expression-change-guide.md) | Two ways to change the screen emoji: online via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
 | [FAQ](./docs/faq.md) | Volume, Wi-Fi reconfiguration, music, Bluetooth, wake word, voice/timbre, voiceprint recognition, custom voice, voice control of other devices, LLM support. |
 
 ## 4. Firmware & Hardware Development

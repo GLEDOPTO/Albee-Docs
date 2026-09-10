@@ -118,9 +118,9 @@ TODO
 
 - [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) 自定义素材生成器（唤醒词、字体、表情、背景）
 
-# 更多文档
+# Albee 百科全书
 
-请查看：[更多关于 Albee 的资料](./Albee百科全书.md)
+请查看：[Albee 百科全书](./Albee百科全书.md)
 
 ## 关于本项目
 
