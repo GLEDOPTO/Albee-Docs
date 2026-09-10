@@ -122,6 +122,10 @@ TODO
 
 请查看：[Albee 百科全书](./Albee百科全书.md)
 
+## 产品说明书
+
+完整产品说明书（PDF）：[Albee Robot Manual.pdf](../docs/Albee%20Robot%20Manual.pdf)
+
 ## 关于本项目
 
 这是一个开源的 ESP32 项目，采用 MIT 许可证发布，任何人都可以免费使用，包括用于商业用途。

@@ -122,6 +122,10 @@ Custom Assets Tools:
 
 Please See:  [Albee Encyclopaedia](./albee-encyclopaedia.md)
 
+## Product Manual
+
+Full product manual (PDF): [Albee Robot Manual.pdf](../docs/Albee%20Robot%20Manual.pdf)
+
 ## About the Project
 
 This is an open-source ESP32 project, released under the MIT license, allowing anyone to use it for free, including for commercial purposes.
