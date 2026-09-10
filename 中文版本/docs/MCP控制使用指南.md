@@ -1,6 +1,6 @@
 # MCP IoT 控制使用指南
 
-> 本文档介绍如何通过 MCP（Model Context Protocol）控制这台 ESP32 桌面机器人。线级协议细节请参见 [`mcp-protocol.md`](./mcp-protocol.md)。
+> 本文档介绍如何通过 MCP（Model Context Protocol）控制这台 ESP32 桌面机器人。线级协议细节请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
 
 ## 简介
 
@@ -13,7 +13,7 @@ MCP（Model Context Protocol）是本项目推荐的 IoT 控制协议。它使�
 3. 后端通过 `tools/list` 获取工具目录。传入 `"withUserTools": true` 可额外返回仅用户可用的工具（重启、固件升级等管理功能，默认对普通智能体会话隐藏）。
 4. 后端通过 `tools/call` 调用具体工具来控制设备。
 
-完整的消息格式与交互细节请参见 [`mcp-protocol.md`](./mcp-protocol.md)。
+完整的消息格式与交互细节请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
 
 ## 在设备上注册工具
 
@@ -195,7 +195,7 @@ mcp.AddTool("self.power.control",
 ## 注意事项
 
 - 工具名、参数和返回值的权威来源是设备端的 `AddTool` 注册（见上文列出的注册位置）；运行时目录随时可通过 `tools/list` 获取。
-- 协议细节和高级用法请参见 [`mcp-protocol.md`](./mcp-protocol.md)。
+- 协议细节和高级用法请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
 
 ---
 

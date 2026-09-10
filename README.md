@@ -6,7 +6,7 @@ Albee 桌面机器人（ESP32-S3）教程文档仓库，中英双语
 
 | 版本 | 入口 |
 |---|---|
-| 🇨🇳 中文版本 | [Albee 百科全书](./中文版本/albee-encyclopaedia.md) · [项目 README](./中文版本/README.md) |
+| 🇨🇳 中文版本 | [Albee 百科全书](./中文版本/Albee百科全书.md) · [项目 README](./中文版本/README.md) |
 | 🇬🇧 英文版本 (English) | [Albee Encyclopaedia](./英文版本/albee-encyclopaedia.md) · [Project README](./英文版本/README.md) |
 
 ## 目录结构 / Structure
@@ -14,7 +14,7 @@ Albee 桌面机器人（ESP32-S3）教程文档仓库，中英双语
 ```
 ├── 中文版本/          # 中文文档（翻译版）
 │   ├── README.md
-│   ├── albee-encyclopaedia.md   # 百科全书（汇总索引）
+│   ├── Albee百科全书.md   # 百科全书（汇总索引）
 │   └── docs/          # 各专题文档
 ├── 英文版本/          # English documents (original)
 │   ├── README.md

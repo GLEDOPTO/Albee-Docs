@@ -46,7 +46,7 @@
    }
    ```
    - `features` 为可选项，由编译期配置生成。例如 `"mcp": true` 表示设备支持 MCP，`"aec": true` 在启用 `CONFIG_USE_SERVER_AEC` 时发出。
-   - `"glyph_push": true` 和 `text_font` 宣告可选的动态文本字形扩展。参见[动态文本字形推送扩展](glyph-push.md)。
+   - `"glyph_push": true` 和 `text_font` 宣告可选的动态文本字形扩展。参见[动态文本字形推送扩展](动态文本字形推送扩展.md)。
    - `frame_duration` 与 `OPUS_FRAME_DURATION_MS` 一致（通常 60 毫秒）。
 
 4. **服务器回复 "hello"**
@@ -204,7 +204,7 @@ WebSocket 文本帧承载 JSON。最常见的 `"type"` 值及其语义如下。�
      ```
 
 5. **MCP**
-   - 推荐的 IoT 控制通道。设备能力发现与工具调用全部通过 `type: "mcp"` 消息进行，其 `payload` 为 JSON-RPC 2.0（参见 [MCP 协议文档](./mcp-protocol.md)）。
+   - 推荐的 IoT 控制通道。设备能力发现与工具调用全部通过 `type: "mcp"` 消息进行，其 `payload` 为 JSON-RPC 2.0（参见 [MCP 协议文档](./MCP协议交互流程.md)）。
    - 设备到服务器的响应示例：
      ```json
      {
@@ -441,7 +441,7 @@ stateDiagram
 5. **通过 MCP 进行 IoT 控制**
    - 所有 IoT 能力发现与控制都走 MCP（`type: "mcp"`）。旧版 `type: "iot"` 协议已废弃。
    - MCP 同时支持 WebSocket 和 MQTT，标准化程度和扩展性更好。
-   - 详情参见 [MCP 协议文档](./mcp-protocol.md) 和 [MCP IoT 控制使用](./mcp-usage.md)。
+   - 详情参见 [MCP 协议文档](./MCP协议交互流程.md) 和 [MCP IoT 控制使用](./MCP控制使用指南.md)。
 
 6. **畸形 JSON**
    - 当 `type` 等必填字段缺失时，设备记录 `ESP_LOGE(TAG, "Missing message type, data: %s", data);` 并忽略该消息。

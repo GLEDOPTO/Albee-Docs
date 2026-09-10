@@ -16,7 +16,7 @@
 
 **语音与对话**
 
-- Wi-Fi 联网，支持两种通信协议（[WebSocket](docs/websocket.md) 或 MQTT+UDP）
+- Wi-Fi 联网，支持两种通信协议（[WebSocket](docs/WebSocket通信协议.md) 或 MQTT+UDP）
 - 基于流式 ASR + LLM + TTS 架构的语音交互，OPUS 音频编解码
 - 语音唤醒（"Hi Albee"）或短按功能键唤醒
 - 实时打断：无需等回复播完，直接说话即可打断（双击功能键可开关）
@@ -79,7 +79,7 @@
 
 ### 固件烧录
 
-请查看：[固件烧录指南](./docs/firmware-flashing-guide.md)
+请查看：[固件烧录指南](./docs/固件烧录指南.md)
 
 ### 开发环境
 
@@ -90,10 +90,10 @@
 
 ### 开发者文档
 
-- [MCP 协议 IoT 控制使用](./docs/mcp-usage.md) - 了解如何通过 MCP 协议控制 IoT 设备
-- [MCP 协议交互流程](docs/mcp-protocol.md) - 设备端 MCP 协议实现
-- [MQTT + UDP 混合通信协议文档](docs/mqtt-udp.md)
-- [详细的 WebSocket 通信协议文档](docs/websocket.md)
+- [MCP 协议 IoT 控制使用](./docs/MCP控制使用指南.md) - 了解如何通过 MCP 协议控制 IoT 设备
+- [MCP 协议交互流程](docs/MCP协议交互流程.md) - 设备端 MCP 协议实现
+- [MQTT + UDP 混合通信协议文档](docs/MQTT-UDP混合通信协议.md)
+- [详细的 WebSocket 通信协议文档](docs/WebSocket通信协议.md)
 
 ## 大模型配置
 
@@ -120,7 +120,7 @@ TODO
 
 # 更多文档
 
-请查看：[更多关于 Albee 的资料](./albee-encyclopaedia.md)
+请查看：[更多关于 Albee 的资料](./Albee百科全书.md)
 
 ## 关于本项目
 

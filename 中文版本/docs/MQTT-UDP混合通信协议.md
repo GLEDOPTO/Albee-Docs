@@ -100,7 +100,7 @@ sequenceDiagram
 
 `features.mcp` 恒被设置；启用 `CONFIG_USE_SERVER_AEC` 时设置 `features.aec`。
 `features.glyph_push` 和 `text_font` 宣告共享的动态文本字形扩展，参见
-[动态文本字形推送扩展](glyph-push.md)。
+[动态文本字形推送扩展](动态文本字形推送扩展.md)。
 
 #### 3.2.2 服务器 → 设备
 

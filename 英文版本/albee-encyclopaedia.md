@@ -2,7 +2,7 @@
 
 > One-stop index of all Albee desktop robot documentation. Every entry below links to a full document — click to jump.
 >
-> Language: English | 中文版：[../中文版本/albee-encyclopaedia.md](../中文版本/albee-encyclopaedia.md)
+> Language: English | 中文版：[../中文版本/Albee百科全书.md](../中文版本/Albee百科全书.md)
 >
 > Project overview: [README.md](./README.md)
 

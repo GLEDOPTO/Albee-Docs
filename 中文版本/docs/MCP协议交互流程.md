@@ -267,7 +267,7 @@ sequenceDiagram
     end
 ```
 
-本文档概述了本项目的主要 MCP 交互流程。参数细节与工具功能请参见 `main/mcp_server.cc` 中的 `McpServer::AddCommonTools` 以及 [`mcp-usage.md`](./mcp-usage.md) 中列出的板级注册位置（机器人运动、灯光、提醒、电源）。
+本文档概述了本项目的主要 MCP 交互流程。参数细节与工具功能请参见 `main/mcp_server.cc` 中的 `McpServer::AddCommonTools` 以及 [`MCP控制使用指南.md`](./MCP控制使用指南.md) 中列出的板级注册位置（机器人运动、灯光、提醒、电源）。
 
 ---
 
