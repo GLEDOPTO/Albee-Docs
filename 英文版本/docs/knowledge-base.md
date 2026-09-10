@@ -16,7 +16,7 @@ The knowledge base name will appear in the knowledge base list when you configur
 
 Knowledge base description: explains what the knowledge base is about — the AI decides whether to invoke the knowledge base based on this description.
 
-![Create a knowledge base](../img/knowledge-base/1.png)
+![Create a knowledge base](../../assets/img/knowledge-base/1.png)
 
 **Knowledge base description template (Important ‼️)**
 
@@ -27,7 +27,7 @@ This document contains content related to "xxxxx". When the user mentions any of
 (Put a summary of the document here)
 ```
 
-![Knowledge base description example](../img/knowledge-base/2.png)
+![Knowledge base description example](../../assets/img/knowledge-base/2.png)
 
 ### Step 2: Upload a Document
 
@@ -43,9 +43,9 @@ When parsing is finished, the status changes to **Parsing completed**.
 
 In the agent's role configuration, tick the knowledge base feature under official services, then select the knowledge base you created from the knowledge base list below and click **Save** to apply it.
 
-![Agent role configuration](../img/knowledge-base/3.png)
+![Agent role configuration](../../assets/img/knowledge-base/3.png)
 
-![Select the knowledge base](../img/knowledge-base/4.png)
+![Select the knowledge base](../../assets/img/knowledge-base/4.png)
 
 ### Step 4: Use It
 

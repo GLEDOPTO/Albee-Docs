@@ -33,7 +33,7 @@ The ESP32-S3 chip/module does support the BLE peripheral mode (it can only be co
 
 Console: <https://xiaozhi.me/>
 
-![Configure the role voice in the console](../../Alee百科全书v1/images/常见问题/assets/image-20260826092259737.png)
+![Configure the role voice in the console](../../assets/img/faq/image-20260826092259737.png)
 
 ## Q7: Can Albee recognize and remember who I am by my voice?
 
@@ -41,7 +41,7 @@ Console: <https://xiaozhi.me/>
 
 **How:** Go to the Albee web console → **Agent** → find **Voiceprint Recognition**.
 
-![Voiceprint recognition configuration](../../Alee百科全书v1/images/常见问题/assets/image-20260826092410518.png)
+![Voiceprint recognition configuration](../../assets/img/faq/image-20260826092410518.png)
 
 ## Q8: Can I replace the voice with my own custom voice?
 

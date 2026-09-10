@@ -332,7 +332,7 @@ WebSocket text frames carry JSON. The most common `"type"` values and their sema
 
 ### 6.1 Main states
 
-The device state machine is defined in [`main/device_state.h`](../main/device_state.h) and includes:
+The device state machine is defined in `main/device_state.h` and includes:
 
 - `kDeviceStateUnknown`
 - `kDeviceStateStarting`

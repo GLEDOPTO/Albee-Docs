@@ -16,7 +16,7 @@ Latest firmware URL: TODO
 
 (3) Load Mode: **UART** is recommended
 
-![flashing interface](../img/flashing interface.png)
+![flashing interface](../../assets/img/flashing-interface.png)
 
 (4) Plug the data cable into your computer and into the Type-C port on the side of the robot
 
