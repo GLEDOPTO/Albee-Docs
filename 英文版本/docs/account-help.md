@@ -23,7 +23,7 @@ Email subject format: `【Username Recovery, Device ID XXX, Activation Date XXX�
 ## How to Get the Device ID and MAC Address
 
 - **Device ID** — If your device is working, simply talk to it and ask it to tell you.
-- **MAC address** — You need to download a serial port tool and read it from the serial log (see the appendix below).
+- **MAC address** — See [How to View the MAC Address](./check-mac-address.md): get it via the web page (`http://<device-ip>/info`) or from the serial log.
 
 ## Device Already Bound to Another Account — How to Unbind
 
@@ -37,16 +37,10 @@ If you need to unbind multiple devices, download the template below, fill in the
 
 [Download the unbind template (xlsx)](../../assets/account-help/xiaozhi-device-unbind-template.xlsx)
 
-## Appendix: How to View the MAC Address
+## How to View the MAC Address
 
-1. Download the serial port tool: [Ai-Thinker Serial Tool V2.0.1](../../assets/account-help/aithinker-serial-tool-v2.0.1.exe)
-
-2. Connect the dev board / finished device to your computer (if it has a power switch, make sure it is powered on). Open the serial tool with the default parameters (no adjustment needed), select your board's COM port, and click **Open Serial Port**. If no error is reported, click **Run Mode** to reboot the board and load the serial log.
-
-3. In the serial log, find the line `wifi:mode : sta ( ... )` at around the **(550) ms** line — the value shown there (highlighted in blue in the screenshot below) is the MAC address.
-
-![Find the MAC address in the serial tool log](../../assets/img/account-help/serial-tool-mac-address.png)
+See [How to View the MAC Address](./check-mac-address.md): Method 1 gets it via the web page (`http://<device-ip>/info`), and Method 2 uses a serial terminal tool.
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-08

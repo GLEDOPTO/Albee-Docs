@@ -11,8 +11,8 @@
 | Category | What it covers | Documents |
 |---|---|---|
 | [Getting Started](#1-getting-started) | Unbox → flash → first conversation | Firmware Flashing Guide |
-| [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, device fault feedback, knowledge base | 5 documents |
-| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ | 4 documents |
+| [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, device fault feedback, knowledge base, MAC address | 6 documents |
+| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ, network change | 5 documents |
 | [Firmware & Hardware](#4-firmware--hardware-development) | Compiling from source, pin mapping, local OTA upgrade, OTA API | 4 documents |
 | [Protocols & MCP](#5-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
 | [Smart Home](#6-smart-home-integration) | Home Assistant integration | 1 document |
@@ -31,6 +31,7 @@
 | [Developer Authentication](./docs/developer-auth.md) | Bind a GitHub account to unlock more LLMs (Qwen3 / DeepSeek full / Doubao / GLM), higher quotas, and beta MCP services. Includes the open-source-user vs. developer benefit comparison. |
 | [Account & Device Issues](./docs/account-help.md) | Cannot receive the SMS verification code, forgot username/password, how to get the device ID and MAC address, and how to unbind a device (with the unbind template and serial tool downloads). |
 | [Device Freeze or Reboot Feedback Guide](./docs/problem-feedback.md) | How to report an unexpected freeze or reboot: describing what happened, getting the boot reason via `http://<device-ip>/info`, and serial run logs. |
+| [How to View the MAC Address](./docs/check-mac-address.md) | Two ways to get the MAC address: via the web page (`http://<device-ip>/info`) or a serial terminal tool (Tera Term, CoolTerm, etc., 115200 baud). |
 | [Knowledge Base Guide](./docs/knowledge-base.md) | Strengthen the AI in a specific domain: create a knowledge base, upload documents, link it to the agent — with an important description template that tells the AI when it must consult the knowledge base. |
 
 ## 3. Feature Guides
@@ -41,6 +42,7 @@
 | [Alarm & Reminder Guide](./docs/alarm-reminder.md) | Voice-controlled reminders: one-time countdown, daily, weekly, and interval repeats. Trigger behavior (ring pattern, snooze, auto-stop), limits, and persistence. |
 | [Emoji Change Guide](./docs/expression-change-guide.md) | Two ways to change the screen emoji: online via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
 | [FAQ](./docs/faq.md) | Volume, Wi-Fi reconfiguration, music, Bluetooth, wake word, voice/timbre, voiceprint recognition, custom voice, voice control of other devices, LLM support, freeze/reboot feedback. |
+| [Network Change Guide](./docs/change-network.md) | Three ways to switch Wi-Fi: single-click the function button during the blue flowing-LED phase, switch to a saved network via the web page (`http://<device-ip>/network`), or scan and join a new network (with password-box rules). |
 
 ## 4. Firmware & Hardware Development
 

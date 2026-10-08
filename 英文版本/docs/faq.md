@@ -8,7 +8,7 @@
 
 **A:** Restart Albee. While the blue LED is blinking during the Wi-Fi connection phase, short-press the **Function button** once and release — you will hear a prompt tone and Albee will re-enter Wi-Fi configuration mode.
 
-Albee also re-enters Wi-Fi configuration mode automatically after failing to connect to the last configured Wi-Fi 3 times.
+Albee also re-enters Wi-Fi configuration mode automatically after failing to connect to the last configured Wi-Fi 3 times. For more ways to switch or join a network (switch to a saved network via the web page, scan and join a new one), see the [Network Change Guide](./change-network.md).
 
 > [!NOTE]
 > Currently Albee only remembers the last Wi-Fi network and its password. If you switch to a different Wi-Fi, or the Wi-Fi/hotspot is turned off, you need to reconfigure the network.
