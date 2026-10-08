@@ -13,7 +13,7 @@
 | [Getting Started](#1-getting-started) | Unbox → flash → first conversation | Firmware Flashing Guide |
 | [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, device fault feedback, knowledge base | 5 documents |
 | [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ | 4 documents |
-| [Firmware & Hardware](#4-firmware--hardware-development) | Compiling from source, pin mapping, OTA API | 3 documents |
+| [Firmware & Hardware](#4-firmware--hardware-development) | Compiling from source, pin mapping, local OTA upgrade, OTA API | 4 documents |
 | [Protocols & MCP](#5-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
 | [Smart Home](#6-smart-home-integration) | Home Assistant integration | 1 document |
 
@@ -48,6 +48,7 @@
 |---|---|
 | [Firmware Compilation Tutorial](./docs/compilation-tutorial.md) | Build the firmware from source: ESP-IDF v5.4.3 environment setup (Linux command line / Windows VSCode), project layout, partition table, build options (menuconfig), flashing methods, firmware merging and release scripts, and a build FAQ. |
 | [Pin Mapping](./docs/pin-mapping.md) | Complete GPIO table for every peripheral: power management, buttons, I2C bus, LCD, LT8900 RF, servos, WS2811 LED ring, voice codec — plus notes on the shared SPI lines and I2C devices. |
+| [Local OTA Upgrade Guide](./docs/local-ota.md) | Upgrade the firmware locally via the device's built-in web page (`http://<device-ip>/update`) by uploading a `.ota` file — no PC flashing needed. |
 | [OTA API](./docs/ota-api.md) | The device OTA upgrade REST API: request headers, request body, and full request/response examples. |
 
 ## 5. Communication Protocols & MCP
