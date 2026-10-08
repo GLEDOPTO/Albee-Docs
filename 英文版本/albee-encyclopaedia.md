@@ -10,10 +10,10 @@
 
 | Category | What it covers | Documents |
 |---|---|---|
-| [Getting Started](#1-getting-started) | Unbox → flash → first conversation | Firmware Flashing Guide |
+| [Getting Started](#1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | Device Activation Guide |
 | [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, device fault feedback, knowledge base, MAC address | 6 documents |
 | [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ, network change | 5 documents |
-| [Firmware & Hardware](#4-firmware--hardware-development) | Compiling from source, pin mapping, local OTA upgrade, OTA API | 4 documents |
+| [Firmware & Hardware](#4-firmware--hardware-development) | Firmware flashing, compiling from source, pin mapping, local OTA upgrade, OTA API | 5 documents |
 | [Protocols & MCP](#5-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
 | [Smart Home](#6-smart-home-integration) | Home Assistant integration | 1 document |
 
@@ -21,7 +21,7 @@
 
 | Document | Description |
 |---|---|
-| [Firmware Flashing Guide](./docs/firmware-flashing-guide.md) | Flash the robot with the Flash Download Tool on a PC (no IDF environment needed) or via a web browser, plus flashing troubleshooting. |
+| [Device Activation Guide](./docs/device-activation.md) | The first step after unboxing: long-press the power button to start → connect to the Albee-xxxx hotspot and configure Wi-Fi → enter the six-digit activation code on xiaozhi.me to bind the device (including registration/login and language settings). |
 
 ## 2. Console & Account
 
@@ -48,6 +48,7 @@
 
 | Document | Description |
 |---|---|
+| [Firmware Flashing Guide](./docs/firmware-flashing-guide.md) | Flash the robot with the Flash Download Tool on a PC (no IDF environment needed) or via a web browser, plus flashing troubleshooting. |
 | [Firmware Compilation Tutorial](./docs/compilation-tutorial.md) | Build the firmware from source: ESP-IDF v5.4.3 environment setup (Linux command line / Windows VSCode), project layout, partition table, build options (menuconfig), flashing methods, firmware merging and release scripts, and a build FAQ. |
 | [Pin Mapping](./docs/pin-mapping.md) | Complete GPIO table for every peripheral: power management, buttons, I2C bus, LCD, LT8900 RF, servos, WS2811 LED ring, voice codec — plus notes on the shared SPI lines and I2C devices. |
 | [Local OTA Upgrade Guide](./docs/local-ota.md) | Upgrade the firmware locally via the device's built-in web page (`http://<device-ip>/update`) by uploading a `.ota` file — no PC flashing needed. |
@@ -72,7 +73,7 @@
 
 ## Reading Paths
 
-- **I just got the robot:** [Flashing Guide](./docs/firmware-flashing-guide.md) → [Console Configuration](./docs/xiaozhi-console.md) → [FAQ](./docs/faq.md)
+- **I just got the robot:** [Device Activation Guide](./docs/device-activation.md) → [Console Configuration](./docs/xiaozhi-console.md) → [FAQ](./docs/faq.md)
 - **I want to control my lights:** [Lighting Control Guide](./docs/lighting-control.md)
 - **I want to develop firmware:** [Compilation Tutorial](./docs/compilation-tutorial.md) → [Pin Mapping](./docs/pin-mapping.md)
 - **I want to build a server / integrate the protocol:** [WebSocket](./docs/websocket.md) or [MQTT+UDP](./docs/mqtt-udp.md) → [MCP Protocol](./docs/mcp-protocol.md) → [MCP Usage](./docs/mcp-usage.md) → [OTA API](./docs/ota-api.md)
