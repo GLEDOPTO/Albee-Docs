@@ -2,7 +2,7 @@
 
 ## Q1: How do I adjust Albee's volume?
 
-**A:** Albee supports voice control for volume. Just tell Albee to set the volume to a specific level (1–100%), or simply say "turn the volume up / down a little".
+**A:** Albee supports voice control for volume. Just tell Albee to set the volume to a specific level (1–100%), or simply say "turn the volume up / down a little". The volume can also be set via the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](./mcp-usage.md#tool-catalog).
 
 ## Q2: How do I reconfigure or switch the Wi-Fi?
 
@@ -25,11 +25,11 @@ The ESP32-S3 chip/module does support the BLE peripheral mode (it can only be co
 
 ## Q5: Can I change the wake word?
 
-**A:** Yes. See the developer documentation or the console configuration.
+**A:** Not currently supported.
 
 ## Q6: Can I change the voice / timbre?
 
-**A:** Yes. Go to the Albee web console — **Role Configuration** — to switch the role voice. You can preview the voices first, then submit to save the configuration.
+**A:** Yes. Go to the Albee web console — **Role Configuration** — to switch the role voice. You can preview the voices first, then submit to save the configuration. For detailed steps, see the [Console Configuration Guide · Set the Voice](./xiaozhi-console.md#2-set-the-voice).
 
 Console: <https://xiaozhi.me/>
 
@@ -39,7 +39,7 @@ Console: <https://xiaozhi.me/>
 
 **A:** Yes.
 
-**How:** Go to the Albee web console → **Agent** → find **Voiceprint Recognition**.
+**How:** Go to the Albee web console → **Agent** → find **Voiceprint Recognition**. For detailed steps, see the [Console Configuration Guide · Voiceprint Recognition](./xiaozhi-console.md#6-voiceprint-recognition).
 
 ![Voiceprint recognition configuration](../../assets/img/faq/image-20260826092410518.png)
 
@@ -49,14 +49,18 @@ Console: <https://xiaozhi.me/>
 
 ## Q9: Can Albee control other devices by voice?
 
-**A:** Albee already supports the MCP protocol. See the MCP sections in the developer documentation for details.
+**A:** Albee already supports the MCP protocol. See the [MCP Usage Guide](./mcp-usage.md) (full tool catalog) for details; for Home Assistant integration, see the [Home Assistant Integration Guide](./home-assistant.md).
 
 ## Q10: Does Albee support GPT or other large language models?
 
-**A:** Not currently. If you want to use another LLM API or a self-hosted model, you need to implement your own server.
+**A:** Not currently. If you want to use another LLM API or a self-hosted model, you need to implement your own server. To unlock more models (Qwen3 / DeepSeek full / Doubao / GLM, etc.), see [Developer Authentication](./developer-auth.md); for protocol details, see the [WebSocket protocol](./websocket.md) and the [MQTT+UDP protocol](./mqtt-udp.md).
 
 Open-source repository: <https://github.com/78/xiaozhi>
 
+## Q11: What should I do if the device freezes or reboots unexpectedly?
+
+**A:** Please collect the fault information and report it to us — see the [Device Freeze or Reboot Feedback Guide](./problem-feedback.md).
+
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-08

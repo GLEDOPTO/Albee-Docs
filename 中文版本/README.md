@@ -123,7 +123,7 @@
 
 自定义素材工具：
 
-- [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) 自定义素材生成器（唤醒词、字体、表情、背景）
+- [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) 自定义素材生成器（字体、表情、背景）
 
 # Albee 百科全书
 
@@ -143,4 +143,4 @@ TODO: 如果你有任何想法或建议，请随时提出 Issues 或联系 servi
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-09-11

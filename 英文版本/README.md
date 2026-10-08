@@ -123,7 +123,7 @@ Other client projects using the XiaoZhi communication protocol:
 
 Custom Assets Tools:
 
-- [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) Custom Assets Generator (Wake words, fonts, emojis, backgrounds)
+- [78/xiaozhi-assets-generator](https://github.com/78/xiaozhi-assets-generator) Custom Assets Generator (fonts, emojis, backgrounds)
 
 # Albee Encyclopaedia
 
@@ -142,4 +142,4 @@ We hope this project helps everyone understand AI hardware development and apply
 TODO: 如果你有任何想法或建议，请随时提出 Issues 或加入 [Discord](https://discord.gg/C759fGMBcZ) 或 QQ 群：1011329060
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-09-11
