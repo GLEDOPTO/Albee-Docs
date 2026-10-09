@@ -131,7 +131,7 @@ Please See: [Albee Encyclopaedia](./albee-encyclopaedia.md) — the categorized 
 
 ## Product Manual
 
-Full product manual (PDF): [Albee Robot Manual.pdf](../docs/Albee%20Robot%20Manual.pdf)
+Full product manual (PDF): [Albee Robot Manual.pdf](../manual/Albee%20Robot%20Manual.pdf)
 
 ## About the Project
 

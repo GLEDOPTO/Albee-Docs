@@ -131,7 +131,7 @@
 
 ## 产品说明书
 
-完整产品说明书（PDF）：[Albee Robot Manual.pdf](../docs/Albee%20Robot%20Manual.pdf)
+完整产品说明书（PDF）：[Albee Robot Manual.pdf](../manual/Albee%20Robot%20Manual.pdf)
 
 ## 关于本项目
 

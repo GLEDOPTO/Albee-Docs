@@ -9,7 +9,7 @@ Tutorial documentation repository for the Albee desktop robot (ESP32-S3), availa
 | English | [Albee Encyclopaedia](./docs-en/albee-encyclopaedia.md) · [Project README](./docs-en/README.md) |
 | 🇨🇳 中文版本 | [Albee 百科全书](./中文版本/Albee百科全书.md) · [Project README](./中文版本/README.md) |
 
-📘 Product manual: [Albee Robot Manual.pdf](./docs/Albee%20Robot%20Manual.pdf)
+📘 Product manual: [Albee Robot Manual.pdf](./manual/Albee%20Robot%20Manual.pdf)
 
 ## Structure
 
@@ -22,7 +22,7 @@ Tutorial documentation repository for the Albee desktop robot (ESP32-S3), availa
 │   ├── README.md
 │   ├── albee-encyclopaedia.md   # Encyclopaedia (index)
 │   └── docs/          # Topic documents
-├── docs/              # Product manual
+├── manual/            # Product manual
 │   └── Albee Robot Manual.pdf
 └── assets/            # Images and downloadable assets shared by both versions
     ├── img/           # Images (one folder per document)
