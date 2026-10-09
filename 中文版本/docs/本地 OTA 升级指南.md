@@ -7,7 +7,7 @@
 5. 上传Albee_xxx.ota文件
 6. 点击Upload & Flash
 
-![](../../assets/img/local-ota/1.png )
+![](../../assets/img/local-ota/1.png)
 
 ---
 

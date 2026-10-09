@@ -99,8 +99,7 @@ sequenceDiagram
 ```
 
 `features.mcp` 恒被设置；启用 `CONFIG_USE_SERVER_AEC` 时设置 `features.aec`。
-`features.glyph_push` 和 `text_font` 宣告共享的动态文本字形扩展，参见
-[动态文本字形推送扩展](动态文本字形推送扩展.md)。
+`features.glyph_push` 和 `text_font` 宣告共享的动态文本字形扩展。
 
 #### 3.2.2 服务器 → 设备
 
@@ -419,4 +418,4 @@ MQTT + UDP 混合协议通过以下手段实现高效的音频通信：
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-09

@@ -27,7 +27,7 @@
 ## ESP32 完整请求示例
 
 ```http
-POST /xiaozhi/ota/ HTTP/1.1
+POST /api/ota/ HTTP/1.1
 Host: api.tenclass.net
 Content-Type: application/json
 User-Agent: xingzhi-cube/1.0.1
@@ -53,4 +53,4 @@ Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-09

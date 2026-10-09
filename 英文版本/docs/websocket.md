@@ -46,7 +46,7 @@ This document describes the WebSocket communication protocol between the device 
    }
    ```
    - `features` is optional and generated from compile-time configuration. For example, `"mcp": true` means the device supports MCP, and `"aec": true` is emitted when `CONFIG_USE_SERVER_AEC` is enabled.
-   - `"glyph_push": true` and `text_font` advertise the optional dynamic text-glyph extension. See [Dynamic Text Glyph Push Extension](glyph-push.md).
+   - `"glyph_push": true` and `text_font` advertise the optional dynamic text-glyph extension.
    - `frame_duration` matches `OPUS_FRAME_DURATION_MS` (typically 60 ms).
 
 4. **Server replies with "hello"**
@@ -539,4 +539,4 @@ Server and device must agree on the meaning, timing, and error handling of each 
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-09

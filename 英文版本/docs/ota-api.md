@@ -27,7 +27,7 @@ This API handles device OTA (Over-The-Air) upgrade requests. The device sends it
 ## Full ESP32 Request Example
 
 ```http
-POST /xiaozhi/ota/ HTTP/1.1
+POST /api/ota/ HTTP/1.1
 Host: api.tenclass.net
 Content-Type: application/json
 User-Agent: xingzhi-cube/1.0.1
@@ -53,4 +53,4 @@ Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-09

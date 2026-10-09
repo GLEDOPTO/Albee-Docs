@@ -46,7 +46,7 @@
    }
    ```
    - `features` 为可选项，由编译期配置生成。例如 `"mcp": true` 表示设备支持 MCP，`"aec": true` 在启用 `CONFIG_USE_SERVER_AEC` 时发出。
-   - `"glyph_push": true` 和 `text_font` 宣告可选的动态文本字形扩展。参见[动态文本字形推送扩展](动态文本字形推送扩展.md)。
+   - `"glyph_push": true` 和 `text_font` 宣告可选的动态文本字形扩展。
    - `frame_duration` 与 `OPUS_FRAME_DURATION_MS` 一致（通常 60 毫秒）。
 
 4. **服务器回复 "hello"**
@@ -539,4 +539,4 @@ stateDiagram
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-09

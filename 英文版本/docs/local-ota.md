@@ -7,8 +7,8 @@
 5. Upload the `Albee_xxx.ota` file.
 6. Click **Upload & Flash**.
 
-![](../../assets/img/local-ota/1.png )
+![](../../assets/img/local-ota/1.png)
 
 ---
 
-**Last modified:** 2026-10-08
+**Last modified:** 2026-10-09
