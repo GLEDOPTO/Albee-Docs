@@ -26,7 +26,7 @@ Tutorial documentation repository for the Albee desktop robot (ESP32-S3), availa
 │   └── Albee Robot Manual.pdf
 └── assets/            # Images and downloadable assets shared by both versions
     ├── img/           # Images (one folder per document)
-    └── account-help/  # Serial tools, unbind template, etc.
+    └── account-help/  # Unbind template, etc.
 ```
 
 ---

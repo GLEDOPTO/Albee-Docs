@@ -50,7 +50,7 @@
 |---|---|
 | [XiaoZhi Console Configuration Guide](./docs/xiaozhi-console.md) | Configure language, voice/timbre, role introduction (with a ready-to-use Albee role template), model selection, memory mode, and voiceprint recognition on xiaozhi.me. |
 | [Developer Authentication](./docs/developer-auth.md) | Bind a GitHub account to unlock more LLMs (Qwen3 / DeepSeek full / Doubao / GLM), higher quotas, and beta MCP services. Includes the open-source-user vs. developer benefit comparison. |
-| [Account & Device Issues](./docs/account-help.md) | Cannot receive the SMS verification code, forgot username/password, how to get the device ID and MAC address, and how to unbind a device (with the unbind template and serial tool downloads). |
+| [Account & Device Issues](./docs/account-help.md) | Cannot receive the SMS verification code, forgot username/password, how to get the device ID and MAC address, and how to unbind a device (with the unbind template download). |
 | [How to View the MAC Address](./docs/check-mac-address.md) | Two ways to get the MAC address: via the web page (`http://<device-ip>/info`) or a serial terminal tool (Tera Term, CoolTerm, etc., 115200 baud). |
 | [Knowledge Base Guide](./docs/knowledge-base.md) | Strengthen the AI in a specific domain: create a knowledge base, upload documents, link it to the agent — with an important description template that tells the AI when it must consult the knowledge base. |
 
