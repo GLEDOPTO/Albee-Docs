@@ -12,7 +12,7 @@
 |---|---|---|
 | [Getting Started](#1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | Device Activation Guide |
 | [Console & Account](#2-console--account) | xiaozhi.me console, developer auth, account issues, device fault feedback, knowledge base, MAC address | 6 documents |
-| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ, network change | 5 documents |
+| [Feature Guides](#3-feature-guides) | Lighting control, alarms & reminders, emoji change, FAQ, network change, LED states, head LED effects | 7 documents |
 | [Firmware & Hardware](#4-firmware--hardware-development) | Firmware flashing, compiling from source, pin mapping, local OTA upgrade, OTA API | 5 documents |
 | [Protocols & MCP](#5-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
 | [Smart Home](#6-smart-home-integration) | Home Assistant integration | 1 document |
@@ -43,6 +43,8 @@
 | [Emoji Change Guide](./docs/expression-change-guide.md) | Two ways to change the screen emoji: online via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
 | [FAQ](./docs/faq.md) | Volume, Wi-Fi reconfiguration, music, Bluetooth, wake word, voice/timbre, voiceprint recognition, custom voice, voice control of other devices, LLM support, freeze/reboot feedback. |
 | [Network Change Guide](./docs/change-network.md) | Three ways to switch Wi-Fi: single-click the function button during the blue flowing-LED phase, switch to a saved network via the web page (`http://<device-ip>/network`), or scan and join a new network (with password-box rules). |
+| [Device States & LED Indicators](./docs/device-led-states.md) | The mapping table of 11 device states to 9 LED behaviors, the factory-default state → effect mapping (scroll / blink / fade-out / solid / breathe / rainbow), and brightness scaling notes. |
+| [Head LED Effects Change Guide](./docs/head-led-effects.md) | Change the head LED effects online via the web page (`http://<device-ip>/led`); for developers: slots, effects, animation implementation, and NVS packing format in `led_config.cc` / `circular_strip.cc` (with a pitfall checklist). |
 
 ## 4. Firmware & Hardware Development
 
@@ -82,4 +84,4 @@
 
 ---
 
-**Last modified:** 2026-10-08
+**Last modified:** 2026-10-09
