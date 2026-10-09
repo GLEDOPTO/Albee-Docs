@@ -61,6 +61,10 @@ Open-source repository: <https://github.com/78/xiaozhi>
 
 **A:** Please collect the fault information and report it to us — see the [Device Freeze or Reboot Feedback Guide](./problem-feedback.md).
 
+## Q12: The robot walks incorrectly / the legs are at an angle — what should I do?
+
+**A:** The servos' reset pose may have a slight deviation. Fine-tune the four servos by ±1° via the web page (`http://<device-ip>/robot`) — see the [Servo Calibration Guide](./servo-calibration.md).
+
 ---
 
-**Last modified:** 2026-10-08
+**Last modified:** 2026-10-09
