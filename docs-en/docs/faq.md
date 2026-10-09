@@ -10,9 +10,6 @@
 
 Albee also re-enters Wi-Fi configuration mode automatically after failing to connect to the last configured Wi-Fi 3 times. For more ways to switch or join a network (switch to a saved network via the web page, scan and join a new one), see the [Network Change Guide](./change-network.md).
 
-> [!NOTE]
-> Currently Albee only remembers the last Wi-Fi network and its password. If you switch to a different Wi-Fi, or the Wi-Fi/hotspot is turned off, you need to reconfigure the network.
-
 ## Q3: Does Albee support music playback?
 
 **A:** Yes — test music is supported. Due to copyright restrictions, the available tracks are limited to test songs, songs submitted by users, and some children's songs.

@@ -1,5 +1,7 @@
 # Local OTA Upgrade Guide
 
+> Developer note: to trigger OTA upgrades from a server (backend integration), see the [OTA API](./ota-api.md).
+
 1. Make sure the device is activated and connected to the network.
 2. Get its IP address by talking to it, then connect your phone or computer to the same Wi-Fi (make sure you are on the same local network).
 3. Visit `http://<device-ip>/update` in a browser.

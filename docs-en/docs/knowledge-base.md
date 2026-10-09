@@ -6,7 +6,7 @@ When the AI's answers in a certain domain are not good enough, you can strengthe
 
 Upload knowledge about that domain so the AI can consult the knowledge base content to answer questions in that field.
 
-(During the testing period, only 1 knowledge base is supported, with 1 document uploaded)
+(During the testing period, open-source users can create only 1 knowledge base with 1 document uploaded; after completing [developer authentication](./developer-auth.md), you can create 10 knowledge bases with 10 documents each)
 
 ### Step 1: Create a Knowledge Base
 
@@ -53,4 +53,4 @@ Now you can ask Albee by voice about the related content you uploaded.
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-09

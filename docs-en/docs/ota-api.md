@@ -1,5 +1,7 @@
 # OTA API
 
+> End-user note: you don't need the server to upgrade the firmware — upload a `.ota` file via the device's built-in web page. See the [Local OTA Upgrade Guide](./local-ota.md).
+
 ## Overview
 
 This API handles device OTA (Over-The-Air) upgrade requests. The device sends its device information and current firmware version, and the server returns the latest firmware version and a download link (if an update is available).
