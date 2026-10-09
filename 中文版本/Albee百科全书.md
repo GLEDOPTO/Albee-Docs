@@ -2,7 +2,7 @@
 
 > Albee 桌面机器人全部资料的一站式索引。下面每个条目都链接到一篇完整文档 —— 点击即可跳转。
 >
-> 语言：中文 | English: [../英文版本/albee-encyclopaedia.md](../英文版本/albee-encyclopaedia.md)
+> 语言：中文 | English: [../docs-en/albee-encyclopaedia.md](../docs-en/albee-encyclopaedia.md)
 >
 > 项目总览：[README.md](./README.md)
 

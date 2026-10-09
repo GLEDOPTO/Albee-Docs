@@ -139,7 +139,6 @@ This is an open-source ESP32 project, released under the MIT license, allowing a
 
 We hope this project helps everyone understand AI hardware development and apply rapidly evolving large language models to real hardware devices.
 
-TODO: 如果你有任何想法或建议，请随时提出 Issues 或加入 [Discord](https://discord.gg/C759fGMBcZ) 或 QQ 群：1011329060
 ---
 
-**Last modified:** 2026-09-11
+**Last modified:** 2026-10-09
