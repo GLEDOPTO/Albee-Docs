@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Albee 文档中心</title>
+  <title>Albee Documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Albee 桌面机器人使用文档：激活、灯光、闹钟、舵机校准、固件与协议">
+  <meta name="description" content="Albee desktop robot documentation: activation, lighting, alarms, servo calibration, firmware and protocols">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css">
   <style>
-    .sidebar-nav { padding-bottom: 12px; }
     .markdown-section { max-width: 900px; }
-    .app-name-link img { max-height: 28px; }
+    .app-nav li a:hover { color: #42b983; }
   </style>
 </head>
 <body>
-  <div id="app">文档加载中…</div>
+  <nav class="app-nav no-badge">
+    <a href="./">English</a>
+    <a href="zh/">中文</a>
+  </nav>
+
+  <div id="app">Loading…</div>
 
   <script>
-    window.$docsify = {
-      name: 'Albee Docs',
-      repo: 'https://github.com/GLEDOPTO/Albee-Docs',
-      homepage: '中文版本/Albee百科全书.md',
-      loadSidebar: true,
-      subMaxLevel: 2,
-      auto2top: true,
-      relativePath: true,
-      maxLevel: 4,
-      fallbackLanguages: ['zh-cn'],
-      search: {
-        paths: 'auto',
-        depth: 3,
-        placeholder: '搜索文档',
-        noData: '没有找到结果',
-        pathNamespaces: null
-      },
-      formatUpdated: '{YYYY}-{MM}-{DD}'
-    };
+    (function () {
+      var root = location.pathname.replace(/index\.html$/, '').replace(/zh\/?$/, '');
+      if (root.charAt(root.length - 1) !== '/') { root += '/'; }
+
+      window.$docsify = {
+        basePath: root,
+        name: 'Albee Docs',
+        repo: 'https://github.com/GLEDOPTO/Albee-Docs',
+        homepage: 'docs-en/albee-encyclopaedia.md',
+        loadSidebar: '_sidebar.md',
+        subMaxLevel: 2,
+        auto2top: true,
+        relativePath: true,
+        maxLevel: 4,
+        search: {
+          paths: 'auto',
+          depth: 3,
+          placeholder: 'Search docs',
+          noData: 'No results'
+        },
+        formatUpdated: '{YYYY}-{MM}-{DD}'
+      };
+    })();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
