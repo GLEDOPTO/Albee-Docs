@@ -46,6 +46,10 @@
         relativePath: false,
         docDir: '中文版本/docs/',
         indexPath: '中文版本/Albee百科全书',
+        alias: {
+          '\\.?/?docs/(.*)': '中文版本/docs/$1',
+          '.*README': '中文版本/Albee百科全书'
+        },
         maxLevel: 4,
         plugins: [
           function (hook, vm) {

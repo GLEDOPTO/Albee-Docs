@@ -46,6 +46,10 @@
         relativePath: false,
         docDir: 'docs-en/docs/',
         indexPath: 'docs-en/albee-encyclopaedia',
+        alias: {
+          '\\.?/?docs/(.*)': 'docs-en/docs/$1',
+          '.*README': 'docs-en/albee-encyclopaedia'
+        },
         maxLevel: 4,
         plugins: [
           function (hook, vm) {
