@@ -12,7 +12,7 @@ For what each effect means, see [Device States & LED Indicators](device-led-stat
 
 As shown below:
 
-<img src="../assets/img/overhead-led/2.png" width="480">
+<img src="assets/img/overhead-led/2.png" width="480">
 
 ## Method 2: Via Code
 

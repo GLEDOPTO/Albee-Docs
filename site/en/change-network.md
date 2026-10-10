@@ -11,7 +11,7 @@
 > [!TIP]
 > If Wi-Fi never connects after power-on, you don't need to power-cycle — just single-click the function button once to re-enter provisioning mode.
 
-   <img src="../assets/img/change-wifi/2.png" width="480">
+   <img src="assets/img/change-wifi/2.png" width="480">
 
 ## Method 2: Switch to a Saved Network via the Web Page
 
@@ -20,7 +20,7 @@
 3. Visit `http://<device-ip>/network` in a browser.
 4. Find **SWITCH NETWORK** and click the **Switch** button of a network other than the currently connected one.
 
-<img src="../assets/img/change-wifi/1.png" width="480">
+<img src="assets/img/change-wifi/1.png" width="480">
 
 
 
@@ -38,7 +38,7 @@
    - Brand-new network: password required.
 7. Click **Switch & Reboot**.
 
-<img src="../assets/img/change-wifi/3.png" width="480">
+<img src="assets/img/change-wifi/3.png" width="480">
 
 ---
 

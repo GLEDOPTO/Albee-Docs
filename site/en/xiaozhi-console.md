@@ -7,15 +7,15 @@ First, go to the console: <https://xiaozhi.me/>, then click **Configure**
 > [!IMPORTANT]
 > After completing **all** configuration in the console, you need to **restart the device** (long-press the Power button for 3 seconds to power off, then long-press again for 3 seconds to power on) for the changes to take effect.
 
-<img src="../assets/img/xiaozhi-console/1.png" width="560">
+<img src="assets/img/xiaozhi-console/1.png" width="560">
 
 ## 1. Set the Language
 
-<img src="../assets/img/xiaozhi-console/2.png" width="560">
+<img src="assets/img/xiaozhi-console/2.png" width="560">
 
 ## 2. Set the Voice
 
-<img src="../assets/img/xiaozhi-console/3.png" width="560">
+<img src="assets/img/xiaozhi-console/3.png" width="560">
 
 ## 3. Set the Role Introduction
 
@@ -23,7 +23,7 @@ First, go to the console: <https://xiaozhi.me/>, then click **Configure**
 
 For example, you can set roles such as **kids' companion, English teacher, smart butler, story partner, or fun chat buddy** to meet the needs of different scenarios.
 
-<img src="../assets/img/xiaozhi-console/4.png" width="560">
+<img src="assets/img/xiaozhi-console/4.png" width="560">
 
 **Reference template**
 
@@ -88,7 +88,7 @@ As we spend more time together, I'll keep learning and getting to know your pref
 
 ## 4. Switch the Model
 
-<img src="../assets/img/xiaozhi-console/5.png" width="560">
+<img src="assets/img/xiaozhi-console/5.png" width="560">
 
 Xiaozhi Lite is selected by default; the other models are unavailable until you complete developer authentication. For details, see [Developer Auth](developer-auth.md)
 
@@ -96,15 +96,15 @@ Xiaozhi Lite is selected by default; the other models are unavailable until you 
 
 When enabled, the robot no longer has to "get to know you from scratch" in every conversation; when disabled, every conversation starts "from zero".
 
-<img src="../assets/img/xiaozhi-console/6.png" width="560">
+<img src="assets/img/xiaozhi-console/6.png" width="560">
 
 ## 6. Voiceprint Recognition
 
 **Voiceprint recognition:** identifies "who is speaking" by the voice characteristics of different users. After enrolling a voiceprint, the robot can recognize specific users, enabling **personalized addressing, exclusive interactions, and family-member differentiation**, making communication smarter and more personal.
 
-<img src="../assets/img/xiaozhi-console/7.png" width="560">
+<img src="assets/img/xiaozhi-console/7.png" width="560">
 
-<img src="../assets/img/xiaozhi-console/8.png" width="560">
+<img src="assets/img/xiaozhi-console/8.png" width="560">
 
 ---
 

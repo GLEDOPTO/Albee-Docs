@@ -10,7 +10,7 @@
 
 3. Visit `http://<device-ip>/info` in a browser.
 
-   <img src="../assets/img/check-mac-address/1.png" width="480">
+   <img src="assets/img/check-mac-address/1.png" width="480">
 
 ## Method 2: Via a Serial Terminal Tool
 
@@ -20,7 +20,7 @@ You can use a serial terminal tool — there are many available, such as Tera Te
 
 2. In the serial log, find the line `wifi:mode : sta ( ... )` — the value shown there (highlighted in blue in the screenshot below) is the MAC address.
 
-<img src="../assets/img/check-mac-address/2.png" width="560">
+<img src="assets/img/check-mac-address/2.png" width="560">
 
 ---
 

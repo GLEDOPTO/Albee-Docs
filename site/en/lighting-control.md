@@ -37,7 +37,7 @@ The page has two sections: **RF Devices** on top (orange border) and **WLED Devi
 
 > Compatible with **all GLEDOPTO 2.4G RF LED strip controllers**: power any model, pair it as described in 3.1, and it comes under control.
 
-<img src="../assets/img/lighting-control/1.png" width="320">
+<img src="assets/img/lighting-control/1.png" width="320">
 
 ### 3.1 First-time Pairing (Pair)
 

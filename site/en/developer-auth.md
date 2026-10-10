@@ -31,13 +31,13 @@ After authentication, developers unlock more large language models and higher qu
 
 **Step 1:** Click the link above, or log in to <https://xiaozhi.me/> and click your account nickname in the top-right corner.
 
-<img src="../assets/img/developer-auth/click-avatar.png" width="560">
+<img src="assets/img/developer-auth/click-avatar.png" width="560">
 
 **Step 2:** Click **Bind GitHub Account**.
 
 **Step 3:** Once your GitHub account is bound successfully, all models and features are unlocked.
 
-<img src="../assets/img/developer-auth/bind-github-success.png" width="560">
+<img src="assets/img/developer-auth/bind-github-success.png" width="560">
 
 ---
 

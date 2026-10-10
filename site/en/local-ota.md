@@ -11,7 +11,7 @@
 5. Upload the `Albee_xxx.ota` file.
 6. Click **Upload & Flash**.
 
-<img src="../assets/img/local-ota/1.png" width="560">
+<img src="assets/img/local-ota/1.png" width="560">
 
 ---
 

@@ -21,7 +21,7 @@ Two options: flash with the Flash Download Tool on a computer (no IDF environmen
 2. Work mode: **Develop**
 3. Load mode: **UART** (recommended)
 
-<img src="../assets/img/flashing-interface.png" width="560">
+<img src="assets/img/flashing-interface.png" width="560">
 
 ### 1.3 Flashing steps
 

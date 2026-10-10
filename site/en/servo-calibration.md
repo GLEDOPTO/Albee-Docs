@@ -11,15 +11,15 @@
 3. Visit `http://<device-ip>/robot` in a browser.
 4. With the robot at rest, adjust the corresponding servo — click -1° / +1° to fine-tune the four servos (**note: lay the robot down face-up while adjusting**).
 
-<img src="../assets/img/servo-calibration/1.png" width="480">
+<img src="assets/img/servo-calibration/1.png" width="480">
 
 5. The positions correspond as follows:
 
-<img src="../assets/img/servo-calibration/2.png" width="480">
+<img src="assets/img/servo-calibration/2.png" width="480">
 
 6. There is a scale mark on the leg for reference — make sure the side of the leg is flush with the scale mark.
 
-<img src="../assets/img/servo-calibration/3.png" width="480">
+<img src="assets/img/servo-calibration/3.png" width="480">
 
 ---
 

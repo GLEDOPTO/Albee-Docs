@@ -22,7 +22,7 @@ There are **11** `DeviceState` values, **9** of which have LED indicator behavio
 
 As shown below:
 
-<img src="../assets/img/overhead-led/1.png" width="560">
+<img src="assets/img/overhead-led/1.png" width="560">
 
 
 

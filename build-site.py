@@ -17,9 +17,9 @@ import shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 SOURCES = [
-    # (源根目录, 源子目录列表, 输出目录)
-    ("docs-en", ["", "docs"], "site/en"),
-    ("中文版本", ["", "docs"], "site/zh"),
+    # (源根目录, 源子目录列表, 输出目录, 图片前缀)
+    ("docs-en", ["", "docs"], "site/en", "assets/img/"),
+    ("中文版本", ["", "docs"], "site/zh", "../assets/img/"),
 ]
 
 IMG_EXT = (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp")
@@ -27,8 +27,13 @@ LINK_RE = re.compile(r"\]\(([^)\s]+)\)")
 SRC_RE = re.compile(r'src="([^"]+)"')
 
 
-def rewrite_path(path):
-    """把源路径改写为压平后的站点内路径。"""
+def rewrite_path(path, img_prefix):
+    """把源路径改写为压平后的站点内路径。
+
+    图片由浏览器按页面 URL 解析（不是 Docsify 的 basePath）：
+    英文站页面在 /Albee-Docs/        -> assets/img/...
+    中文站页面在 /Albee-Docs/zh/     -> ../assets/img/...
+    """
     if path.startswith(("http://", "https://", "mailto:", "#", "data:")):
         return None
     anchor = ""
@@ -39,8 +44,8 @@ def rewrite_path(path):
     if low.endswith(IMG_EXT):
         idx = path.find("assets/img/")
         if idx >= 0:
-            return "../" + path[idx:] + anchor
-        return "../assets/img/" + os.path.basename(path) + anchor
+            return img_prefix + path[idx + len("assets/img/"):] + anchor
+        return img_prefix + os.path.basename(path) + anchor
     if low.endswith(".pdf"):
         return "../manual/" + os.path.basename(path)
     if low.endswith((".md", ".markdown")):
@@ -48,13 +53,13 @@ def rewrite_path(path):
     return None
 
 
-def rewrite_markdown(text):
+def rewrite_markdown(text, img_prefix):
     def link_sub(m):
-        new = rewrite_path(m.group(1))
+        new = rewrite_path(m.group(1), img_prefix)
         return "](%s)" % new if new else m.group(0)
 
     def src_sub(m):
-        new = rewrite_path(m.group(1))
+        new = rewrite_path(m.group(1), img_prefix)
         return 'src="%s"' % new if new else m.group(0)
 
     text = LINK_RE.sub(link_sub, text)
@@ -62,7 +67,7 @@ def rewrite_markdown(text):
     return text
 
 
-def build(lang_root, subdirs, out_dir):
+def build(lang_root, subdirs, out_dir, img_prefix):
     out = os.path.join(ROOT, out_dir)
     if os.path.exists(out):
         shutil.rmtree(out)
@@ -78,7 +83,7 @@ def build(lang_root, subdirs, out_dir):
                 continue
             content = io.open(os.path.join(src, name), encoding="utf-8").read()
             io.open(os.path.join(out, name), "w", encoding="utf-8",
-                    newline="\n").write(rewrite_markdown(content))
+                    newline="\n").write(rewrite_markdown(content, img_prefix))
             count += 1
     return count
 
@@ -121,8 +126,8 @@ def fix_cross_language(out_dir, other_dir, target_prefix):
 
 def main():
     total = 0
-    for lang_root, subdirs, out_dir in SOURCES:
-        n = build(lang_root, subdirs, out_dir)
+    for lang_root, subdirs, out_dir, img_prefix in SOURCES:
+        n = build(lang_root, subdirs, out_dir, img_prefix)
         total += n
         print("%-10s -> %-10s  %d files" % (lang_root, out_dir, n))
 

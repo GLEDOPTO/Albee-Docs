@@ -10,7 +10,7 @@ Xiaozhi Project URL: [XiaoZhi](https://github.com/78/xiaozhi-esp32)
 
 As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabilities of large models like Qwen / DeepSeek, and achieves multi-terminal control via the MCP protocol.
 
-<img src="../assets/img/mcp-based-graph.jpg" alt="Control everything via MCP" width="320">
+<img src="assets/img/mcp-based-graph.jpg" alt="Control everything via MCP" width="320">
 
 ### Features Implemented
 
