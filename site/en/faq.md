@@ -2,13 +2,13 @@
 
 > Firmware: Albee v2.0.4 or later ｜ Audience: End user
 
-Jump to a section: [Buttons and controls](#/faq?id=1-buttons-and-controls) · [Network](#/faq?id=2-network) · [Voice and conversation](#/faq?id=3-voice-and-conversation) · [Lights and motion](#/faq?id=4-lights-and-motion) · [Account and activation](#/faq?id=5-account-and-activation) · [Upgrade and troubleshooting](#/faq?id=6-upgrade-and-troubleshooting)
+Jump to a section: [Buttons and controls](faq.md?id=_1-buttons-and-controls) · [Network](faq.md?id=_2-network) · [Voice and conversation](faq.md?id=_3-voice-and-conversation) · [Lights and motion](faq.md?id=_4-lights-and-motion) · [Account and activation](faq.md?id=_5-account-and-activation) · [Upgrade and troubleshooting](faq.md?id=_6-upgrade-and-troubleshooting)
 
 ## 1. Buttons and controls
 
 **Q: How many buttons does Albee have, and what do they do?**
 
-A: Two physical buttons plus one touch area. Long-press the power button for 3 s to turn Albee on or off. The function button: single-click starts or ends a conversation round (and stops a ringing alarm), double-click toggles real-time barge-in, long-press for 10 s runs a factory reset. The touch control supports single and double taps and also stops a ringing alarm. See [Device Activation Guide · Buttons and Controls](device-activation.md#part-1-buttons-and-controls).
+A: Two physical buttons plus one touch area. Long-press the power button for 3 s to turn Albee on or off. The function button: single-click starts or ends a conversation round (and stops a ringing alarm), double-click toggles real-time barge-in, long-press for 10 s runs a factory reset. The touch control supports single and double taps and also stops a ringing alarm. See [Device Activation Guide · Buttons and Controls](device-activation.md?id=part-1-buttons-and-controls).
 
 **Q: How do I perform a factory reset?**
 
@@ -32,7 +32,7 @@ A: See [Find the Device IP Address](check-device-ip.md) — ask by voice, check 
 
 **Q: How do I adjust the volume?**
 
-A: Just say "set the volume to 50" or "turn the volume up a bit" (1–100%); you can also use the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](mcp-usage.md#tool-catalog).
+A: Just say "set the volume to 50" or "turn the volume up a bit" (1–100%); you can also use the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](mcp-usage.md?id=tool-catalog).
 
 **Q: Can it play music?**
 
@@ -48,11 +48,11 @@ A: Not at the moment — the default wake word is "Hi Albee".
 
 **Q: Can I change the voice?**
 
-A: Yes. Console → role configuration → switch the voice; you can preview before saving. See [XiaoZhi Console Configuration Guide · Set the Voice](xiaozhi-console.md#2-set-the-voice).
+A: Yes. Console → role configuration → switch the voice; you can preview before saving. See [XiaoZhi Console Configuration Guide · Set the Voice](xiaozhi-console.md?id=_2-set-the-voice).
 
 **Q: Can it recognize and remember who I am?**
 
-A: Yes. Console → Agent → voiceprint recognition — see [XiaoZhi Console Configuration Guide · Voiceprint Recognition](xiaozhi-console.md#6-voiceprint-recognition).
+A: Yes. Console → Agent → voiceprint recognition — see [XiaoZhi Console Configuration Guide · Voiceprint Recognition](xiaozhi-console.md?id=_6-voiceprint-recognition).
 
 **Q: Can I clone my own voice?**
 
@@ -62,11 +62,11 @@ A: Yes — currently in public beta.
 
 A: Not by default. Completing [Developer Authentication](developer-auth.md) unlocks Qwen3, full DeepSeek, Doubao, GLM and more.
 
-B: You can also run your own server and plug in other models — see [Related open source projects](README.md#related-open-source-projects).
+B: You can also run your own server and plug in other models — see [Related open source projects](README.md?id=related-open-source-projects).
 
 **Q: Can I run my own server?**
 
-A: Yes. The XiaoZhi communication protocol is open and the community maintains server implementations in Python, Java, Go and more — deploy one on your own computer or a cloud instance to plug in the model of your choice. Start with [Related open source projects](README.md#related-open-source-projects) and the [WebSocket protocol document](websocket.md).
+A: Yes. The XiaoZhi communication protocol is open and the community maintains server implementations in Python, Java, Go and more — deploy one on your own computer or a cloud instance to plug in the model of your choice. Start with [Related open source projects](README.md?id=related-open-source-projects) and the [WebSocket protocol document](websocket.md).
 
 ## 4. Lights and motion
 

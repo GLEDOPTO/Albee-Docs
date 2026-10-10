@@ -95,7 +95,7 @@ For example, you can set roles such as **kids' companion, English teacher, smart
 
 **Reference template**
 
-The ready-made Albee role introduction template (Chinese and English) lives in the [XiaoZhi Console Configuration Guide · Set the Role Introduction](xiaozhi-console.md#3-set-the-role-introduction).
+The ready-made Albee role introduction template (Chinese and English) lives in the [XiaoZhi Console Configuration Guide · Set the Role Introduction](xiaozhi-console.md?id=_3-set-the-role-introduction).
 
 ### 4. Switch the Model
 

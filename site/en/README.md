@@ -23,7 +23,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 - Supports 38 languages
 - Speaker recognition, identifies the current speaker [3D Speaker](https://github.com/modelscope/3D-Speaker)
 - Role customization via the xiaozhi.me console: personality roles, voice/timbre, LLM selection (Qwen3 / DeepSeek / Doubao, etc.), memory mode (see the [XiaoZhi Console Configuration Guide](xiaozhi-console.md))
-- Voiceprint recognition — Albee can recognize and remember who is talking (configuration in the [console guide · Voiceprint Recognition](xiaozhi-console.md#6-voiceprint-recognition))
+- Voiceprint recognition — Albee can recognize and remember who is talking (configuration in the [console guide · Voiceprint Recognition](xiaozhi-console.md?id=_6-voiceprint-recognition))
 
 **Motion & Interaction**
 
