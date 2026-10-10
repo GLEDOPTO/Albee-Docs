@@ -43,8 +43,29 @@
         loadSidebar: 'zh/_sidebar.md',
         subMaxLevel: 2,
         auto2top: true,
-        relativePath: true,
+        relativePath: false,
+        docDir: '中文版本/docs/',
         maxLevel: 4,
+        plugins: [
+          function (hook, vm) {
+            hook.afterEach(function (html) {
+              var docDir = vm.config.docDir || '';
+              var root = vm.config.basePath || '/';
+              // 文档互链：任意相对 .md 链接 -> 正确的 hash 路由
+              html = html.replace(
+                /href="(?!https?:)(?!#)(?!\/)([^"]+\.md)(#[^"]*)?"/g,
+                function (m, p, hash) {
+                  var file = p.split('/').pop().replace(/\.md$/, '');
+                  return 'href="#/' + docDir + file + (hash || '') + '"';
+                }
+              );
+              // 图片：../../assets/... 与 /assets/... -> 站点根 assets
+              html = html.replace(/src="(?:\.\.\/)+assets\//g, 'src="' + root + 'assets/');
+              html = html.replace(/src="\/assets\//g, 'src="' + root + 'assets/');
+              return html;
+            });
+          }
+        ],
         search: {
           paths: 'auto',
           depth: 3,
