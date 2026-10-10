@@ -1,0 +1,41 @@
+name: Build docs site
+
+# 只监视源文档目录，避免机器人自己的提交再次触发
+on:
+  push:
+    branches: [master]
+    paths:
+      - '中文版本/**/*.md'
+      - 'docs-en/**/*.md'
+      - 'build-site.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate site copies
+        run: python build-site.py
+
+      - name: Commit site changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/
+          if git diff --cached --quiet; then
+            echo "site is already up to date"
+          else
+            git commit -m "chore(site): rebuild site copies [skip ci]"
+            git push
+          fi

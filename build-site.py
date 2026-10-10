@@ -53,9 +53,13 @@ def rewrite_path(path, img_prefix):
     return None
 
 
-def rewrite_markdown(text, img_prefix):
+def rewrite_markdown(text, img_prefix, page_name):
     def link_sub(m):
-        new = rewrite_path(m.group(1), img_prefix)
+        target = m.group(1)
+        # 同页锚点 -> 显式带上页面，保证从任意页面点击都能定位
+        if target.startswith("#") and len(target) > 1 and not target.startswith("#/"):
+            return "](#/%s?id=%s)" % (page_name, target[1:])
+        new = rewrite_path(target, img_prefix)
         return "](%s)" % new if new else m.group(0)
 
     def src_sub(m):
@@ -83,7 +87,7 @@ def build(lang_root, subdirs, out_dir, img_prefix):
                 continue
             content = io.open(os.path.join(src, name), encoding="utf-8").read()
             io.open(os.path.join(out, name), "w", encoding="utf-8",
-                    newline="\n").write(rewrite_markdown(content, img_prefix))
+                    newline="\n").write(rewrite_markdown(content, img_prefix, name[:-3]))
             count += 1
     return count
 

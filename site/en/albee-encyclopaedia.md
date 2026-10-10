@@ -10,13 +10,13 @@
 
 | Category | What it covers | Documents |
 |---|---|---|
-| [Getting Started](#1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | 1 document |
-| [Feature Guides](#2-feature-guides) | Web console overview, finding the device IP, lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, local OTA upgrade | 10 documents |
-| [Troubleshooting & Support](#3-troubleshooting--support) | FAQ, device freeze or reboot feedback | 2 documents |
-| [Console & Account](#4-console--account) | xiaozhi.me console, developer auth, account issues, knowledge base, MAC address | 5 documents |
-| [Firmware & Hardware Development](#5-firmware--hardware-development) | Firmware flashing, compiling from source, pin mapping, OTA API | 4 documents |
-| [Protocols & MCP](#6-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
-| [Smart Home](#7-smart-home-integration) | Home Assistant integration | 1 document |
+| [Getting Started](#/albee-encyclopaedia?id=1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | 1 document |
+| [Feature Guides](#/albee-encyclopaedia?id=2-feature-guides) | Web console overview, finding the device IP, lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, local OTA upgrade | 10 documents |
+| [Troubleshooting & Support](#/albee-encyclopaedia?id=3-troubleshooting--support) | FAQ, device freeze or reboot feedback | 2 documents |
+| [Console & Account](#/albee-encyclopaedia?id=4-console--account) | xiaozhi.me console, developer auth, account issues, knowledge base, MAC address | 5 documents |
+| [Firmware & Hardware Development](#/albee-encyclopaedia?id=5-firmware--hardware-development) | Firmware flashing, compiling from source, pin mapping, OTA API | 4 documents |
+| [Protocols & MCP](#/albee-encyclopaedia?id=6-communication-protocols--mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
+| [Smart Home](#/albee-encyclopaedia?id=7-smart-home-integration) | Home Assistant integration | 1 document |
 
 ## 1. Getting Started
 

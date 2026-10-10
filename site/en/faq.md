@@ -2,7 +2,7 @@
 
 > Firmware: Albee v2.0.4 or later ｜ Audience: End user
 
-Jump to a section: [Buttons and controls](#1-buttons-and-controls) · [Network](#2-network) · [Voice and conversation](#3-voice-and-conversation) · [Lights and motion](#4-lights-and-motion) · [Account and activation](#5-account-and-activation) · [Upgrade and troubleshooting](#6-upgrade-and-troubleshooting)
+Jump to a section: [Buttons and controls](#/faq?id=1-buttons-and-controls) · [Network](#/faq?id=2-network) · [Voice and conversation](#/faq?id=3-voice-and-conversation) · [Lights and motion](#/faq?id=4-lights-and-motion) · [Account and activation](#/faq?id=5-account-and-activation) · [Upgrade and troubleshooting](#/faq?id=6-upgrade-and-troubleshooting)
 
 ## 1. Buttons and controls
 
