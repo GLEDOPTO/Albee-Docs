@@ -92,7 +92,7 @@
 - **I want to develop firmware:** [Compilation Tutorial](compilation-tutorial.md) → [Pin Mapping](pin-mapping.md)
 - **I want to build a server / integrate the protocol:** [WebSocket](websocket.md) or [MQTT+UDP](mqtt-udp.md) → [MCP Protocol](mcp-protocol.md) → [MCP Usage](mcp-usage.md) → [OTA API](ota-api.md)
 
-> Shared images and downloadable assets live in [`../assets/`](../assets/) (images under `assets/img/`), used by both the Chinese and English versions.
+> Shared images and downloadable assets live in [`../assets/`](https://github.com/GLEDOPTO/Albee-Docs/tree/master/assets) (images under `assets/img/`), used by both the Chinese and English versions.
 
 ---
 

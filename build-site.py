@@ -16,10 +16,15 @@ import shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
+REPO_URL = "https://github.com/GLEDOPTO/Albee-Docs"
+
 SOURCES = [
-    # (源根目录, 源子目录列表, 输出目录, 图片前缀)
-    ("docs-en", ["", "docs"], "site/en", "assets/img/"),
-    ("中文版本", ["", "docs"], "site/zh", "../assets/img/"),
+    # (源根目录, 源子目录列表, 输出目录, 资源前缀)
+    # 资源（图片/PDF/xlsx）由浏览器按页面 URL 解析，不是 Docsify 的 basePath：
+    # 英文站页面在 /Albee-Docs/     -> 前缀 ""
+    # 中文站页面在 /Albee-Docs/zh/  -> 前缀 "../"
+    ("docs-en", ["", "docs"], "site/en", ""),
+    ("中文版本", ["", "docs"], "site/zh", "../"),
 ]
 
 IMG_EXT = (".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".bmp")
@@ -100,33 +105,41 @@ def split_anchor(target):
     return target, ""
 
 
-def rewrite_path(path, img_prefix):
-    """把源路径改写为压平后的站点内路径。
+def rewrite_path(path, res_prefix):
+    """把源路径改写为压平后的站点内路径。返回 (新路径, 是否资源文件)。
 
-    图片由浏览器按页面 URL 解析（不是 Docsify 的 basePath）：
-    英文站页面在 /Albee-Docs/        -> assets/img/...
-    中文站页面在 /Albee-Docs/zh/     -> ../assets/img/...
+    资源文件（图片/PDF/xlsx）的【链接】若不处理，Docsify 的 linkCompiler
+    会把它交给 router.toURL 变成 "#/..." 页面路由，点击后 404。
+    因此 link_sub 对资源文件追加 " :ignore"（Docsify 官方配置），
+    让它按普通外链（target=_blank）交给浏览器解析。
     """
     if path.startswith(("http://", "https://", "mailto:", "#", "data:")):
-        return None
+        return None, False
     anchor = ""
     if "#" in path:
         path, anchor = path.split("#", 1)
         anchor = "#" + anchor
+    # 指向 assets 目录本身的链接：线上站没有目录页，改指仓库目录（绝对 URL 天然不被编译）
+    segs = [s for s in path.split("/") if s not in ("", ".", "..")]
+    if segs == ["assets"] or segs == ["assets", "img"]:
+        return REPO_URL + "/tree/master/" + "/".join(segs), False
     low = path.lower()
     if low.endswith(IMG_EXT):
         idx = path.find("assets/img/")
         if idx >= 0:
-            return img_prefix + path[idx + len("assets/img/"):] + anchor
-        return img_prefix + os.path.basename(path) + anchor
-    if low.endswith(".pdf"):
-        return "../manual/" + os.path.basename(path)
+            return res_prefix + path[idx:] + anchor, True
+        return res_prefix + "assets/img/" + os.path.basename(path) + anchor, True
+    if low.endswith((".pdf", ".xlsx")):
+        idx = path.find("assets/")
+        if idx >= 0:
+            return res_prefix + path[idx:], True
+        return res_prefix + "manual/" + os.path.basename(path), True
     if low.endswith((".md", ".markdown")):
-        return os.path.basename(path) + anchor
-    return None
+        return os.path.basename(path) + anchor, False
+    return None, False
 
 
-def rewrite_markdown(text, img_prefix, page_name, anchors):
+def rewrite_markdown(text, res_prefix, page_name, anchors):
     def link_sub(m):
         target = m.group(1)
         base, anchor = split_anchor(target)
@@ -143,15 +156,21 @@ def rewrite_markdown(text, img_prefix, page_name, anchors):
                 out_base = os.path.basename(base)
                 page = out_base.rsplit(".", 1)[0]
             else:
-                new = rewrite_path(target, img_prefix)
-                return "](%s)" % new if new else m.group(0)
+                new, is_res = rewrite_path(target, res_prefix)
+                if new is None:
+                    return m.group(0)
+                return "](%s \":ignore\")" % new if is_res else "](%s)" % new
             return "](%s?id=%s)" % (out_base, resolve_anchor(anchor, page, anchors))
 
-        new = rewrite_path(target, img_prefix)
-        return "](%s)" % new if new else m.group(0)
+        new, is_res = rewrite_path(target, res_prefix)
+        if new is None:
+            return m.group(0)
+        # 资源链接追加 " :ignore"：Docsify 不编译、按外链新窗口打开，
+        # 否则会被当成 "#/..." 页面路由而 404。
+        return "](%s \":ignore\")" % new if is_res else "](%s)" % new
 
     def src_sub(m):
-        new = rewrite_path(m.group(1), img_prefix)
+        new, _ = rewrite_path(m.group(1), res_prefix)
         return 'src="%s"' % new if new else m.group(0)
 
     text = LINK_RE.sub(link_sub, text)
@@ -159,7 +178,7 @@ def rewrite_markdown(text, img_prefix, page_name, anchors):
     return text
 
 
-def build(lang_root, subdirs, out_dir, img_prefix, anchors):
+def build(lang_root, subdirs, out_dir, res_prefix, anchors):
     out = os.path.join(ROOT, out_dir)
     if os.path.exists(out):
         shutil.rmtree(out)
@@ -176,7 +195,7 @@ def build(lang_root, subdirs, out_dir, img_prefix, anchors):
             content = io.open(os.path.join(src, name), encoding="utf-8").read()
             io.open(os.path.join(out, name), "w", encoding="utf-8",
                     newline="\n").write(
-                rewrite_markdown(content, img_prefix, name[:-3], anchors))
+                rewrite_markdown(content, res_prefix, name[:-3], anchors))
             count += 1
     return count
 
@@ -229,9 +248,9 @@ def fix_cross_language(out_dir, other_dir, target_prefix):
 
 def main():
     total = 0
-    for lang_root, subdirs, out_dir, img_prefix in SOURCES:
+    for lang_root, subdirs, out_dir, res_prefix in SOURCES:
         anchors = collect_anchors(lang_root, subdirs)
-        n = build(lang_root, subdirs, out_dir, img_prefix, anchors)
+        n = build(lang_root, subdirs, out_dir, res_prefix, anchors)
         total += n
         print("%-10s -> %-10s  %d files" % (lang_root, out_dir, n))
         globals().setdefault("_ANCHORS", {})[out_dir] = anchors

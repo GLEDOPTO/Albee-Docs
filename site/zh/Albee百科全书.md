@@ -92,7 +92,7 @@
 - **想开发固件：**[固件编译教程](固件编译教程.md) → [引脚映射](引脚映射.md)
 - **想搭建服务器 / 对接协议：**[WebSocket](WebSocket通信协议.md) 或 [MQTT+UDP](MQTT-UDP混合通信协议.md) → [MCP 协议](MCP协议交互流程.md) → [MCP 用法](MCP控制使用指南.md) → [OTA API](OTA接口.md)
 
-> 公用图片和可下载资源位于 [`../assets/`](../assets/)（图片在 `assets/img/` 下），中英文版本共用。
+> 公用图片和可下载资源位于 [`../assets/`](https://github.com/GLEDOPTO/Albee-Docs/tree/master/assets)（图片在 `assets/img/` 下），中英文版本共用。
 
 ---
 

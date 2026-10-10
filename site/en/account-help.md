@@ -37,7 +37,7 @@ To unbind it, send an email to <service@gledopto.com> with the subject:
 
 If you need to unbind multiple devices, download the template below, fill in the device IDs and MAC addresses, attach the completed spreadsheet to the email, and use the subject `【Unbind Device】`:
 
-[Download the unbind template (xlsx)](../../assets/account-help/xiaozhi-device-unbind-template.xlsx)
+[Download the unbind template (xlsx)](assets/account-help/xiaozhi-device-unbind-template.xlsx ":ignore")
 
 ## How to View the MAC Address
 
