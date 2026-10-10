@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<html lang="en" data-page-node-id="wVDDCl7nnRvygyFz2cOrfJ">
+<head data-page-node-id="NXUzgVgJZ2g9l1h7rW2G2E">
+  <meta charset="UTF-8" data-page-node-id="mV9vHim2Ky3j4I5VMIEi43">
   <title>Albee Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Albee desktop robot documentation: activation, lighting, alarms, servo calibration, firmware and protocols">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="IykO68jF2MGGGOvoMcv9rZ">
+  <meta name="description" content="Albee desktop robot documentation: activation, lighting, alarms, servo calibration, firmware and protocols" data-page-node-id="evybb7T8VHVgRHp6cuLHbx">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" data-page-node-id="4JuDxr4u9KzaDjrXAgXziI">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css" data-page-node-id="bHzmLJAoZ9FL6tBFfessJt">
   <style>
     .markdown-section { max-width: 900px; }
     .app-nav li a:hover { color: #42b983; }
   </style>
 </head>
-<body>
-  <nav class="app-nav no-badge">
-    <a href="./">English</a>
-    <a href="zh/">中文</a>
+<body data-page-node-id="tDJFOsoFSctqDoAKsAoxiL">
+  <nav class="app-nav no-badge" data-page-node-id="744QmRYq2rUkpxDwCH66Zk">
+    <a href="./" data-page-node-id="1Al5EBDl3ginKqCrtxNFXO">English</a>
+    <a href="zh/" data-page-node-id="ipuWByGZQmOgkmDeTOCKtu">中文</a>
   </nav>
 
-  <div id="app">Loading…</div>
+  <div id="app" data-page-node-id="b9EAU0heVgINA5hbVa9xDU">Loading…</div>
 
   <script>
     // Docsify 只在路由为 /README.md 时应用 homepage；直接访问目录入口时 hash 为空，
@@ -36,58 +36,14 @@
       if (root.charAt(root.length - 1) !== '/') { root += '/'; }
 
       window.$docsify = {
-        basePath: root,
+        basePath: root + 'site/en/',
         name: 'Albee Docs',
         repo: 'https://github.com/GLEDOPTO/Albee-Docs',
-        homepage: 'docs-en/albee-encyclopaedia.md',
+        homepage: 'albee-encyclopaedia.md',
         loadSidebar: '_sidebar.md',
         subMaxLevel: 2,
         auto2top: true,
-        relativePath: false,
-        docDir: 'docs-en/docs/',
-        indexPath: 'docs-en/albee-encyclopaedia',
-        alias: {
-          '\\.?/?docs/(.*)': 'docs-en/docs/$1',
-          '.*README': 'docs-en/albee-encyclopaedia'
-        },
         maxLevel: 4,
-        plugins: [
-          function (hook, vm) {
-            hook.afterEach(function (html) {
-              var docDir = vm.config.docDir || '';
-              var indexPath = vm.config.indexPath || '';
-              var root = vm.config.basePath || '/';
-
-              // 1) 修正 Docsify 已转成 hash 的文档链接（如 #/./docs/device-activation）
-              html = html.replace(/href="#\/([^"]+)"/g, function (m, p) {
-                var anchor = '';
-                var i = p.indexOf('#');
-                if (i > -1) { anchor = p.slice(i); p = p.slice(0, i); }
-                var clean = p.replace(/^\.\//, '').replace(/^\.\.\//, '');
-                if (clean === '' || clean === '/') { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
-                if (clean.indexOf(docDir) === 0) { return 'href="#/' + clean + anchor + '"'; }
-                if (indexPath && clean.indexOf(indexPath) === 0) { return 'href="#/' + indexPath + anchor + '"'; }
-                var file = clean.split('/').pop();
-                if (/^readme$/i.test(file)) { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
-                return 'href="#/' + docDir + file + anchor + '"';
-              });
-
-              // 2) 未转换的相对 .md 链接（兜底）
-              html = html.replace(
-                /href="(?!https?:)(?!#)(?!\/)([^"]+\.md)(#[^"]*)?"/g,
-                function (m, p, hash) {
-                  var file = p.split('/').pop().replace(/\.md$/, '');
-                  return 'href="#/' + docDir + file + (hash || '') + '"';
-                }
-              );
-
-              // 3) 图片：../../assets/... 与 /assets/... -> 站点根 assets
-              html = html.replace(/src="(?:\.\.\/)+assets\//g, 'src="' + root + 'assets/');
-              html = html.replace(/src="\/assets\//g, 'src="' + root + 'assets/');
-              return html;
-            });
-          }
-        ],
         search: {
           paths: 'auto',
           depth: 3,

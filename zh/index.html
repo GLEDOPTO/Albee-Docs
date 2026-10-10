@@ -36,58 +36,13 @@
       if (root.charAt(root.length - 1) !== '/') { root += '/'; }
 
       window.$docsify = {
-        basePath: root,
+        basePath: root + 'site/zh/',
         name: 'Albee Docs',
         repo: 'https://github.com/GLEDOPTO/Albee-Docs',
-        homepage: '中文版本/Albee百科全书.md',
-        loadSidebar: 'zh/_sidebar.md',
+        homepage: 'Albee百科全书.md',
+        loadSidebar: '_sidebar.md',
         subMaxLevel: 2,
         auto2top: true,
-        relativePath: false,
-        docDir: '中文版本/docs/',
-        indexPath: '中文版本/Albee百科全书',
-        alias: {
-          '\\.?/?docs/(.*)': '中文版本/docs/$1',
-          '.*README': '中文版本/Albee百科全书'
-        },
-        maxLevel: 4,
-        plugins: [
-          function (hook, vm) {
-            hook.afterEach(function (html) {
-              var docDir = vm.config.docDir || '';
-              var indexPath = vm.config.indexPath || '';
-              var root = vm.config.basePath || '/';
-
-              // 1) 修正 Docsify 已转成 hash 的文档链接（如 #/./docs/device-activation）
-              html = html.replace(/href="#\/([^"]+)"/g, function (m, p) {
-                var anchor = '';
-                var i = p.indexOf('#');
-                if (i > -1) { anchor = p.slice(i); p = p.slice(0, i); }
-                var clean = p.replace(/^\.\//, '').replace(/^\.\.\//, '');
-                if (clean === '' || clean === '/') { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
-                if (clean.indexOf(docDir) === 0) { return 'href="#/' + clean + anchor + '"'; }
-                if (indexPath && clean.indexOf(indexPath) === 0) { return 'href="#/' + indexPath + anchor + '"'; }
-                var file = clean.split('/').pop();
-                if (/^readme$/i.test(file)) { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
-                return 'href="#/' + docDir + file + anchor + '"';
-              });
-
-              // 2) 未转换的相对 .md 链接（兜底）
-              html = html.replace(
-                /href="(?!https?:)(?!#)(?!\/)([^"]+\.md)(#[^"]*)?"/g,
-                function (m, p, hash) {
-                  var file = p.split('/').pop().replace(/\.md$/, '');
-                  return 'href="#/' + docDir + file + (hash || '') + '"';
-                }
-              );
-
-              // 3) 图片：../../assets/... 与 /assets/... -> 站点根 assets
-              html = html.replace(/src="(?:\.\.\/)+assets\//g, 'src="' + root + 'assets/');
-              html = html.replace(/src="\/assets\//g, 'src="' + root + 'assets/');
-              return html;
-            });
-          }
-        ],
         search: {
           paths: 'auto',
           depth: 3,
