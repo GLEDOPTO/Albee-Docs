@@ -12,7 +12,6 @@
 import io
 import os
 import re
-import shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -179,11 +178,16 @@ def rewrite_markdown(text, res_prefix, page_name, anchors):
 
 
 def build(lang_root, subdirs, out_dir, res_prefix, anchors):
-    out = os.path.join(ROOT, out_dir)
-    if os.path.exists(out):
-        shutil.rmtree(out)
-    os.makedirs(out)
+    """生成站点副本。
 
+    不用 rmtree 整目录清空：一来会触发批量删除保护，二来万一中途失败会留下
+    半完整的副本。改为「覆盖写入 + 逐个清理已不存在的 md」，正常情况下 0 删除。
+    """
+    out = os.path.join(ROOT, out_dir)
+    if not os.path.isdir(out):
+        os.makedirs(out)
+
+    expected = set()
     count = 0
     for sub in subdirs:
         src = os.path.join(ROOT, lang_root, sub) if sub else os.path.join(ROOT, lang_root)
@@ -192,11 +196,16 @@ def build(lang_root, subdirs, out_dir, res_prefix, anchors):
         for name in sorted(os.listdir(src)):
             if not name.endswith(".md"):
                 continue
+            expected.add(name)
             content = io.open(os.path.join(src, name), encoding="utf-8").read()
             io.open(os.path.join(out, name), "w", encoding="utf-8",
                     newline="\n").write(
                 rewrite_markdown(content, res_prefix, name[:-3], anchors))
             count += 1
+
+    for name in sorted(os.listdir(out)):
+        if name.endswith(".md") and name not in expected:
+            os.remove(os.path.join(out, name))
     return count
 
 
