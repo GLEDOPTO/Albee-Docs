@@ -45,13 +45,30 @@
         auto2top: true,
         relativePath: false,
         docDir: 'docs-en/docs/',
+        indexPath: 'docs-en/albee-encyclopaedia',
         maxLevel: 4,
         plugins: [
           function (hook, vm) {
             hook.afterEach(function (html) {
               var docDir = vm.config.docDir || '';
+              var indexPath = vm.config.indexPath || '';
               var root = vm.config.basePath || '/';
-              // 文档互链：任意相对 .md 链接 -> 正确的 hash 路由
+
+              // 1) 修正 Docsify 已转成 hash 的文档链接（如 #/./docs/device-activation）
+              html = html.replace(/href="#\/([^"]+)"/g, function (m, p) {
+                var anchor = '';
+                var i = p.indexOf('#');
+                if (i > -1) { anchor = p.slice(i); p = p.slice(0, i); }
+                var clean = p.replace(/^\.\//, '').replace(/^\.\.\//, '');
+                if (clean === '' || clean === '/') { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
+                if (clean.indexOf(docDir) === 0) { return 'href="#/' + clean + anchor + '"'; }
+                if (indexPath && clean.indexOf(indexPath) === 0) { return 'href="#/' + indexPath + anchor + '"'; }
+                var file = clean.split('/').pop();
+                if (/^readme$/i.test(file)) { return 'href="#/' + (indexPath || docDir) + anchor + '"'; }
+                return 'href="#/' + docDir + file + anchor + '"';
+              });
+
+              // 2) 未转换的相对 .md 链接（兜底）
               html = html.replace(
                 /href="(?!https?:)(?!#)(?!\/)([^"]+\.md)(#[^"]*)?"/g,
                 function (m, p, hash) {
@@ -59,7 +76,8 @@
                   return 'href="#/' + docDir + file + (hash || '') + '"';
                 }
               );
-              // 图片：../../assets/... 与 /assets/... -> 站点根 assets
+
+              // 3) 图片：../../assets/... 与 /assets/... -> 站点根 assets
               html = html.replace(/src="(?:\.\.\/)+assets\//g, 'src="' + root + 'assets/');
               html = html.replace(/src="\/assets\//g, 'src="' + root + 'assets/');
               return html;
