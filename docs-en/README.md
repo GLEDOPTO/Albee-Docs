@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project is a derivative development based on version 2.0.5 of the Xiaozhi AI chatbot.
+This project is a derivative development based on version 2.0.4 of the Xiaozhi AI chatbot.
 
 Gledopto Robot Project URL: TODO
 
@@ -19,7 +19,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 - Wi-Fi connectivity, with two communication protocols ([WebSocket](docs/websocket.md) or [MQTT+UDP](docs/mqtt-udp.md))
 - Voice interaction based on streaming ASR + LLM + TTS architecture, OPUS audio codec
 - Wake by voice ("Hi Albee") or by short-pressing the function button
-- Real-time barge-in: no need to wait for the reply to finish — just speak to interrupt (double-click the function key to toggle)
+- Real-time barge-in: no need to wait for the reply to finish — just speak to interrupt (double-click the function button to toggle)
 - Supports 38 languages
 - Speaker recognition, identifies the current speaker [3D Speaker](https://github.com/modelscope/3D-Speaker)
 - Role customization via the xiaozhi.me console: personality roles, voice/timbre, LLM selection (Qwen3 / DeepSeek / Doubao, etc.), memory mode (see the [XiaoZhi Console Configuration Guide](docs/xiaozhi-console.md))
@@ -63,7 +63,9 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 ## Hardware
 
 * ESP32-S3 SoC
-* Function button + Touch button
+* Power button (Power Button)
+* Function button (Function Button)
+* Touch control
 * 2.4G RF Module
 * Four Digital Servo
 * 1.54-inch Screen
@@ -108,6 +110,8 @@ If you already have a XiaoZhi AI chatbot device and have connected to the offici
 - To unlock more models (Qwen3 / DeepSeek full / Doubao / GLM): see [Developer Authentication](docs/developer-auth.md)
 - **Restart the device** after completing all configuration for the changes to take effect
 
+<a id="related-open-source-projects"></a>
+
 ## Related Open Source Projects
 
 For server deployment on personal computers, refer to the following open-source projects:
@@ -142,3 +146,9 @@ We hope this project helps everyone understand AI hardware development and apply
 ---
 
 **Last modified:** 2026-10-09
+
+---
+
+**Official site:** <http://www.gledoptorobots.com>
+
+**Support:** service@gledopto.com

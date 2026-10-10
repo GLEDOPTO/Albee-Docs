@@ -11,7 +11,7 @@
 | Category | What it covers | Documents |
 |---|---|---|
 | [Getting Started](#1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | 1 document |
-| [Feature Guides](#2-feature-guides) | Lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, local OTA upgrade | 8 documents |
+| [Feature Guides](#2-feature-guides) | Web console overview, finding the device IP, lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, local OTA upgrade | 10 documents |
 | [Troubleshooting & Support](#3-troubleshooting--support) | FAQ, device freeze or reboot feedback | 2 documents |
 | [Console & Account](#4-console--account) | xiaozhi.me console, developer auth, account issues, knowledge base, MAC address | 5 documents |
 | [Firmware & Hardware Development](#5-firmware--hardware-development) | Firmware flashing, compiling from source, pin mapping, OTA API | 4 documents |
@@ -36,6 +36,8 @@
 | [Head LED Effects Change Guide](./docs/head-led-effects.md) | Change the head LED effects online via the web page (`http://<device-ip>/led`); for developers: slots, effects, animation implementation, and NVS packing format in `led_config.cc` / `circular_strip.cc` (with a pitfall checklist). |
 | [Servo Calibration Guide](./docs/servo-calibration.md) | Correct the reset-pose deviation of the four servos: fine-tune by ±1° via the web page (`http://<device-ip>/robot`), servo-to-button mapping, and the leg scale mark (lay the robot down while adjusting). |
 | [Local OTA Upgrade Guide](./docs/local-ota.md) | Upgrade the firmware locally via the device's built-in web page (`http://<device-ip>/update`) by uploading a `.ota` file — no PC flashing needed. |
+| [Built-in Web Console Overview](./docs/web-console.md) | Entry point for the built-in pages: what `/light`, `/network`, `/led`, `/robot`, `/info` and `/update` do, prerequisites, and FAQ. |
+| [Find the Device IP Address](./docs/check-device-ip.md) | Read this before opening any web page: three ways to get the IP — ask by voice, router admin page, or serial log. |
 
 ## 3. Troubleshooting & Support
 
@@ -82,6 +84,7 @@
 
 ## Reading Paths
 
+- **I want to open the built-in web pages:** [Built-in Web Console Overview](./docs/web-console.md) → [Find the Device IP Address](./docs/check-device-ip.md)
 - **I just got the robot:** [Device Activation Guide](./docs/device-activation.md) → [Console Configuration](./docs/xiaozhi-console.md) → [FAQ](./docs/faq.md)
 - **I want to control my lights:** [Lighting Control Guide](./docs/lighting-control.md)
 - **Something goes wrong with the device:** [FAQ](./docs/faq.md) → [Device Freeze or Reboot Feedback Guide](./docs/problem-feedback.md)
@@ -93,4 +96,4 @@
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-10

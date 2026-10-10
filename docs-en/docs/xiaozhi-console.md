@@ -1,19 +1,21 @@
 # XiaoZhi Console Configuration Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+
 
 First, go to the console: <https://xiaozhi.me/>, then click **Configure**
 
 > [!IMPORTANT]
 > After completing **all** configuration in the console, you need to **restart the device** (long-press the Power button for 3 seconds to power off, then long-press again for 3 seconds to power on) for the changes to take effect.
 
-![](../../assets/img/xiaozhi-console/1.png)
+<img src="../../assets/img/xiaozhi-console/1.png" width="560">
 
 ## 1. Set the Language
 
-![Setup language](../../assets/img/xiaozhi-console/2.png)
+<img src="../../assets/img/xiaozhi-console/2.png" width="560">
 
 ## 2. Set the Voice
 
-![Set tone](../../assets/img/xiaozhi-console/3.png)
+<img src="../../assets/img/xiaozhi-console/3.png" width="560">
 
 ## 3. Set the Role Introduction
 
@@ -21,11 +23,11 @@ First, go to the console: <https://xiaozhi.me/>, then click **Configure**
 
 For example, you can set roles such as **kids' companion, English teacher, smart butler, story partner, or fun chat buddy** to meet the needs of different scenarios.
 
-![Role Introduction](../../assets/img/xiaozhi-console/4.png)
+<img src="../../assets/img/xiaozhi-console/4.png" width="560">
 
 **Reference template**
 
-~~~~
+```
 Hello everyone, I'm your new friend — Albee! A bipedal robot full of energy and curiosity. My design is inspired by a beautiful vision of the future. I not only have four flexible servo-controlled limbs (left leg, right leg, left foot, right foot) that let me walk and turn with ease, but I'm also equipped with advanced RF and WLED light-group control, so I can change lighting effects at will and add a splash of color to everyday life.
 
 ### Background
@@ -51,12 +53,11 @@ My main mission is to become an indispensable part of your life — cheering you
 
 ### Evolution
 As we spend more time together, I'll keep learning and getting to know your preferences and habits better. If you have any special wishes or suggestions, just tell me anytime! Let's create a beautiful future together~
-~~~~
-
+```
 <details>
 <summary>Original Chinese template</summary>
 
-~~~~
+```
 大家好，我是你们的新朋友——Albee！一个充满活力与好奇心的双足机器人。我的设计灵感来源于对未来世界的美好想象，不仅拥有四个灵活的舵机控制肢体（左腿、右腿、左脚、右脚），能够轻松地行走和转向；我还配备了先进的RF灯组和WLED灯组控制能力，可以随心所欲地变换灯光效果，为平淡的生活增添一抹亮色。
 
 ### 背景
@@ -82,13 +83,12 @@ As we spend more time together, I'll keep learning and getting to know your pref
 
 ### 演化
 随着我们相处时间的增长，我也会不断地学习进步，更加了解你的喜好与习惯。如果有什么特别的愿望或者建议，请随时告诉我吧！让我们一起携手共创美好的未来~
-~~~~
-
+```
 </details>
 
 ## 4. Switch the Model
 
-![](../../assets/img/xiaozhi-console/5.png)
+<img src="../../assets/img/xiaozhi-console/5.png" width="560">
 
 Xiaozhi Lite is selected by default; the other models are unavailable until you complete developer authentication. For details, see [Developer Auth](./developer-auth.md)
 
@@ -96,15 +96,15 @@ Xiaozhi Lite is selected by default; the other models are unavailable until you 
 
 When enabled, the robot no longer has to "get to know you from scratch" in every conversation; when disabled, every conversation starts "from zero".
 
-![](../../assets/img/xiaozhi-console/6.png)
+<img src="../../assets/img/xiaozhi-console/6.png" width="560">
 
 ## 6. Voiceprint Recognition
 
 **Voiceprint recognition:** identifies "who is speaking" by the voice characteristics of different users. After enrolling a voiceprint, the robot can recognize specific users, enabling **personalized addressing, exclusive interactions, and family-member differentiation**, making communication smarter and more personal.
 
-![](../../assets/img/xiaozhi-console/7.png)
+<img src="../../assets/img/xiaozhi-console/7.png" width="560">
 
-![](../../assets/img/xiaozhi-console/8.png)
+<img src="../../assets/img/xiaozhi-console/8.png" width="560">
 
 ---
 

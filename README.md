@@ -31,4 +31,6 @@ Tutorial documentation repository for the Albee desktop robot (ESP32-S3), availa
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-10
+
+**Official site:** <http://www.gledoptorobots.com> ｜ **Support:** service@gledopto.com

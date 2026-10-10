@@ -1,4 +1,6 @@
 # MCP IoT Control Usage Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+
 
 > This document explains how to control this ESP32 desktop robot via MCP (Model Context Protocol). For wire-level protocol details, see [`mcp-protocol.md`](./mcp-protocol.md).
 

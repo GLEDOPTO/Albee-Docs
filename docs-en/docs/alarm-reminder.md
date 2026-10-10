@@ -1,4 +1,6 @@
 # Alarm & Reminder Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+
 
 This document describes the voice usage and trigger behavior of the robot's alarm/reminder feature. The feature is implemented on top of the MCP protocol (the three tools `add_reminder` / `delete_reminder` / `list_reminders`; see [mcp-usage.md](./mcp-usage.md) for the protocol). The code lives in `main/boards/gledopto-robot/alarm/`.
 
@@ -88,7 +90,7 @@ While it is ringing, any of the following stops it immediately:
 
 | Action | Effect |
 | ------------------------ | -------- |
-| **BOOT key single-click** | stops the ring |
+| **function button single-click** | stops the ring |
 | **Touch key single / double click** | stops the ring |
 | **Talk to it directly** (wake by voice) | stops the ring |
 
@@ -117,7 +119,7 @@ After stopping, one-time reminders are deleted automatically; interval/weekly re
 ## 9. FAQ
 
 **Q: How do I turn off a ringing alarm?**
-A: Single-click the BOOT key, tap the touch key, or just talk to it — any of these works. One-time alarms are deleted automatically once stopped.
+A: Single-click the function button, tap the touch control, or just talk to it — any of these works. One-time alarms are deleted automatically once stopped.
 
 **Q: If I check my alarms during the pause, will it show an expired time?**
 A: No. During the pause, a one-time reminder's time is pushed forward 5 minutes, so what you see is always a future time.

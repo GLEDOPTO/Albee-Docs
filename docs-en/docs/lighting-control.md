@@ -1,4 +1,6 @@
 # Lighting Control Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+
 
 This document describes how to control the lights connected to the robot in three ways: via the **web page**, **voice (AI)**, and the **HTTP API**. The related code lives in `main/boards/gledopto-robot/light/` (lighting control core) and `main/boards/gledopto-robot/web/` (built-in web server).
 
@@ -27,11 +29,7 @@ About 2 seconds after the robot joins Wi-Fi, the built-in web server starts auto
 http://<robot-ip>/light
 ```
 
-Ways to get the robot's IP:
-
-- **Serial log**: filter for `WebServer` in the monitor (`idf.py monitor`) — at startup it prints `Access URL: http://x.x.x.x/light`;
-- **Router admin page**: check the newly connected devices;
-- **Ask by voice**: ask the robot "what's your IP" to get the IP directly; saying "configure the lights" makes it speak the full control page address (`IP/light`).
+To get the robot's IP address, see [Find the Device IP Address](./check-device-ip.md). Once you have it, open `http://<robot-ip>/light` — asking "configure the lights" also makes the robot speak the full control page address.
 
 The page has two sections: **RF Devices** on top (orange border) and **WLED Devices** below (green border).
 
@@ -39,7 +37,7 @@ The page has two sections: **RF Devices** on top (orange border) and **WLED Devi
 
 > Compatible with **all GLEDOPTO 2.4G RF LED strip controllers**: power any model, pair it as described in 3.1, and it comes under control.
 
-<img src="../../assets/img/lighting-control/1.png" width="320" height="600">
+<img src="../../assets/img/lighting-control/1.png" width="320">
 
 ### 3.1 First-time Pairing (Pair)
 

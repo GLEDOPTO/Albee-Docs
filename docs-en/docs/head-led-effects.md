@@ -1,16 +1,18 @@
 # Head LED Effects Change Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+
 
 For what each effect means, see [Device States & LED Indicators](./device-led-states.md) — each effect corresponds to a different device state.
 
 ## Method 1: Via the Web Page
 
 1. Make sure the device is activated and connected to the network.
-2. Get its IP address by talking to it, then connect your phone or computer to the same Wi-Fi (make sure you are on the same local network).
+2. Find the device IP address (see [Find the Device IP Address](./check-device-ip.md)), then connect your phone or computer to the same Wi-Fi (same local network).
 3. Visit `http://<device-ip>/led` in a browser.
 
 As shown below:
 
-<img src="../../assets/img/overhead-led/2.png" width="40%">
+<img src="../../assets/img/overhead-led/2.png" width="480">
 
 ## Method 2: Via Code
 

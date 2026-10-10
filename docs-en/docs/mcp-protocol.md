@@ -1,4 +1,8 @@
 # MCP (Model Context Protocol) Interaction Flow
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> [!WARNING]
+> For developers building their own server: this document is compiled from the current firmware source and details may change between versions — **always verify against the device-side source before integrating**. End users do not need to read this page.
+
 
 NOTICE: AI-assisted document. When implementing backend services, verify details against the code!!
 

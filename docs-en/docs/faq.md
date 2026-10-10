@@ -1,67 +1,113 @@
 # Albee Desktop Robot FAQ
 
-## Q1: How do I adjust Albee's volume?
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
 
-**A:** Albee supports voice control for volume. Just tell Albee to set the volume to a specific level (1–100%), or simply say "turn the volume up / down a little". The volume can also be set via the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](./mcp-usage.md#tool-catalog).
+Jump to a section: [Buttons and controls](#1-buttons-and-controls) · [Network](#2-network) · [Voice and conversation](#3-voice-and-conversation) · [Lights and motion](#4-lights-and-motion) · [Account and activation](#5-account-and-activation) · [Upgrade and troubleshooting](#6-upgrade-and-troubleshooting)
 
-## Q2: How do I reconfigure or switch the Wi-Fi?
+## 1. Buttons and controls
 
-**A:** Restart Albee. While the blue LED is blinking during the Wi-Fi connection phase, short-press the **Function button** once and release — you will hear a prompt tone and Albee will re-enter Wi-Fi configuration mode.
+**Q: How many buttons does Albee have, and what do they do?**
 
-Albee also re-enters Wi-Fi configuration mode automatically after failing to connect to the last configured Wi-Fi 3 times. For more ways to switch or join a network (switch to a saved network via the web page, scan and join a new one), see the [Network Change Guide](./change-network.md).
+A: Two physical buttons plus one touch area. Long-press the power button for 3 s to turn Albee on or off. The function button: single-click starts or ends a conversation round (and stops a ringing alarm), double-click toggles real-time barge-in, long-press for 10 s runs a factory reset. The touch control supports single and double taps and also stops a ringing alarm. See [Device Activation Guide · Buttons and Controls](./device-activation.md#part-1-buttons-and-controls).
 
-## Q3: Does Albee support music playback?
+**Q: How do I perform a factory reset?**
 
-**A:** Yes — test music is supported. Due to copyright restrictions, the available tracks are limited to test songs, songs submitted by users, and some children's songs.
+A: Long-press the function button for 10 s. The device erases Wi-Fi credentials, alarms, light groups and every other user setting, then reboots automatically; Wi-Fi must be configured again after the reboot. **Avoid pressing it by accident** (holding the button down triggers it).
 
-## Q4: Does Albee support Bluetooth?
+## 2. Network
 
-**A:** Not currently.
+**Q: How do I re-configure or switch Wi-Fi?**
 
-The ESP32-S3 chip/module does support the BLE peripheral mode (it can only be connected to, not initiate connections), but the Albee project does not use it. If you need this feature, you can implement it by writing your own code.
+A: Restart Albee, then short-press the function button once while the blue LED is blinking during the Wi-Fi connection phase — you will hear a prompt tone and Albee re-enters provisioning mode. It also re-enters provisioning automatically after three failed connection attempts. For switching between saved networks or scanning for a new one, see the [Change Network Guide](./change-network.md).
 
-## Q5: Can I change the wake word?
+**Q: It never connects to Wi-Fi after power-on. What should I do?**
 
-**A:** Not currently supported.
+A: No need to power-cycle — just **single-click the function button** to re-enter provisioning mode; the device also re-enters provisioning automatically after three failed connection attempts. Other options (switch saved networks, scan and join a new one) are in the [Change Network Guide](./change-network.md).
 
-## Q6: Can I change the voice / timbre?
+**Q: How do I find the device IP address?**
 
-**A:** Yes. Go to the Albee web console — **Role Configuration** — to switch the role voice. You can preview the voices first, then submit to save the configuration. For detailed steps, see the [Console Configuration Guide · Set the Voice](./xiaozhi-console.md#2-set-the-voice).
+A: See [Find the Device IP Address](./check-device-ip.md) — ask by voice, check the router admin page, or read the serial log.
 
-Console: <https://xiaozhi.me/>
+## 3. Voice and conversation
 
-![Configure the role voice in the console](../../assets/img/faq/image-20260826092259737.png)
+**Q: How do I adjust the volume?**
 
-## Q7: Can Albee recognize and remember who I am by my voice?
+A: Just say "set the volume to 50" or "turn the volume up a bit" (1–100%); you can also use the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](./mcp-usage.md#tool-catalog).
 
-**A:** Yes.
+**Q: Can it play music?**
 
-**How:** Go to the Albee web console → **Agent** → find **Voiceprint Recognition**. For detailed steps, see the [Console Configuration Guide · Voiceprint Recognition](./xiaozhi-console.md#6-voiceprint-recognition).
+A: Yes, though copyright limits the catalogue to test tracks, user-submitted songs and some children's songs.
 
-![Voiceprint recognition configuration](../../assets/img/faq/image-20260826092410518.png)
+**Q: Does it support Bluetooth?**
 
-## Q8: Can I replace the voice with my own custom voice?
+A: Not at the moment.
 
-**A:** Supported — currently in public beta.
+**Q: Can I change the wake word?**
 
-## Q9: Can Albee control other devices by voice?
+A: Not at the moment — the default wake word is "Hi Albee".
 
-**A:** Albee already supports the MCP protocol. See the [MCP Usage Guide](./mcp-usage.md) (full tool catalog) for details; for Home Assistant integration, see the [Home Assistant Integration Guide](./home-assistant.md).
+**Q: Can I change the voice?**
 
-## Q10: Does Albee support GPT or other large language models?
+A: Yes. Console → role configuration → switch the voice; you can preview before saving. See [XiaoZhi Console Configuration Guide · Set the Voice](./xiaozhi-console.md#2-set-the-voice).
 
-**A:** Not currently. If you want to use another LLM API or a self-hosted model, you need to implement your own server. To unlock more models (Qwen3 / DeepSeek full / Doubao / GLM, etc.), see [Developer Authentication](./developer-auth.md); for protocol details, see the [WebSocket protocol](./websocket.md) and the [MQTT+UDP protocol](./mqtt-udp.md).
+**Q: Can it recognize and remember who I am?**
 
-Open-source repository: <https://github.com/78/xiaozhi>
+A: Yes. Console → Agent → voiceprint recognition — see [XiaoZhi Console Configuration Guide · Voiceprint Recognition](./xiaozhi-console.md#6-voiceprint-recognition).
 
-## Q11: What should I do if the device freezes or reboots unexpectedly?
+**Q: Can I clone my own voice?**
 
-**A:** Please collect the fault information and report it to us — see the [Device Freeze or Reboot Feedback Guide](./problem-feedback.md).
+A: Yes — currently in public beta.
 
-## Q12: The robot walks incorrectly / the legs are at an angle — what should I do?
+**Q: Does it support GPT or other LLMs?**
 
-**A:** The servos' reset pose may have a slight deviation. Fine-tune the four servos by ±1° via the web page (`http://<device-ip>/robot`) — see the [Servo Calibration Guide](./servo-calibration.md).
+A: Not by default. Completing [Developer Authentication](./developer-auth.md) unlocks Qwen3, full DeepSeek, Doubao, GLM and more.
+
+B: You can also run your own server and plug in other models — see [Related open source projects](../README.md#related-open-source-projects).
+
+**Q: Can I run my own server?**
+
+A: Yes. The XiaoZhi communication protocol is open and the community maintains server implementations in Python, Java, Go and more — deploy one on your own computer or a cloud instance to plug in the model of your choice. Start with [Related open source projects](../README.md#related-open-source-projects) and the [WebSocket protocol document](./websocket.md).
+
+## 4. Lights and motion
+
+**Q: Can I control the lights at home by voice?**
+
+A: Yes — 4 RF groups and 4 WLED groups. See the [Lighting Control Guide](./lighting-control.md); for Home Assistant, see the [Home Assistant Integration Guide](./home-assistant.md).
+
+**Q: The walking posture looks off / the legs are misaligned?**
+
+A: The servo reset position may be slightly off. Use `http://<device-ip>/robot` to trim each of the four servos by ±1° — see the [Servo Calibration Guide](./servo-calibration.md).
+
+## 5. Account and activation
+
+**Q: The SMS verification code never arrives?**
+
+A: Delivery normally takes under 5 minutes (allow up to 10 minutes for international numbers). Check that the number is active, has credit, and that no security app is blocking the message.
+
+**Q: I forgot my password or username?**
+
+A: See [Account and Device Help](./account-help.md).
+
+**Q: The device is already bound to another account?**
+
+A: Contact support by email to unbind it — see [Account and Device Help](./account-help.md).
+
+## 6. Upgrade and troubleshooting
+
+**Q: How do I upgrade the firmware?**
+
+A: Upload an `.ota` file through the built-in web page — no computer flashing required. See the [Local OTA Guide](./local-ota.md).
+
+**Q: The device freezes or reboots on its own?**
+
+A: Follow the [Freeze / Reboot Reporting Guide](./problem-feedback.md) to collect the boot reason and logs, then email them to support.
 
 ---
 
-**Last modified:** 2026-10-09
+**Official site:** <http://www.gledoptorobots.com>
+
+**Support:** service@gledopto.com
+
+---
+
+**Last modified:** 2026-10-10

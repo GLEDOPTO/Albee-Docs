@@ -1,79 +1,61 @@
-# Method 1: Flash via the Flash Download Tool on a PC (No IDF Development Environment Required)
+# Firmware Flashing Guide
 
-## Preparation
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
 
-Install the Flash Download Tool: https://dl.espressif.com/public/flash_download_tool.zip
+Two options: flash with the Flash Download Tool on a computer (no IDF environment required), or flash through a web browser. For routine upgrades, [local OTA](./local-ota.md) is easier — upload an `.ota` file in the web page, no computer needed.
 
-## Firmware
+## 1. Flashing with the Flash Download Tool
 
-Latest firmware URL: TODO
+### 1.1 Preparation
 
-### Download Settings
-
-(1) Chip Type: select **ESP32-S3**
-
-(2) Work Mode: select **Develop**
-
-(3) Load Mode: **UART** is recommended
-
-![flashing interface](../../assets/img/flashing-interface.png)
-
-(4) Plug the data cable into your computer and into the Type-C port on the side of the robot
+1. Install the Flash Download Tool: <https://dl.espressif.com/public/flash_download_tool.zip>
+2. Have the firmware file ready
+3. Connect the robot to your computer with a Type-C cable and make sure it is powered on (long-press the power button for 3 seconds)
 
 > [!IMPORTANT]
->
-> Preferably use the original cable that came with the device, or make sure the cable you use supports data transfer
->
-> Make sure the device is powered on (long-press the Power button for 3 seconds to turn it on)
+> Use the original cable shipped with the device, or make sure your cable supports data transfer
 
-### 2) Load Firmware & SPI Download Settings
+### 1.2 Download settings
 
-(1) Click the **...** button on the first empty row and select the directory of the .bin file to import it, as shown below:
+1. Chip type: **ESP32-S3**
+2. Work mode: **Develop**
+3. Load mode: **UART** (recommended)
 
-TODO
+<img src="../../assets/img/flashing-interface.png" width="560">
 
-(2) Tick the checkbox in front of the imported bin file row (this must be checked), and enter `0x0`, `0x00`, or `0` in the input box after the bin file selection box (this downloads the firmware to the start of flash region 1 on the board)
+### 1.3 Flashing steps
 
-(3) Select the corresponding COM port
+1. Click the file picker on the first row and import the `.bin` firmware file
+2. Tick the checkbox in front of that row (required) and enter the flash address `0x0` in the field next to it
+3. Select the matching COM port
+4. Click **START**; when the progress bar completes the status shows **FINISH**
+5. Restart the device afterwards (long-press the power button for 3 seconds to power off, then long-press again for 3 seconds to power on)
 
-(4) Check the other options as shown below
+## 2. Flashing through a web browser
 
-(5) Click **START** to begin flashing. The progress bar appears; when it completes, the status shows **FINISH**, as shown below.
+1. Power the device on
+2. Connect the robot to your computer with a Type-C cable
+3. Open the flashing page in a browser and download the firmware
 
-TODO
+## 3. Errors and troubleshooting
 
-(6) After flashing is complete, restart the device (long-press the Power button for 3 seconds to power off, release, then long-press for 3 seconds again to power on)
+**Problem 1: No COM port shows up**
 
-# Method 2: Flash via a Web Browser
+1. Check that the device is powered on
+2. Check that the cable supports data transfer
+3. Restart the device and try unplugging and replugging a few times
 
-## Preparation
+**Problem 2: The program does not run after flashing**
 
-(1) Power on the device
-
-(2) Plug the data cable into your computer and into the Type-C port on the side of the robot
-
-(3) Visit: TODO
-
-## Download Firmware
-
-TODO
-
-## Error Messages & Troubleshooting
-
-### **Q1: The COM port is not displayed?**
-
-(1) Check whether the device is powered on
-
-(2) Check whether the cable you are using supports data transfer
-
-(3) Restart the device and try unplugging/replugging a few times
-
-### **Q2: The program does not run properly after flashing?**
-
-(1) Check whether the device is powered on
-
-**For other issues not mentioned above, please contact us by email: service@gledopto.com.**
+1. Check that the device is powered on
+2. Make sure the flash address was set to `0x0`
 
 ---
 
-**Last modified:** 2026-09-10
+**Official site:** <http://www.gledoptorobots.com>
+
+**For anything not covered above, contact support:** service@gledopto.com
+
+---
+
+**Last modified:** 2026-10-10

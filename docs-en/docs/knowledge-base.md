@@ -1,4 +1,6 @@
 # Knowledge Base Guide
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+
 
 ## Overview
 
@@ -16,7 +18,7 @@ The knowledge base name will appear in the knowledge base list when you configur
 
 Knowledge base description: explains what the knowledge base is about — the AI decides whether to invoke the knowledge base based on this description.
 
-![Create a knowledge base](../../assets/img/knowledge-base/1.png)
+<img src="../../assets/img/knowledge-base/1.png" width="560">
 
 **Knowledge base description template (Important ‼️)**
 
@@ -27,7 +29,7 @@ This document contains content related to "xxxxx". When the user mentions any of
 (Put a summary of the document here)
 ```
 
-![Knowledge base description example](../../assets/img/knowledge-base/2.png)
+<img src="../../assets/img/knowledge-base/2.png" width="560">
 
 ### Step 2: Upload a Document
 
@@ -43,9 +45,9 @@ When parsing is finished, the status changes to **Parsing completed**.
 
 In the agent's role configuration, tick the knowledge base feature under official services, then select the knowledge base you created from the knowledge base list below and click **Save** to apply it.
 
-![Agent role configuration](../../assets/img/knowledge-base/3.png)
+<img src="../../assets/img/knowledge-base/3.png" width="560">
 
-![Select the knowledge base](../../assets/img/knowledge-base/4.png)
+<img src="../../assets/img/knowledge-base/4.png" width="560">
 
 ### Step 4: Use It
 

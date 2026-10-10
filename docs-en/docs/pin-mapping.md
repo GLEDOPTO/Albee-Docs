@@ -1,4 +1,6 @@
 # Pin Mapping
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+
 
 Complete GPIO pin mapping for the Albee desktop robot (ESP32-S3), covering every peripheral, sensor, and button on the board.
 
@@ -9,8 +11,8 @@ Complete GPIO pin mapping for the Albee desktop robot (ESP32-S3), covering every
 | IO7 | Power Management | Battery voltage sampling (12-bit ADC, 3.1–4.1 V calibration curve) |
 | GPIO21 | Power Management | Charging detection (low level = charging) |
 | GPIO45 | Power Management | GEK100 power-module control (low level = normal supply) |
-| GPIO0 | Button Inputs | BOOT button (single-click / double-click) |
-| GPIO4 | Button Inputs | Touch button (single-click / double-click) |
+| GPIO0 | Button Inputs | Function button (Function Button, i.e. the BOOT button), single-click / double-click |
+| GPIO4 | Button Inputs | touch control (single-click / double-click) |
 | GPIO1 | I2C Bus | I2C SDA — SC7U22 6-axis IMU and 4 × LTR-553 foot sensors |
 | GPIO2 | I2C Bus | I2C SCL — same bus |
 | GPIO3 | LCD Display | LCD backlight PWM |

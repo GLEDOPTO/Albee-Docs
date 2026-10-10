@@ -1,4 +1,6 @@
 # Account & Device Issues
+> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+
 
 This page covers common account problems: not receiving the SMS verification code, forgetting your password or username, and unbinding a device.
 
@@ -9,14 +11,14 @@ Normally the verification code arrives within 5 minutes; for international phone
 ## Know the Username but Forgot the Password
 
 - If a phone number is bound to your account, log in via SMS instead.
-- If no phone number is bound, send an email with your **username** and **device ID** to <xiaozhi.ai@tenclass.com>.
+- If no phone number is bound, send an email with your **username** and **device ID** to <service@gledopto.com>.
 
 Email subject format: `【Password Recovery, Username XXX, Device ID XXX】`
 
 ## Forgot Both Username and Password
 
 - If a phone number is bound to your account, log in via SMS instead.
-- If no phone number is bound, send an email with your **device ID** and **activation date** to <xiaozhi.ai@tenclass.com>.
+- If no phone number is bound, send an email with your **device ID** and **activation date** to <service@gledopto.com>.
 
 Email subject format: `【Username Recovery, Device ID XXX, Activation Date XXX】`
 
@@ -29,7 +31,7 @@ Email subject format: `【Username Recovery, Device ID XXX, Activation Date XXX�
 
 This usually happens when a dev kit or chip module was previously bound to someone else's account and was not unbound on the xiaozhi.me website before being returned or resold.
 
-To unbind it, send an email to <xiaozhi.ai@tenclass.com> with the subject:
+To unbind it, send an email to <service@gledopto.com> with the subject:
 
 `【Unbind Device, Device ID XXX, MAC Address XXX】`
 
@@ -44,3 +46,9 @@ See [How to View the MAC Address](./check-mac-address.md): Method 1 gets it via 
 ---
 
 **Last modified:** 2026-10-08
+
+---
+
+**Official site:** <http://www.gledoptorobots.com>
+
+**Support:** service@gledopto.com

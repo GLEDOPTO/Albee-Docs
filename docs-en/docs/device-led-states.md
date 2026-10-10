@@ -1,4 +1,6 @@
 # Device States & LED Indicators
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+
 
 ## Part 1: State Overview
 
@@ -20,22 +22,35 @@ There are **11** `DeviceState` values, **9** of which have LED indicator behavio
 
 As shown below:
 
-<img src="../../assets/img/overhead-led/1.png" width="70%">
+<img src="../../assets/img/overhead-led/1.png" width="560">
 
 
 
 ## Part 2: State → Effect Mapping (Factory Defaults)
 
-| #    | Slot (key)         | Page name        | States                      | Default effect       | Default color | Pace                   | Editable      |
-| ---- | ------------------ | ---------------- | --------------------------- | -------------------- | ------------- | ---------------------- | ------------- |
-| 0    | `starting`         | Booting          | `Starting`                  | **Scroll**           | Blue          | 100 ms/frame, 3 LEDs on | 🔒 Locked      |
-| 1    | `wifi_configuring` | Wi-Fi setup      | `WifiConfiguring`           | **Blink**            | Blue          | 500 ms                 | 🔒 Locked      |
-| 2    | `idle`             | Idle             | `Idle`                      | **Fade out**         | (color ignored)| 50 ms/frame            | Color only    |
-| 3    | `connecting`       | Connecting       | `Connecting`                | **Solid**            | Blue          | —                      | Editable      |
-| 4    | `listening`        | Listening        | `Listening`, `AudioTesting` | **Solid**            | Red           | —                      | Editable      |
-| 5    | `speaking`         | Speaking         | `Speaking`                  | **Solid**            | Green         | —                      | Editable      |
-| 6    | `upgrading`        | Firmware update  | `Upgrading`                 | **Blink**            | Green         | 1000 ms                | 🔒 Locked      |
-| 7    | `activating`       | Activating       | `Activating`                | **Blink**            | Green         | 500 ms                 | Editable      |
+| # | Page name | States | Default effect | Default color |
+| --- | --- | --- | --- | --- |
+| 0 | Booting | `Starting` | Scroll | Blue |
+| 1 | Wi-Fi setup | `WifiConfiguring` | Blink | Blue |
+| 2 | Idle | `Idle` | Fade out | (color ignored) |
+| 3 | Connecting | `Connecting` | Solid | Blue |
+| 4 | Listening | `Listening`, `AudioTesting` | Solid | Red |
+| 5 | Speaking | `Speaking` | Solid | Green |
+| 6 | Firmware update | `Upgrading` | Blink | Green |
+| 7 | Activating | `Activating` | Blink | Green |
+
+Pace and editability per state:
+
+| Page name | Slot key | Pace | Effect / pace editable |
+| --- | --- | --- | --- |
+| Booting | `starting` | 100 ms/frame, 3 LEDs on | 🔒 Locked |
+| Wi-Fi setup | `wifi_configuring` | 500 ms | 🔒 Locked |
+| Idle | `idle` | 50 ms/frame | Color only |
+| Connecting | `connecting` | — | Editable |
+| Listening | `listening` | — | Editable |
+| Speaking | `speaking` | — | Editable |
+| Firmware update | `upgrading` | 1000 ms | 🔒 Locked |
+| Activating | `activating` | 500 ms | Editable |
 
 Behavior notes:
 

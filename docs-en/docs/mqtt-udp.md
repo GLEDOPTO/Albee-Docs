@@ -1,4 +1,8 @@
 # MQTT + UDP Hybrid Communication Protocol
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> [!WARNING]
+> For developers building their own server: this document is compiled from the current firmware source and details may change between versions — **always verify against the device-side source before integrating**. End users do not need to read this page.
+
 
 This document describes the MQTT + UDP hybrid protocol used between the device and the server, based on the current implementation: MQTT carries control messages, UDP carries real-time audio.
 

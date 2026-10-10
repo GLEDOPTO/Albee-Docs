@@ -1,4 +1,6 @@
 # Firmware Compilation Tutorial
+> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+
 
 This document describes how to compile and flash the Gledopto Robot (ESP32-S3 desktop robot) firmware from source, and how to use the common build configurations and helper scripts.
 
@@ -163,7 +165,6 @@ The project-specific options are under the **Albee** menu (defined in `main/Kcon
 | `sleep show time` | n | Alternate emoji and clock display during power-saving sleep (depends on the option above) |
 | `emojis new display` | n | New status emoji hooks (low battery / WiFi / charging GIF) |
 | `enable web robot control` | n | The built-in web page includes the robot motion control panel (otherwise only the light control page) |
-| `robot quiet lively mode` | n | Long-press the BOOT button to switch between quiet and lively modes |
 | `robot low power limit` | y | Limit gait speed at low battery; recommended to keep enabled |
 | `foot sensor set` | n | Compile in the foot LTR-553 register configuration download (enable only when tuning sensor parameters) |
 | `enable debug log` | y | Master switch for all module logs |

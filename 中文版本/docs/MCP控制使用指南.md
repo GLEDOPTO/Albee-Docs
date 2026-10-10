@@ -1,4 +1,6 @@
 # MCP IoT 控制使用指南
+> 适用固件：Albee v2.0.4 及以上 ｜ 适用对象：开发者
+
 
 > 本文档介绍如何通过 MCP（Model Context Protocol）控制这台 ESP32 桌面机器人。线级协议细节请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
 
