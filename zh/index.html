@@ -21,6 +21,16 @@
   <div id="app">文档加载中…</div>
 
   <script>
+    // Docsify 只在路由为 /README.md 时应用 homepage；直接访问目录入口时 hash 为空，
+    // 会拼出 ".md" 导致 404。这里确保入口始终带 "#/"。
+    (function () {
+      if (location.hash.indexOf('#/') !== 0) {
+        location.replace(location.pathname + location.search + '#/');
+      }
+    })();
+  </script>
+
+  <script>
     (function () {
       var root = location.pathname.replace(/index\.html$/, '').replace(/zh\/?$/, '');
       if (root.charAt(root.length - 1) !== '/') { root += '/'; }
