@@ -24,4 +24,4 @@ You can use a serial terminal tool — there are many available, such as Tera Te
 
 ---
 
-**Last modified:** 2026-10-08
+**Last modified:** 2026-10-09

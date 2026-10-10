@@ -2,8 +2,6 @@
 > Firmware: Albee v2.0.4 or later ｜ Audience: End user
 
 
-This document describes how to control the lights connected to the robot in three ways: via the **web page**, **voice (AI)**, and the **HTTP API**. The related code lives in `main/boards/gledopto-robot/light/` (lighting control core) and `main/boards/gledopto-robot/web/` (built-in web server).
-
 > **Compatibility note**: The lighting control feature is **fully compatible with all GLEDOPTO 2.4G RF LED strip controllers** as well as **WLED-series controllers** — no adaptation needed. Once paired/added, they are fully controllable.
 
 ## 1. Overview
@@ -15,21 +13,21 @@ The robot acts as a lighting gateway and supports two kinds of lights, both mana
 | **RF lights** | **All GLEDOPTO 2.4G RF LED strip controllers** | Direct RF via the robot's built-in 2.4G module | 1–4 groups | on/off, brightness, color, color temperature | group name, on/off state |
 | **WLED strips** | **WLED-series controllers** (running WLED firmware) | HTTP control over the LAN | 1–4 groups | on/off, brightness, color, color temperature, effects | device list, group names |
 
-Routing rules (shared by web, voice, and API):
+Unified addressing rules (shared by the web page, voice, and API):
 
 - Addressing is by group name or `"all"`: `all` applies to every group of both light types; RF and WLED groups with the **same name** are controlled together;
 - Group names support fuzzy matching (similarity ≥ 80%), so imprecisely spoken names still hit the right group;
-- Group name limits: non-empty, ≤ 19 bytes (about 6 Chinese characters), and must not duplicate another group's name.
+- Group name limits: non-empty, ≤ 19 bytes (about 6 Chinese characters), and must not duplicate another group's name within the same light type.
 
 ## 2. Opening the Control Page
 
-About 2 seconds after the robot joins Wi-Fi, the built-in web server starts automatically (port 80). Open this address in a browser:
+About 2 seconds after the robot joins Wi-Fi, the built-in web server starts automatically (port 80).
 
-```
-http://<robot-ip>/light
-```
+1. Make sure the device is activated and connected to the network
+2. Get the robot's IP address (see [Find the Device IP Address](./check-device-ip.md)), then connect your phone or computer to the same Wi-Fi (same LAN)
+3. Open this address in a browser: http://<robot-ip>/light
 
-To get the robot's IP address, see [Find the Device IP Address](./check-device-ip.md). Once you have it, open `http://<robot-ip>/light` — asking "configure the lights" also makes the robot speak the full control page address.
+You can also just ask the robot to "configure the lights" — it will speak the full control page address.
 
 The page has two sections: **RF Devices** on top (orange border) and **WLED Devices** below (green border).
 
@@ -45,13 +43,13 @@ RF lights bind to one of the robot's groups via a pairing code:
 
 1. Find the target group on the web page and click **Pair**;
 2. After confirming the dialog, **power-cycle the RF light/controller within 5 seconds** (the repowered light enters pairing mode and remembers that group's pairing code);
-3. The page shows `Group N paired!` on success.
+3. On success, the page shows `Group N paired!`.
 
 Key points:
 
 - Pair one group at a time; to put several lights into the same group, power-cycle them together within the 5-second window;
 - Pairing failures are usually caused by the power-cycle taking more than 5 seconds — just retry;
-- To move a light to another group: Pair in the new group and restart the light first; the old group's pairing code can be Cleared afterwards.
+- To move a light to another group: Pair it in the new group and restart the light first, then Clear the old group's pairing code afterwards.
 
 ### 3.2 Daily On/Off
 
@@ -64,9 +62,33 @@ Switch states are persisted to NVS, so the web page still shows the correct stat
 
 Click a group name input box to open the edit dialog:
 
-- 1–19 bytes (about 6 Chinese characters); must not duplicate another group's name (validated on both the front end and the back end);
-- Renames are saved in the robot's NVS and survive reboots;
-- Group names are the addressing basis for voice control — use names that are easy to say out loud, such as "living room light".
+1. **Name length**
+
+  - A group name is at most 19 bytes, which means:
+    - up to 19 English characters (letters, digits, half-width symbols);
+    - up to about 6 Chinese characters (6 Chinese characters + 1 English character is exactly 19 bytes; 7 Chinese characters is too long).
+  - Mixed Chinese/English names are counted in bytes; the total must not exceed 19 bytes.
+  - The name cannot be empty; if it is too long or empty, the web page reports that saving failed — shorten it and retry.
+
+2. **Can group names repeat?**
+
+  - Names must be unique within the same light type: no duplicates among the 4 RF groups, and none among the 4 WLED groups. Saving a duplicate is rejected outright and will not overwrite the existing group.
+  - An RF group and a WLED group may share a name, but use this with care: same-named groups on both sides are controlled together. For example, if both RF and WLED have a "living room light", saying "turn on the living room light" lights both. This is by design; if you need to control them independently, give them different names.
+  - Names differing only in case count as different (Kitchen and kitchen can coexist), but voice matching is case-insensitive, so two very similar names may both be triggered — avoid that.
+
+3. **Recommended naming rules**
+
+  - Easy to say out loud: the group name is the addressing basis for voice control, so use everyday spoken names such as "living room light", "bedroom", "study", "balcony strip".
+  - Do not use `all`: `all` is a reserved word (meaning "all lights"). Naming a group `all` makes it impossible to control that group individually.
+  - Avoid near-duplicate names: do not distinguish two groups only by case or punctuation (e.g. Kitchen vs kitchen, or "living room" vs "living room.").
+  - Chinese, English, and digits can be mixed; keep names short and clear, and avoid obscure words or overly long descriptions.
+
+  **Other notes**
+
+  - Renaming takes effect immediately and does not require re-pairing: RF lights keep working after a rename; for WLED lights, the devices in the group automatically migrate to the new name, with no need to re-add them.
+  - Voice matching is fairly lenient: spaces and punctuation are ignored, case is ignored, and Chinese numerals are converted automatically ("the first group" equals "group 1"). A similarity of 80% or more is enough to hit. The more colloquial the name, the smoother the voice control.
+  - A group name is a label stored on the robot itself; it is not written into the light's pairing code. After replacing the robot, you must rename and re-pair on the new one.
+  - After renaming groups or changing the number of groups, voice control follows the names currently shown on the web page; if you say a wrong name, the robot suggests similar group names.
 
 ### 3.4 Number of Displayed Groups (+/-)
 
@@ -101,7 +123,7 @@ The device limit is **8**; the title bar shows the current count `(n/8)`.
 ### 4.3 On/Off and Advanced Control
 
 - The web page provides group switches and a master switch (same as RF);
-- **Color, brightness, color temperature, and effects** are controlled by voice (see the next section).
+- **Color, brightness, color temperature, and effects** are controlled by voice.
 
 ## 5. Voice (AI) Control
 
@@ -181,4 +203,4 @@ curl -X POST http://192.168.1.50/api/wled/group/control \
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-10
