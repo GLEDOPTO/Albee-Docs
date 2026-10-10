@@ -9,6 +9,8 @@ Tutorial documentation repository for the Albee desktop robot (ESP32-S3), availa
 | English | [Albee Encyclopaedia](./docs-en/albee-encyclopaedia.md) · [Project README](./docs-en/README.md) |
 | 🇨🇳 中文版本 | [Albee 百科全书](./中文版本/Albee百科全书.md) · [Project README](./中文版本/README.md) |
 
+🌐 **Online documentation:** [English](https://gledopto.github.io/Albee-Docs/#/) ｜ [中文](https://gledopto.github.io/Albee-Docs/zh/#/)
+
 📘 Product manual: [Albee Robot Manual.pdf](./manual/Albee%20Robot%20Manual.pdf)
 
 ## Structure
