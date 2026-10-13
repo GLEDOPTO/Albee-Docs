@@ -132,13 +132,14 @@ Voice commands are converted by the AI backend into MCP tool calls (see [mcp-usa
 | MCP Tool | Function | Key Parameters |
 | ------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------- |
 | `self.light.control_group` | on/off/toggle | `group_name` (group name or `all`), `action` (on/off/toggle) |
-| `self.light.set_group_color` | set RGB color | `group_name`, `r`/`g`/`b` (0-255) |
+| `self.light.set_group_color` | set RGB color | `group_name`, `red`/`green`/`blue` (0-255) |
 | `self.light.set_group_brightness` | set brightness | `group_name`, `brightness` (0-255) |
 | `self.light.set_group_color_temp` | set color temperature | `group_name`, `temperature` |
-| `self.light.set_group_effect` | WLED effect | `group_name`, `fx` (effect number) |
+| `self.light.set_group_effect` | WLED effect | `group_name`, `effect` (next/prev/random/effect ID/name) |
 | `self.light.get_all_group_name` | list all group names | none |
-| `self.light.get_ip` / `get_light_control_ip` | get device IP / lighting control page URL (`IP/light`) | none |
-| `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | RF pairing/clearing | `group_id` |
+| `self.light.get_ip` | get the device IP and lighting page URL (returns both the bare IP and `IP/light`) | none |
+| `self.light.schedule_control` | scheduled / linked lighting | `group_name`, `action`, `delay`, `hour`, `minute`, `day_offset`, `weekdays`, `interval`, `repeat` |
+> RF pairing and clearing have no MCP tools (removed from the source); use the web page or the HTTP endpoints in section 6 (`/api/light/pair`, `/api/light/clear`).
 
 Example phrases:
 
@@ -159,6 +160,7 @@ All endpoints are served on the robot's port 80 and return JSON (with a boolean 
 | -------------------- | ---- | -------------------- | -------------------------------------------------- |
 | `/api/light/status` | GET | — | returns all RF groups `[{id, name, state}]` |
 | `/api/light/control` | POST | `{group_id, action}` | `group_id` 1-4; **0 means all groups**; `action`: on/off |
+| `/api/light/count` | POST | `{count}` | set the number of RF groups shown on the page (1-4) |
 | `/api/light/rename` | POST | `{group_id, name}` | group name ≤ 19 bytes and unique |
 | `/api/light/pair` | POST | `{group_id}` | opens the 5-second pairing window |
 | `/api/light/clear` | POST | `{group_id}` | clears pairing; 0 means all |
@@ -174,6 +176,7 @@ All endpoints are served on the robot's port 80 and return JSON (with a boolean 
 | `/api/wled/delete` | POST | `{ip}` | delete a device |
 | `/api/wled/control` | POST | `{ip, action}` | switch a single device |
 | `/api/wled/group/control` | POST | `{group, action}` | switch by group name |
+| `/api/wled/count` | POST | `{count}` | set the number of WLED groups shown on the page (1-4) |
 | `/api/wled/rename` | POST | `{group_id, name}` | rename a group (1-4) |
 
 Examples:
@@ -203,4 +206,4 @@ curl -X POST http://192.168.1.50/api/wled/group/control \
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-13

@@ -20,14 +20,14 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 - Voice interaction based on streaming ASR + LLM + TTS architecture, OPUS audio codec
 - Wake by voice ("Hi Albee") or by short-pressing the function button
 - Real-time barge-in: no need to wait for the reply to finish — just speak to interrupt (double-click the function button to toggle)
-- Supports 38 languages
-- Speaker recognition, identifies the current speaker [3D Speaker](https://github.com/modelscope/3D-Speaker)
+- Supports 30+ languages (server-side options; see the xiaozhi.me console for details)
+- Speaker recognition (via [3D Speaker](https://github.com/modelscope/3D-Speaker)) identifies who is talking
 - Role customization via the xiaozhi.me console: personality roles, voice/timbre, LLM selection (Qwen3 / DeepSeek / Doubao, etc.), memory mode (see the [XiaoZhi Console Configuration Guide](xiaozhi-console.md))
 - Voiceprint recognition — Albee can recognize and remember who is talking (configuration in the [console guide · Voiceprint Recognition](xiaozhi-console.md?id=_6-voiceprint-recognition))
 
 **Motion & Interaction**
 
-- Bipedal walking driven by four digital servos: walk forward/backward, turn left/right, with adjustable step count and arm-swing amplitude
+- Bipedal walking driven by four digital servos: walk forward/backward, turn left/right, with adjustable step count and speed
 - Desktop anti-fall protection: four IR distance sensors on the feet detect table edges and automatically brake or turn away
 - 6-axis IMU emotional reactions — shake it and it gets angry; pick it up and it happily swings its feet
 
@@ -52,7 +52,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 **Power Management**
 
-- Battery level monitoring, ~10% low-battery warning, automatic power-off protection, and low-battery gait speed limiting
+- Battery level monitoring, ~20% low-battery warning (popup when the battery icon bottoms out, ≈3.4 V), automatic power-off protection, and low-battery gait speed limiting
 - Power-saving sleep mode
 - Type-C 5V charging with status LED (red = charging, green = full); wireless charging supported
 
@@ -131,7 +131,7 @@ Custom Assets Tools:
 
 # Albee Encyclopaedia
 
-Please See: [Albee Encyclopaedia](albee-encyclopaedia.md) — the categorized index and reading paths for all documents; for everyday questions see the [FAQ](faq.md).
+Please see: [Albee Encyclopaedia](albee-encyclopaedia.md) — the categorized index and reading paths for all documents; for everyday questions see the [FAQ](faq.md).
 
 ## Product Manual
 
@@ -145,7 +145,7 @@ We hope this project helps everyone understand AI hardware development and apply
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-13
 
 ---
 

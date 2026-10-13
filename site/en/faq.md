@@ -62,7 +62,7 @@ A: Yes — currently in public beta.
 
 A: Not by default. Completing [Developer Authentication](developer-auth.md) unlocks Qwen3, full DeepSeek, Doubao, GLM and more.
 
-B: You can also run your own server and plug in other models — see [Related open source projects](README.md?id=related-open-source-projects).
+Alternatively, you can run your own server and plug in other models — see [Related open source projects](README.md?id=related-open-source-projects).
 
 **Q: Can I run my own server?**
 

@@ -159,14 +159,14 @@ The project-specific options are under the **Albee** menu (defined in `main/Kcon
 | Option | Default | Description |
 | -------------------------- | --------------------- | ------------------------------------------------------------ |
 | `Board Type` | gledopto-robot | The only supported board — do not change |
-| `Language` | Chinese (Simplified) | Voice / prompt-sound language; 30+ languages available |
+| `Language` | Chinese (Simplified) | Voice / prompt-sound language; 30+ languages available (server-side options) |
 | `Assets` | Generate default assets at build time | Can also select a custom `assets.bin` or skip flashing assets |
-| `full emojis display` | n | Pack the large emoji set (`large/`) and enable the full-screen emoji display style; uses more flash |
-| `sleep show time` | n | Alternate emoji and clock display during power-saving sleep (depends on the option above) |
-| `emojis new display` | n | New status emoji hooks (low battery / WiFi / charging GIF) |
-| `enable web robot control` | n | The built-in web page includes the robot motion control panel (otherwise only the light control page) |
+| `full emojis display` | **y** | Pack the large emoji set (`large/`) and enable the full-screen emoji display style; uses more flash |
+| `sleep show clock` | **y** | Alternate emoji and clock display during power-saving sleep (depends on the option above) |
+| `emojis status gifs` | **y** | New status emoji hooks (low battery / WiFi / charging GIF) |
+| `enable web robot control` | **y** | The built-in web page includes the robot motion control panel (otherwise only the light control page) |
 | `robot low power limit` | y | Limit gait speed at low battery; recommended to keep enabled |
-| `foot sensor set` | n | Compile in the foot LTR-553 register configuration download (enable only when tuning sensor parameters) |
+| `foot sensor cfg download` | **y** | Compile in the foot LTR-553 register configuration download (enable only when tuning sensor parameters) |
 | `enable debug log` | y | Master switch for all module logs |
 
 > Note: `USE_ENGLISH_ENABLE` (which switches the output language of MCP tool descriptions, etc.) is not a Kconfig option — it is a macro in `main/boards/gledopto-robot/config.h`. Modify it there and rebuild.
@@ -248,4 +248,4 @@ python scripts/release.py gledopto-robot --name gledopto-robot # build only the 
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-13

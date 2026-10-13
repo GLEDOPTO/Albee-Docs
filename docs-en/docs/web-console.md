@@ -15,15 +15,19 @@ Once Albee is online it serves a set of web pages on your local network. You can
 
 | URL | Purpose | Details |
 | --- | --- | --- |
+| `http://<device-IP>/` | Home: device overview and entries to each function | — |
 | `http://<device-IP>/light` | Lighting control: RF pairing and grouping, WLED scanning and grouping, group on/off | [Lighting Control Guide](./lighting-control.md) |
 | `http://<device-IP>/network` | Switch between saved Wi-Fi networks, scan and join a new one | [Change Network Guide](./change-network.md) |
 | `http://<device-IP>/led` | Change the head LED ring effect per device state | [Head LED Effects Guide](./head-led-effects.md) |
 | `http://<device-IP>/robot` | Servo calibration: ±1° trim for the four servos | [Servo Calibration Guide](./servo-calibration.md) |
 | `http://<device-IP>/info` | Device info: MAC address, firmware version, boot reason | [How to Check the MAC Address](./check-mac-address.md) |
 | `http://<device-IP>/update` | Local OTA: upload an `.ota` file to upgrade firmware | [Local OTA Guide](./local-ota.md) |
+| `http://<device-IP>/alarm` | Alarm / reminder management | [Alarm & Reminder Guide](./alarm-reminder.md) |
+| `http://<device-IP>/settings` | Device settings | — |
+| `http://<device-IP>/foot` | Foot-sensor debugging | — |
 
 > [!NOTE]
-> `/robot` (motion control and servo calibration) requires the firmware to be built with `enable web robot control`. If the shipped firmware does not enable it, that page is unavailable; all other pages are unaffected.
+> `/robot` (motion control and servo calibration) and `/foot` (foot-sensor debugging) are gated by the build option `enable web robot control`, which is **enabled by default**; the two pages are only unavailable if you disabled the option when compiling your own firmware. All other pages are unaffected.
 
 ## 3. FAQ
 
@@ -40,4 +44,4 @@ Once Albee is online it serves a set of web pages on your local network. You can
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-13

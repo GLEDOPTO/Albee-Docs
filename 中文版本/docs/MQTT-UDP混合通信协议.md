@@ -83,15 +83,7 @@ sequenceDiagram
   "version": 3,
   "transport": "udp",
   "features": {
-    "mcp": true,
-    "aec": true,
-    "glyph_push": true
-  },
-  "text_font": {
-    "bundle": "noto-v1",
-    "charset": "common",
-    "size": 20,
-    "bpp": 4
+    "mcp": true
   },
   "audio_params": {
     "format": "opus",
@@ -102,8 +94,7 @@ sequenceDiagram
 }
 ```
 
-`features.mcp` 恒被设置；启用 `CONFIG_USE_SERVER_AEC` 时设置 `features.aec`。
-`features.glyph_push` 和 `text_font` 宣告共享的动态文本字形扩展。
+`features.mcp` 恒被设置；`features.aec` 仅当启用 `CONFIG_USE_SERVER_AEC` 时包含（默认构建不含）。
 
 #### 3.2.2 服务器 → 设备
 
@@ -186,7 +177,7 @@ sequenceDiagram
 - **MCP** —— IoT 控制。
 - **System** —— 系统控制，如 `"command": "reboot"`。
 - **Alert** —— 在 UI 上显示告警；字段：`status`、`message`、`emotion`。
-- **Goodbye** —— 服务器主动关闭音频会话。设备直接关闭 UDP 通道，不再发送自己的 goodbye。
+- **Goodbye** —— 服务器主动关闭音频会话。设备关闭 UDP 通道，并经 MQTT 回发自己的 `{"type":"goodbye"}`。
 - **Custom**（可选，通过 `CONFIG_RECEIVE_CUSTOM_MESSAGE` 启用）。
 
 告警示例：
@@ -422,4 +413,4 @@ MQTT + UDP 混合协议通过以下手段实现高效的音频通信：
 
 ---
 
-**文档最新修改时间：** 2026-10-09
+**文档最新修改时间：** 2026-10-13

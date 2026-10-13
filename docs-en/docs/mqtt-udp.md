@@ -83,15 +83,7 @@ The device connects to the broker using:
   "version": 3,
   "transport": "udp",
   "features": {
-    "mcp": true,
-    "aec": true,
-    "glyph_push": true
-  },
-  "text_font": {
-    "bundle": "noto-v1",
-    "charset": "common",
-    "size": 20,
-    "bpp": 4
+    "mcp": true
   },
   "audio_params": {
     "format": "opus",
@@ -103,7 +95,7 @@ The device connects to the broker using:
 ```
 
 `features.mcp` is always set; `features.aec` is set when `CONFIG_USE_SERVER_AEC` is enabled.
-`features.glyph_push` and `text_font` advertise the shared dynamic text-glyph extension.
+`features.aec` is included only when `CONFIG_USE_SERVER_AEC` is enabled (not in the default build).
 
 #### 3.2.2 Server -> Device
 
@@ -186,7 +178,7 @@ Semantics match the WebSocket protocol. Supported types:
 - **MCP** - IoT control.
 - **System** - system control, e.g. `"command": "reboot"`.
 - **Alert** - show an alert on the UI; fields: `status`, `message`, `emotion`.
-- **Goodbye** - server-initiated shutdown of the audio session. The device responds by closing the UDP channel without sending its own goodbye.
+- **Goodbye** - server-initiated shutdown of the audio session. The device closes the UDP channel and sends its own `{"type":"goodbye"}` back over MQTT.
 - **Custom** (optional, enabled via `CONFIG_RECEIVE_CUSTOM_MESSAGE`).
 
 Example alert:
@@ -422,4 +414,4 @@ The protocol is a good fit for low-latency voice interaction, at the cost of hig
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-13

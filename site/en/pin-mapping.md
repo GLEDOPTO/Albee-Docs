@@ -8,7 +8,7 @@ Complete GPIO pin mapping for the Albee desktop robot (ESP32-S3), covering every
 
 | GPIO | Group | Function |
 | --------- | ------------------- | ------------------------------------------------------ |
-| IO7 | Power Management | Battery voltage sampling (12-bit ADC, 3.1–4.1 V calibration curve) |
+| IO7 | Power Management | Battery voltage sampling (12-bit ADC, 3.0–4.2 V calibration curve) |
 | GPIO21 | Power Management | Charging detection (low level = charging) |
 | GPIO45 | Power Management | GEK100 power-module control (low level = normal supply) |
 | GPIO0 | Button Inputs | Function button (Function Button, i.e. the BOOT button), single-click / double-click |
@@ -39,8 +39,8 @@ Complete GPIO pin mapping for the Albee desktop robot (ESP32-S3), covering every
 - **Shared SPI lines (GPIO9/GPIO10)**: the SPI clock and MOSI are shared between the ST7789 LCD and the LT8900 RF module; the two devices are distinguished by their separate CS lines (GPIO12 vs GPIO13).
 - **LCD**: 1.54-inch 240×240 ST7789, used for the 21 GIF emoji expressions and 4 status icons.
 - **Wi-Fi**: provided by the ESP32-S3's on-chip 2.4 GHz radio (cloud chat, WLED control, mDNS) — no external pin involved.
-- **Power**: the GEK100 power module supplies the system; the battery voltage is sampled via IO7 with a 3.1–4.1 V calibration table and low-battery auto shutdown.
+- **Power**: the GEK100 power module supplies the system; the battery voltage is sampled via IO7 with a 3.0–4.2 V calibration table and low-battery auto shutdown.
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-13

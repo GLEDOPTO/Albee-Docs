@@ -15,7 +15,7 @@ The robot supports three reminder modes, all set up and managed by **voice**:
 | **Weekly repeat** | triggers by weekday ("every day" selects all days) | "Remind me of the meeting at 9 a.m. every Monday" |
 
 - All reminders are **stored in device storage (NVS)** and survive power loss and reboots;
-- At most **5** reminders at the same time — delete one before adding another;
+- At most **5** reminders at a time (per category: 5 ordinary reminders + 5 light-schedule tasks) — delete one before adding another;
 - Keep the reminder text **short (2–4 words)** — the on-screen display area is limited.
 
 ## 2. Setting a Reminder
@@ -80,7 +80,7 @@ When the time is up, the robot:
 
 1. Shows the **clock emoji (clock GIF)** on screen, with "Reminder: \<text\>" below it;
 2. Plays a **"beep beep" tone** once every **3 seconds**, **10 times** per round (about 30 seconds);
-3. If nobody responds after a round → **pauses for 5 minutes**, during which the screen returns to the neutral emoji and the text is cleared (a one-time reminder's trigger time is pushed back 5 minutes, like a snooze);
+3. If nobody responds after a round → **pauses for 5 minutes**, during which the screen returns to the neutral emoji and the text is cleared (a one-time reminder keeps its original trigger time — it is not pushed back);
 4. Rings again after the 5-minute pause, **at most 3 rounds**;
 5. After 3 rounds it ends automatically: **one-time reminders are deleted automatically**; repeating reminders are kept and wait for the next trigger.
 
@@ -102,7 +102,7 @@ After stopping, one-time reminders are deleted automatically; interval/weekly re
 | ---------------------- | --------------------------------------- |
 | Fires | clock emoji + "Reminder: \<text\>", tone plays |
 | Ringing (10 × 3 s) | can be stopped by key / touch / voice |
-| Pause (5 min) | neutral emoji; a one-time reminder is pushed back 5 min |
+| Pause (5 min) | neutral emoji; a one-time reminder keeps its original (already past) trigger time, not pushed back |
 | Round 2 / 3 | clock emoji returns, ringing continues |
 | 3 rounds exhausted | ends automatically; the one-time reminder is deleted from storage |
 | Manually stopped midway | ends immediately; the one-time reminder is deleted from storage |
@@ -111,7 +111,7 @@ After stopping, one-time reminders are deleted automatically; interval/weekly re
 
 | Item | Description |
 | ------------ | ------------------------------------------------------------ |
-| Reminder limit | 5 |
+| Reminder limit | 5 (per category: 5 ordinary reminders + 5 light-schedule tasks) |
 | Reminder text | keep it short (2–4 words); overly long text is rejected |
 | Ringing pattern | 10 × 3 s per round, 5-minute pause between rounds, at most 3 rounds (~10 minutes in total) |
 | Storage | persisted in NVS; survives power loss / reboot |
@@ -122,7 +122,7 @@ After stopping, one-time reminders are deleted automatically; interval/weekly re
 A: Single-click the function button, tap the touch control, or just talk to it — any of these works. One-time alarms are deleted automatically once stopped.
 
 **Q: If I check my alarms during the pause, will it show an expired time?**
-A: No. During the pause, a one-time reminder's time is pushed forward 5 minutes, so what you see is always a future time.
+A: Yes. During the pause a one-time reminder still shows its original (already past) trigger time; the reminder is deleted when the round ends.
 
 **Q: Will the alarm ring forever?**
 A: No. It stops automatically after at most 3 rounds (about 10 minutes).
@@ -141,4 +141,4 @@ A: They are equivalent. "Every day" means all weekdays are selected.
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-13

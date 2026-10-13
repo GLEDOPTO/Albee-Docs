@@ -36,7 +36,7 @@ void AddUserOnlyTool(const std::string& name,
 - **name**: unique tool identifier, following the `self.<module>.<function>` convention (e.g. `self.robot.action`).
 - **description**: natural-language description of what the tool does and when to use it. This is what the LLM reads, so write it for the model, not for the developer. Descriptions are bilingual behind the `USE_ENGLISH_ENABLE` compile flag.
 - **properties**: input parameter list. Supported types are boolean, integer, and string, with optional range and default values.
-- **callback**: execution logic invoked when the backend calls the tool. May return a `ReturnValue` of bool, int, or string.
+- **callback**: execution logic invoked when the backend calls the tool. `ReturnValue` supports bool, int, string, JSON text (`cJSON*`), and image content (`ImageContent*`, e.g. screen snapshots).
 - **user-only tools**: registered via `AddUserOnlyTool`, these are device-owner/admin tools (e.g. `self.reboot`, `self.upgrade_firmware`, `self.screen.snapshot`). They only appear in `tools/list` responses when the request sets `"withUserTools": true`.
 
 Framework built-ins (device status, volume, brightness, camera, etc.) are registered in `McpServer::AddCommonTools()` / `AddUserOnlyTools()` in `main/mcp_server.cc`. Board-specific tools are registered at:
@@ -62,7 +62,7 @@ The complete set of tools registered by this firmware, grouped by module. Params
 
 | Tool | Parameters | Description |
 |---|---|---|
-| `self.robot.action` | `action` str: `walk`/`turn`/`spin`/`home` (default `home`); `steps` str (default `"4"`; spin uses 0.1–0.5 = fraction of a circle); `speed` int 500–2000 (default 800, smaller = faster); `direction` int 1/-1 (default 1) | Execute a motion action and wait for completion. |
+| `self.robot.action` | `action` str: `walk`/`turn`/`spin`/`home` (default `home`); `steps` str (default `"4"`; spin uses 0.1–2.0 = circle count (0.5 = half a turn, 1 = one full turn, 2 = two turns)); `speed` int 500–2000 (default 800, smaller = faster); `direction` int 1/-1 (default 1) | Execute a motion action and wait for completion. |
 | `self.robot.stop` | — | Stop all actions immediately and reset. |
 | `self.battery.get_level` | — | Battery level and charging status (JSON). |
 
@@ -70,7 +70,7 @@ The complete set of tools registered by this firmware, grouped by module. Params
 
 | Tool | Parameters | Description |
 |---|---|---|
-| `self.power.control` | `action` str: `shutdown` (default) / `restart` | Power the robot off or reboot it. |
+| `self.power.control` | `action` str: `shutdown` (default) / `restart` (`reboot` is accepted as an alias of `restart`) | Power the robot off or reboot it. |
 
 ### Light tools (`main/boards/gledopto-robot/light/light_controller.cc`)
 
@@ -82,15 +82,15 @@ The complete set of tools registered by this firmware, grouped by module. Params
 | `self.light.set_group_color_temp` | `group_name` str; `temperature` int 0–100 (0 = warmest, 100 = coolest) | Set color temperature. |
 | `self.light.set_group_effect` | `group_name` str; `effect` str: `next`/`prev`/`random`/effect ID/name | Set a WLED effect (WLED groups only). |
 | `self.light.get_all_group_name` | — | List all RF and WLED group names. |
-| `self.light.get_ip` | — | Return the bare device IP address. |
-| `self.light.get_light_control_ip` | — | Return the light control page address (`<IP>/light`). |
+| `self.light.get_ip` | — | Return the device IP and the lighting page URL (both the bare IP and `<IP>/light`). |
+| `self.light.schedule_control` | `group_name` str; `action` str: `on`/`off`/`toggle`; `delay` int s (-1); `hour` int 0–23 (-1); `minute` int 0–59 (-1); `day_offset` int (-1; 0=today/1=tomorrow/2=day after); `weekdays` str; `interval` int s (-1); `repeat` int (1=once, -1=forever, N=total count) | Scheduled / linked lighting (registered when `CONFIG_LIGHT_SCHEDULE_LINKAGE=y`). |
 
 ### Alarm tools (`main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc`)
 
 | Tool | Parameters | Description |
 |---|---|---|
-| `add_reminder` | `delay` int (seconds from now, -1 = not specified); `hour` int 0–23 (-1); `minute` int 0–59 (-1); `repeat` int (-1 = forever); `content` str; `interval` int seconds (e.g. 3600 = hourly); `weekdays` str (e.g. `Mon,Fri`, `everyday`) | Add a reminder: countdown, daily, weekly, or fixed-interval. |
-| `delete_reminder` | `keyword` str (default `""`) | Delete reminders whose content contains the keyword; empty keyword clears all. |
+| `add_reminder` | `delay` int (seconds from now, -1 = not specified); `hour` int 0–23 (-1); `minute` int 0–59 (-1); `day_offset` int (-1; 0=today/1=tomorrow/2=day after); `repeat` int (**required**; 1=once, -1=forever, N=total count); `content` str; `interval` int seconds (-1, e.g. 3600 = hourly); `weekdays` str (default `""`, e.g. `Mon,Fri`, `everyday`) | Add a reminder: countdown, daily, weekly, or fixed-interval. |
+| `delete_reminder` | `id` int (-1); `keyword` str (default `""`); `clear_all` bool (default false). Exactly **one of the three**: by ID, by keyword, or clear all. | Delete reminders. |
 | `list_reminders` | — | List all reminders with ID, time, content, and repeat type. |
 
 ### User-only tools (`main/mcp_server.cc`, `AddUserOnlyTools`)
@@ -112,8 +112,8 @@ Only returned by `tools/list` when the request sets `"withUserTools": true`.
 | Tool | Status |
 |---|---|
 | `self.camera.take_photo` | Not registered on this board (no camera). |
-| `self.screen.set_theme` | Compiled out (`#if 0` in `mcp_server.cc`). |
-| `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | Compiled out (`#if 0` in `light_controller.cc`); RF pairing/clearing is done via the web page's HTTP endpoints (`/api/light/pair`, `/api/light/clear`), which are always available. |
+| `self.screen.set_theme` | Removed from the source (historically disabled via `#if 0`). |
+| `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | Removed from the source (historically disabled via `#if 0`); RF pairing/clearing is done via the web page's HTTP endpoints (`/api/light/pair`, `/api/light/clear`), which are always available. |
 
 ## Registration Examples
 
@@ -201,4 +201,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-13

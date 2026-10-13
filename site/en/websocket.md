@@ -30,15 +30,7 @@ This document describes the WebSocket communication protocol between the device 
      "type": "hello",
      "version": 1,
      "features": {
-       "mcp": true,
-       "aec": true,
-       "glyph_push": true
-     },
-     "text_font": {
-       "bundle": "noto-v1",
-       "charset": "common",
-       "size": 20,
-       "bpp": 4
+       "mcp": true
      },
      "transport": "websocket",
      "audio_params": {
@@ -49,8 +41,8 @@ This document describes the WebSocket communication protocol between the device 
      }
    }
    ```
-   - `features` is optional and generated from compile-time configuration. For example, `"mcp": true` means the device supports MCP, and `"aec": true` is emitted when `CONFIG_USE_SERVER_AEC` is enabled.
-   - `"glyph_push": true` and `text_font` advertise the optional dynamic text-glyph extension.
+   - `features` is optional and generated from compile-time configuration. For example, `"mcp": true` means the device supports MCP, and `"aec": true` is included only when `CONFIG_USE_SERVER_AEC` is enabled (not in the default build).
+
    - `frame_duration` matches `OPUS_FRAME_DURATION_MS` (typically 60 ms).
 
 4. **Server replies with "hello"**
@@ -99,7 +91,7 @@ When establishing the WebSocket connection, the device sets the following header
 - `Authorization`: access token, usually formatted as `"Bearer <token>"`.
 - `Protocol-Version`: the protocol version number, matching the `version` field in the hello message.
 - `Device-Id`: the physical MAC address of the device.
-- `Client-Id`: a software-generated UUID (reset when NVS is erased or the full firmware is re-flashed).
+- `Client-Id`: a software-generated UUID stored in NVS (`board/uuid`); an ordinary firmware re-flash does **not** reset it — it regenerates only when NVS is erased.
 
 These headers are sent with the WebSocket handshake; the server can use them for authentication or bookkeeping.
 
@@ -284,7 +276,7 @@ WebSocket text frames carry JSON. The most common `"type"` values and their sema
      - `"reboot"`: reboot the device.
 
 7. **Alert**
-   - Instructs the device to show an alert and play a vibration sound. Handled in `Application::OnIncomingJson`.
+   - Instructs the device to show an alert and play an alert tone. Handled in `Application::OnIncomingJson`.
    - Example:
      ```json
      {
@@ -543,4 +535,4 @@ Server and device must agree on the meaning, timing, and error handling of each 
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-13

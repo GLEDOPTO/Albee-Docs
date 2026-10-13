@@ -10,37 +10,44 @@ This API handles device OTA (Over-The-Air) upgrade requests. The device sends it
 
 ## Request Method
 
-**POST** `/api/ota/`
+**POST** `https://api.tenclass.net/xiaozhi/ota/` (path `/xiaozhi/ota/`)
+
+The device sends the headers below **unconditionally**; it uses POST with a body only when the system-info JSON is non-empty, otherwise GET (no body).
 
 ## Request Headers
 
-- `Device-Id`: Unique device identifier (required, use the MAC address)
-- `Client-Id`: Unique client identifier, UUID v4 (required)
-- `User-Agent`: Client name and version number (required, e.g., `esp-box-3/1.5.6`)
-- `Accept-Language`: Current language of the client (optional, e.g., `zh-CN`)
+- `Device-Id`: unique device identifier (required). Note: with `CONFIG_ROBOT_IDENTITY_RESET=y` enabled, this firmware reports a **randomized persistent identity MAC**, not necessarily the hardware MAC
+- `Client-Id`: unique client identifier, UUID v4 (required)
+- `User-Agent`: client name and version number (required, e.g., `esp-box-3/1.5.6`)
+- `Accept-Language`: current language of the client (always sent, e.g., `zh-CN`)
+- `Activation-Version`: activation version information
+- `Serial-Number`: device serial number
 
 ## Request Body
 
 | Field | Description |
 |---|---|
-| `application` | Object containing the device's current firmware version information (required) |
+| `application` | firmware version info (required): `version`, `name`, `compile_time`, `idf_version`, etc. |
 | `mac_address` | MAC address (optional) |
-| `chip_model_name` | Chip model, e.g., `esp32s3` (optional) |
-| `board` | Board type, name, ssid, rssi (required) |
+| `chip_model_name` | chip model, e.g., `esp32s3` (optional) |
+| `board` | board info (required): `type`, `name`, `ssid`, `rssi`, `channel`, `ip`, `mac`, etc. |
 
 ## Full ESP32 Request Example
 
 ```http
-POST /api/ota/ HTTP/1.1
+POST /xiaozhi/ota/ HTTP/1.1
 Host: api.tenclass.net
 Content-Type: application/json
 User-Agent: xingzhi-cube/1.0.1
 Device-Id: 11:22:33:44:55:66
 Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
+Accept-Language: zh-CN
+Activation-Version: 1
+Serial-Number: xxxxxxxx
 
 {
-  "application": { "version": "1.0.1", "elf_sha256": "..." },
-  "board": { "type": "xingzhi-cube", "name": "xingzhi-cube", "ssid": "Home", "rssi": -55 }
+  "application": { "version": "1.0.1", "name": "xingzhi-cube", "compile_time": "...", "idf_version": "5.4.3", "elf_sha256": "..." },
+  "board": { "type": "xingzhi-cube", "name": "xingzhi-cube", "ssid": "Home", "rssi": -55, "channel": 6, "ip": "192.168.1.50", "mac": "11:22:33:44:55:66" }
 }
 ```
 
@@ -51,10 +58,11 @@ Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
   "mqtt": { "endpoint": "mqtt.example.com", "client_id": "..." },
   "websocket": { "url": "wss://api.tenclass.net/xiaozhi/v1/", "token": "..." },
   "server_time": { "timestamp": 1633024800000 },
-  "firmware": { "version": "1.0.0", "url": "https://example.com/firmware/1.0.0.bin" }
+  "firmware": { "version": "1.0.0", "url": "https://example.com/firmware/1.0.0.bin" },
+  "activation": { }
 }
 ```
 
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-10-13

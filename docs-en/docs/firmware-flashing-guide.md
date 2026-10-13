@@ -9,7 +9,7 @@ Two options: flash with the Flash Download Tool on a computer (no IDF environmen
 ### 1.1 Preparation
 
 1. Install the Flash Download Tool: <https://dl.espressif.com/public/flash_download_tool.zip>
-2. Have the firmware file ready
+2. Have the firmware file ready: you **must use the merged full firmware** `Albee_all_<version>.bin` (the releases/ artifact). A standalone `Albee.bin` has no bootloader or partition table and cannot be flashed with this method
 3. Connect the robot to your computer with a Type-C cable and make sure it is powered on (long-press the power button for 3 seconds)
 
 > [!IMPORTANT]
@@ -25,8 +25,8 @@ Two options: flash with the Flash Download Tool on a computer (no IDF environmen
 
 ### 1.3 Flashing steps
 
-1. Click the file picker on the first row and import the `.bin` firmware file
-2. Tick the checkbox in front of that row (required) and enter the flash address `0x0` in the field next to it
+1. Click the file picker on the first row and import the **merged firmware** `Albee_all_<version>.bin`
+2. Tick the checkbox in front of that row (required) and enter the flash address `0x0` (the merged firmware goes to `0x0`; an unmerged `Albee.bin` would go to `0x20000` — generally do not do that) in the field next to it
 3. Select the matching COM port
 4. Click **START**; when the progress bar completes the status shows **FINISH**
 5. Restart the device afterwards (long-press the power button for 3 seconds to power off, then long-press again for 3 seconds to power on)
@@ -58,4 +58,4 @@ Two options: flash with the Flash Download Tool on a computer (no IDF environmen
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-13

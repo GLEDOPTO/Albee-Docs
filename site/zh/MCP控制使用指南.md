@@ -36,7 +36,7 @@ void AddUserOnlyTool(const std::string& name,
 - **name**：工具唯一标识，遵循 `self.<模块>.<功能>` 命名约定（如 `self.robot.action`）。
 - **description**：工具做什么、何时使用的自然语言描述。这是给 LLM 读的，请面向模型而非开发者撰写。描述文案由 `USE_ENGLISH_ENABLE` 编译开关控制，支持中英双语。
 - **properties**：输入参数列表。支持 boolean、integer、string 类型，可选范围和默认值。
-- **callback**：后端调用该工具时执行的逻辑。可返回 bool、int 或 string 类型的 `ReturnValue`。
+- **callback**：后端调用该工具时执行的逻辑。`ReturnValue` 支持 bool、int、string、JSON 文本（`cJSON*`）与图片内容（`ImageContent*`，如屏幕截图）。
 - **仅用户可用工具**：通过 `AddUserOnlyTool` 注册，属于设备所有者/管理员工具（如 `self.reboot`、`self.upgrade_firmware`、`self.screen.snapshot`）。只有当 `tools/list` 请求设置 `"withUserTools": true` 时才会出现在响应中。
 
 框架内置工具（设备状态、音量、亮度、摄像头等）注册在 `main/mcp_server.cc` 的 `McpServer::AddCommonTools()` / `AddUserOnlyTools()` 中。板级专用工具注册位置：
@@ -62,7 +62,7 @@ void AddUserOnlyTool(const std::string& name,
 
 | 工具 | 参数 | 说明 |
 |---|---|---|
-| `self.robot.action` | `action` str：`walk`/`turn`/`spin`/`home`（默认 `home`）；`steps` str（默认 `"4"`；spin 用 0.1–0.5 表示圈的比例）；`speed` int 500–2000（默认 800，越小越快）；`direction` int 1/-1（默认 1） | 执行动作并等待完成。 |
+| `self.robot.action` | `action` str：`walk`/`turn`/`spin`/`home`（默认 `home`）；`steps` str（默认 `"4"`；spin 用 0.1–2.0 表示圈数，0.5=半圈、1=一圈、2=两圈）；`speed` int 500–2000（默认 800，越小越快）；`direction` int 1/-1（默认 1） | 执行动作并等待完成。 |
 | `self.robot.stop` | — | 立即停止所有动作并复位。 |
 | `self.battery.get_level` | — | 电量与充电状态（JSON）。 |
 
@@ -70,7 +70,7 @@ void AddUserOnlyTool(const std::string& name,
 
 | 工具 | 参数 | 说明 |
 |---|---|---|
-| `self.power.control` | `action` str：`shutdown`（默认）/ `restart` | 机器人关机或重启。 |
+| `self.power.control` | `action` str：`shutdown`（默认）/ `restart`（`reboot` 为 `restart` 的别名，同样受支持） | 机器人关机或重启。 |
 
 ### 灯光工具（`main/boards/gledopto-robot/light/light_controller.cc`）
 
@@ -82,15 +82,15 @@ void AddUserOnlyTool(const std::string& name,
 | `self.light.set_group_color_temp` | `group_name` str；`temperature` int 0–100（0 = 最暖，100 = 最冷） | 设置色温。 |
 | `self.light.set_group_effect` | `group_name` str；`effect` str：`next`/`prev`/`random`/效果 ID/名称 | 设置 WLED 效果（仅 WLED 分组）。 |
 | `self.light.get_all_group_name` | — | 列出所有 RF 和 WLED 分组名。 |
-| `self.light.get_ip` | — | 返回设备裸 IP 地址。 |
-| `self.light.get_light_control_ip` | — | 返回灯光控制页地址（`<IP>/light`）。 |
+| `self.light.get_ip` | — | 返回设备 IP 与灯光控制页地址（裸 IP 与 `<IP>/light` 两行）。 |
+| `self.light.schedule_control` | `group_name` str；`action` str：`on`/`off`/`toggle`；`delay` int 秒（-1）；`hour` int 0–23（-1）；`minute` int 0–59（-1）；`day_offset` int（-1；0=今天/1=明天/2=后天）；`weekdays` str；`interval` int 秒（-1）；`repeat` int（1=一次、-1=永久、N=总次数） | 定时/联动灯控（`CONFIG_LIGHT_SCHEDULE_LINKAGE=y` 时注册）。 |
 
 ### 闹钟工具（`main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc`）
 
 | 工具 | 参数 | 说明 |
 |---|---|---|
-| `add_reminder` | `delay` int（距当前秒数，-1 = 未指定）；`hour` int 0–23（-1）；`minute` int 0–59（-1）；`repeat` int（-1 = 永久）；`content` str；`interval` int 秒（如 3600 = 每小时）；`weekdays` str（如 `Mon,Fri`、`everyday`） | 添加提醒：倒计时、每天、每周或固定间隔。 |
-| `delete_reminder` | `keyword` str（默认 `""`） | 删除内容包含关键词的提醒；关键词为空则清空全部。 |
+| `add_reminder` | `delay` int（距当前秒数，-1 = 未指定）；`hour` int 0–23（-1）；`minute` int 0–59（-1）；`day_offset` int（-1；0=今天/1=明天/2=后天）；`repeat` int（**必填**；1=一次、-1=永久、N=总次数）；`content` str；`interval` int 秒（-1，如 3600 = 每小时）；`weekdays` str（默认 `""`，如 `Mon,Fri`、`everyday`） | 添加提醒：倒计时、每天、每周或固定间隔。 |
+| `delete_reminder` | `id` int（-1）；`keyword` str（默认 `""`）；`clear_all` bool（默认 false）。三个参数**三选一**：按 ID 删、按关键词删、或清空全部 | 删除提醒。 |
 | `list_reminders` | — | 列出所有提醒的 ID、时间、内容和重复类型。 |
 
 ### 仅用户可用工具（`main/mcp_server.cc`，`AddUserOnlyTools`）
@@ -112,8 +112,8 @@ void AddUserOnlyTool(const std::string& name,
 | 工具 | 状态 |
 |---|---|
 | `self.camera.take_photo` | 本板未注册（无摄像头）。 |
-| `self.screen.set_theme` | 已编译禁用（`mcp_server.cc` 中 `#if 0`）。 |
-| `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | 已编译禁用（`light_controller.cc` 中 `#if 0`）；RF 配对/清除通过网页的 HTTP 接口完成（`/api/light/pair`、`/api/light/clear`），始终可用。 |
+| `self.screen.set_theme` | 源码中已移除（历史上曾以 `#if 0` 禁用）。 |
+| `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | 源码中已移除（历史上曾以 `#if 0` 禁用）；RF 配对/清除通过网页的 HTTP 接口完成（`/api/light/pair`、`/api/light/clear`），始终可用。 |
 
 ## 注册示例
 
@@ -201,4 +201,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-13
