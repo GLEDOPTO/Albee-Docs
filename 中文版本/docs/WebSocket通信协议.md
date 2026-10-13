@@ -194,7 +194,7 @@ WebSocket 文本帧承载 JSON。最常见的 `"type"` 值及其语义如下。�
        "session_id": "xxx",
        "type": "listen",
        "state": "detect",
-       "text": "Hi XiaoZhi"
+       "text": "Hi Albee"
      }
      ```
 
