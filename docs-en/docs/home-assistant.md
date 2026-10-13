@@ -16,7 +16,7 @@ You can integrate Home Assistant through MCP plugins. Two MCP plugins are recomm
 
 ### Repository & Documentation
 
-Please see: [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
+Please see: [ha-mcp-for-xiaozhi Guide](./ha-mcp-for-xiaozhi.md) (installation and configuration tutorial); the repository and official documentation are at [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
 ## 2. Home MCP
 
@@ -30,4 +30,4 @@ Please see: [Home MCP](https://github.com/shenjingnan/home-mcp)
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-13

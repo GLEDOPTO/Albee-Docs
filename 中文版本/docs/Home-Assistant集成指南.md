@@ -16,7 +16,7 @@
 
 ### 仓库与文档
 
-请参见：[ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
+请参见：[ha-mcp-for-xiaozhi操作指南](./ha-mcp-for-xiaozhi操作指南.md)（安装与配置教程），仓库与官方文档见 [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
 ## 2. Home MCP
 
@@ -30,4 +30,4 @@ Home-MCP 是一个基于 [Model Context Protocol (MCP)](https://modelcontextprot
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-13
