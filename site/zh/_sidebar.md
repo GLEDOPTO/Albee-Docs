@@ -40,3 +40,5 @@
 
 - 智能家居集成
   - [Home-Assistant集成指南](Home-Assistant集成指南.md)
+  - [ha-mcp-for-xiaozhi操作指南](ha-mcp-for-xiaozhi操作指南.md)
+  - [如何获取MCP接入点地址](如何获取MCP接入点地址.md)

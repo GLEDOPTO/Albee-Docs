@@ -16,7 +16,7 @@
 | [控制台与账号](Albee百科全书.md?id=_4-控制台与账号) | xiaozhi.me 控制台、开发者认证、账号问题、知识库、MAC 地址 | 5 篇 |
 | [固件与硬件开发](Albee百科全书.md?id=_5-固件与硬件开发) | 固件烧录、源码编译、引脚映射、OTA API | 4 篇 |
 | [通信协议与 MCP](Albee百科全书.md?id=_6-通信协议与-mcp) | WebSocket、MQTT+UDP、MCP 协议与用法 | 4 篇 |
-| [智能家居集成](Albee百科全书.md?id=_7-智能家居集成) | Home Assistant 接入 | 1 篇 |
+| [智能家居集成](Albee百科全书.md?id=_7-智能家居集成) | Home Assistant 接入、MCP 接入点、ha-mcp-for-xiaozhi | 3 篇 |
 
 ## 1. 快速入门
 
@@ -79,6 +79,8 @@
 | 文档 | 说明 |
 |---|---|
 | [Home Assistant 集成指南](Home-Assistant集成指南.md) | 通过 MCP 插件接入 Home Assistant：HA MCP for XiaoZhi（WebSocket 直连、无需代理）和 Home MCP（标准化设备控制与数据访问）。 |
+| [ha-mcp-for-xiaozhi操作指南](ha-mcp-for-xiaozhi操作指南.md) | 用 HACS 安装 ha-mcp-for-xiaozhi 集成、填入 MCP 接入点完成配置，含调试说明（暴露实体决定可用工具、版本差异、看聊天记录定位问题）。 |
+| [如何获取MCP接入点地址](如何获取MCP接入点地址.md) | 在 xiaozhi.me 控制台依次点击 控制台 → 配置 → 拓展能力 → 复制 MCP 接入点。 |
 
 ---
 
@@ -90,10 +92,11 @@
 - **设备使用遇到问题：**[常见问题](常见问题.md) → [设备死机或重启问题反馈指南](设备死机或重启问题反馈指南.md)
 - **想升级固件：**[本地OTA升级指南](本地OTA升级指南.md)（网页上传 `.ota` 文件，无需电脑烧录）
 - **想开发固件：**[固件编译教程](固件编译教程.md) → [引脚映射](引脚映射.md)
+- **想接入智能家居：**[Home Assistant 集成指南](Home-Assistant集成指南.md) → [如何获取MCP接入点地址](如何获取MCP接入点地址.md) → [ha-mcp-for-xiaozhi操作指南](ha-mcp-for-xiaozhi操作指南.md)
 - **想搭建服务器 / 对接协议：**[WebSocket](WebSocket通信协议.md) 或 [MQTT+UDP](MQTT-UDP混合通信协议.md) → [MCP 协议](MCP协议交互流程.md) → [MCP 用法](MCP控制使用指南.md) → [OTA API](OTA接口.md)
 
 > 公用图片和可下载资源位于 [`../assets/`](https://github.com/GLEDOPTO/Albee-Docs/tree/master/assets)（图片在 `assets/img/` 下），中英文版本共用。
 
 ---
 
-**文档最新修改时间：** 2026-10-10
+**文档最新修改时间：** 2026-10-13

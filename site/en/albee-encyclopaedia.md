@@ -16,7 +16,7 @@
 | [Console & Account](albee-encyclopaedia.md?id=_4-console-account) | xiaozhi.me console, developer auth, account issues, knowledge base, MAC address | 5 documents |
 | [Firmware & Hardware Development](albee-encyclopaedia.md?id=_5-firmware-hardware-development) | Firmware flashing, compiling from source, pin mapping, OTA API | 4 documents |
 | [Protocols & MCP](albee-encyclopaedia.md?id=_6-communication-protocols-mcp) | WebSocket, MQTT+UDP, MCP protocol and usage | 4 documents |
-| [Smart Home](albee-encyclopaedia.md?id=_7-smart-home-integration) | Home Assistant integration | 1 document |
+| [Smart Home](albee-encyclopaedia.md?id=_7-smart-home-integration) | Home Assistant integration, MCP access point, ha-mcp-for-xiaozhi | 3 documents |
 
 ## 1. Getting Started
 
@@ -79,6 +79,8 @@
 | Document | Description |
 |---|---|
 | [Home Assistant Integration Guide](home-assistant.md) | Connect Home Assistant through MCP plugins: HA MCP for XiaoZhi (direct WebSocket, no proxy) and Home MCP (standardized device control and data access). |
+| [ha-mcp-for-xiaozhi Guide](ha-mcp-for-xiaozhi.md) | Install the ha-mcp-for-xiaozhi integration via HACS, fill in the MCP access point to finish setup, plus troubleshooting notes (exposed entities decide the available tools, version differences, check the chat log to locate issues). |
+| [How to Get the MCP Access-Point Address](mcp-access-point-address.md) | On the xiaozhi.me console, click Console → Configure → Extensions → Copy MCP access point. |
 
 ---
 
@@ -90,10 +92,11 @@
 - **Something goes wrong with the device:** [FAQ](faq.md) → [Device Freeze or Reboot Feedback Guide](problem-feedback.md)
 - **I want to upgrade the firmware:** [Local OTA Upgrade Guide](local-ota.md) (upload a `.ota` file via the web page, no PC flashing)
 - **I want to develop firmware:** [Compilation Tutorial](compilation-tutorial.md) → [Pin Mapping](pin-mapping.md)
+- **I want to integrate smart home:** [Home Assistant Integration Guide](home-assistant.md) → [How to Get the MCP Access-Point Address](mcp-access-point-address.md) → [ha-mcp-for-xiaozhi Guide](ha-mcp-for-xiaozhi.md)
 - **I want to build a server / integrate the protocol:** [WebSocket](websocket.md) or [MQTT+UDP](mqtt-udp.md) → [MCP Protocol](mcp-protocol.md) → [MCP Usage](mcp-usage.md) → [OTA API](ota-api.md)
 
 > Shared images and downloadable assets live in [`../assets/`](https://github.com/GLEDOPTO/Albee-Docs/tree/master/assets) (images under `assets/img/`), used by both the Chinese and English versions.
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-13
