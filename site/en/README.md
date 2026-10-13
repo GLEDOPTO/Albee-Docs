@@ -4,7 +4,7 @@
 
 This project is a derivative development based on version 2.0.4 of the Xiaozhi AI chatbot.
 
-Gledopto Robot Project URL: TODO
+GLEDOPTO Robot Project URL: TODO
 
 Xiaozhi Project URL: [XiaoZhi](https://github.com/78/xiaozhi-esp32)
 

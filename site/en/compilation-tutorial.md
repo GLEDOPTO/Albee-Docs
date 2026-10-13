@@ -2,7 +2,7 @@
 > Firmware: Albee v2.0.4 or later ｜ Audience: Developer
 
 
-This document describes how to compile and flash the Gledopto Robot (ESP32-S3 desktop robot) firmware from source, and how to use the common build configurations and helper scripts.
+This document describes how to compile and flash the GLEDOPTO Robot (ESP32-S3 desktop robot) firmware from source, and how to use the common build configurations and helper scripts.
 
 ## 1. Environment Requirements
 

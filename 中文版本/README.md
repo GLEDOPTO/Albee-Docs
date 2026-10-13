@@ -4,7 +4,7 @@
 
 本项目是基于小智 AI 聊天机器人 2.0.4 版本的衍生开发。
 
-格乐（Gledopto）机器人项目地址：TODO
+格乐德（GLEDOPTO）机器人项目地址：TODO
 
 小智项目地址：[XiaoZhi](https://github.com/78/xiaozhi-esp32)
 
