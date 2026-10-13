@@ -42,6 +42,8 @@ Configuration done! Wait a moment, then open the access-point page on the XiaoZh
 Settings -> Voice assistants -> Expose
 ```
 
+<img src="../../assets/img/ha-mcp-for-xiaozhi/7.png">
+
 2. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 
 3. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month.

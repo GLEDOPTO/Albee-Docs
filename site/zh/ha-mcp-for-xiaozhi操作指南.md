@@ -43,6 +43,8 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 设置 -> 语音助手 -> 公开
 ```
 
+<img src="../assets/img/ha-mcp-for-xiaozhi/7.png">
+
 2.尽量使用最新版本的homeassistant，单单看5月版本跟3月版本提供的工具就有明显差异
 
 3.调试时未达到预期，优先看小智的聊天记录，看看小智对这句指令如何处理的，是否有调用homeassistant的工具。目前已知比较大的问题是灯光控制和音乐控制会和内置的屏幕控制、音乐控制逻辑冲突，需要等下个月虾哥服务器支持内置工具选择后可解。
