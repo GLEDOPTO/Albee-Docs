@@ -79,6 +79,10 @@ Settings -> Voice assistants -> Expose
 
 <img src="assets/img/ha-mcp-for-xiaozhi/7.png">
 
+<img src="assets/img/ha-mcp-for-xiaozhi/11.png">
+
+<img src="assets/img/ha-mcp-for-xiaozhi/12.png">
+
 2. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 
 3. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month.
@@ -88,6 +92,11 @@ Settings -> Voice assistants -> Expose
 ## FAQ
 
 - **MCP integration error**: make sure Home Assistant is up to date
+- **Few tools available**: you need to expose your entity devices
+
+## Notes
+
+This project ships with some built-in MCP tools — for example the lighting-control MCP tool (see the [Lighting Control Guide](lighting-control.md)) — so when controlling Home Assistant lights by voice through Albee, you need to specify that you mean the device in HASS
 
 ---
 
