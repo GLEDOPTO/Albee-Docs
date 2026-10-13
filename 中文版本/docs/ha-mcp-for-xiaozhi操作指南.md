@@ -79,7 +79,11 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/7.png">
 
+"语音助手 -> 公开"页面：
+
 <img src="../../assets/img/ha-mcp-for-xiaozhi/11.png">
+
+公开实体后可用的工具示例：
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/12.png">
 

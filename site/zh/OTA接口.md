@@ -20,8 +20,8 @@
 - `Client-Id`：客户端唯一标识，UUID v4（必填）
 - `User-Agent`：客户端名称和版本号（必填，如 `esp-box-3/1.5.6`）
 - `Accept-Language`：客户端当前语言（设备始终携带，如 `zh-CN`）
-- `Activation-Version`：激活版本信息
-- `Serial-Number`：设备序列号
+- `Activation-Version`：激活版本（无序列号设备为 `1`；有序列号设备为 `2`）
+- `Serial-Number`：设备序列号（**仅有序列号的设备携带**，此时 `Activation-Version` 为 `2`；两个头在真实流量中不会以 `1`+`Serial-Number` 的组合出现）
 
 ## 请求体
 
@@ -42,7 +42,7 @@ User-Agent: xingzhi-cube/1.0.1
 Device-Id: 11:22:33:44:55:66
 Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
 Accept-Language: zh-CN
-Activation-Version: 1
+Activation-Version: 2
 Serial-Number: xxxxxxxx
 
 {

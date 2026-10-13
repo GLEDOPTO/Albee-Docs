@@ -20,8 +20,8 @@ The device sends the headers below **unconditionally**; it uses POST with a body
 - `Client-Id`: unique client identifier, UUID v4 (required)
 - `User-Agent`: client name and version number (required, e.g., `esp-box-3/1.5.6`)
 - `Accept-Language`: current language of the client (always sent, e.g., `zh-CN`)
-- `Activation-Version`: activation version information
-- `Serial-Number`: device serial number
+- `Activation-Version`: activation version (`1` for devices without a serial number; `2` for devices with one)
+- `Serial-Number`: device serial number (**sent only by devices that have one**, in which case `Activation-Version` is `2`; the two headers never appear as the `1` + `Serial-Number` combination in real traffic)
 
 ## Request Body
 
@@ -42,7 +42,7 @@ User-Agent: xingzhi-cube/1.0.1
 Device-Id: 11:22:33:44:55:66
 Client-Id: 7b94d69a-9808-4c59-9c9b-704333b38aff
 Accept-Language: zh-CN
-Activation-Version: 1
+Activation-Version: 2
 Serial-Number: xxxxxxxx
 
 {

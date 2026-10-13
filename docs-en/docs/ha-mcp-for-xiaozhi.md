@@ -79,9 +79,9 @@ Settings -> Voice assistants -> Expose
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/7.png">
 
-<img src="../../assets/img/ha-mcp-for-xiaozhi/11.png">
+The "Voice assistants -> Expose" page:/n/n<img src="../../assets/img/ha-mcp-for-xiaozhi/11.png">
 
-<img src="../../assets/img/ha-mcp-for-xiaozhi/12.png">
+Example of the tools available after exposing entities:/n/n<img src="../../assets/img/ha-mcp-for-xiaozhi/12.png">
 
 2. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 

@@ -4,7 +4,9 @@
 
 本项目是基于小智 AI 聊天机器人 2.0.4 版本的衍生开发。
 
-格乐德（GLEDOPTO）机器人项目地址：TODO
+> 🚀 **新用户从这里开始：[设备激活指南](./docs/设备激活指南.md)** —— 开箱到第一次对话的完整教程。
+
+格乐德（GLEDOPTO）机器人项目地址：[Albee](https://github.com/GLEDOPTO/Albee)
 
 小智项目地址：[XiaoZhi](https://github.com/78/xiaozhi-esp32)
 

@@ -4,7 +4,9 @@
 
 This project is a derivative development based on version 2.0.4 of the Xiaozhi AI chatbot.
 
-GLEDOPTO Robot Project URL: TODO
+> 🚀 **New user? Start here: [Device Activation Guide](./docs/device-activation.md)** — the complete walkthrough from unboxing to your first conversation.
+
+GLEDOPTO Robot Project URL: [Albee](https://github.com/GLEDOPTO/Albee)
 
 Xiaozhi Project URL: [XiaoZhi](https://github.com/78/xiaozhi-esp32)
 
@@ -84,7 +86,7 @@ See the [Pin Mapping](docs/pin-mapping.md) document for the complete GPIO assign
 
 ### Firmware Flashing
 
-Please See：[Firmware Flashing Guide](./docs/firmware-flashing-guide.md)
+Please see: [Firmware Flashing Guide](./docs/firmware-flashing-guide.md)
 
 ### Development Environment
 

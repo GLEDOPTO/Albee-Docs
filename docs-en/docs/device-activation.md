@@ -117,6 +117,21 @@ When enabled, the robot no longer has to "get to know you from scratch" in every
 
 <img src="../../assets/img/xiaozhi-console/8.png" width="560">
 
+## Part 5: Start Your First Conversation
+
+After the configuration, restart the robot and just talk to it:
+
+1. **Wake it up**: say **"Hi Albee"**, or single-click the function button;
+2. **Just speak**: e.g. "Hello", "What time is it?", "Tell me a joke";
+3. **Handy commands**:
+   - "Set the volume to 30" — too loud or too quiet? Just say it, no settings page needed
+   - "Remind me to drink water in ten minutes" — set an alarm by voice
+   - "Turn on the living room light" — control a paired light group
+
+No need to wait for the robot to finish before you speak — talking over it **interrupts in real time** (double-click the function button to toggle this mode).
+
+For more, see the [Albee Encyclopaedia](./../albee-encyclopaedia.md).
+
 ---
 
-**Last modified:** 2026-10-08
+**Last modified:** 2026-10-13
