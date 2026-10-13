@@ -6,6 +6,8 @@ Official documentation of ha-mcp-for-xiaozhi: [ha-mcp-for-xiaozhi](https://githu
 
 ## How to Install
 
+### Online Installation
+
 > [!IMPORTANT]
 >
 > Make sure HACS is installed in your Home Assistant
@@ -20,19 +22,52 @@ Official documentation of ha-mcp-for-xiaozhi: [ha-mcp-for-xiaozhi](https://githu
 
 3. Restart Home Assistant
 
-4. Click through: Settings -> Devices & Services -> Add Integration -> search for "MCP" > find the Xiaozhi MCP server
+### Offline Installation
+
+1. Visit: [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi)
+2. Pick the version you want
+
+<img src="assets/img/ha-mcp-for-xiaozhi/8.png">
+
+3. Click download
+
+<img src="assets/img/ha-mcp-for-xiaozhi/9.png">
+
+4. Extract the archive and upload the ws_mcp_server folder to homeassistant/custom_components
+
+> [!NOTE]
+>
+> You can upload it with the File browser add-on; add it under Settings -> Add-ons
+
+<img src="assets/img/ha-mcp-for-xiaozhi/10.png">
+
+5. Restart Home Assistant
+
+## Enable the Integration
+
+1. Click through: Settings -> Devices & Services -> Add Integration -> search for "MCP" > find the Xiaozhi MCP server
 
 <img src="assets/img/ha-mcp-for-xiaozhi/3.png">
 
-5. Click "Next" and fill in the XiaoZhi MCP access-point address — see [How to Get the MCP Access-Point Address](mcp-access-point-address.md)
+2. Click "Next" and fill in the XiaoZhi MCP access-point address — see [How to Get the MCP Access-Point Address](mcp-access-point-address.md)
+
 
 <img src="assets/img/ha-mcp-for-xiaozhi/4.png">
 
 <img src="assets/img/ha-mcp-for-xiaozhi/5.png">
 
-Configuration done! Wait a moment, then open the access-point page on the XiaoZhi console and click refresh to check
+3. Configuration done! Wait a moment, then open the access-point page on the XiaoZhi console and click refresh to check
 
 <img src="assets/img/ha-mcp-for-xiaozhi/6.png">
+
+## How to Use
+
+Once the restart finishes, talk to Albee to control your home by voice, for example:
+
+~~~~
+"Show me the devices in Home Assistant"
+"Turn on device x in Home Assistant"
+~~~~
 
 ### Troubleshooting Notes
 

@@ -6,6 +6,8 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 ## 如何安装
 
+### 在线安装
+
 > [!IMPORTANT]
 >
 > 确保 Home Assistant 中安装了 HACS
@@ -20,20 +22,52 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 3. 重启 Home Assistant
 
-4. 依次点击：设置 -> 设备与服务 -> 添加集成 -> 搜索“MCP” > 查找 Xiaozhi 的 MCP 服务器
+### 离线安装
+
+1. 访问：[ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi)
+2. 选择对应的版本
+
+<img src="../../assets/img/ha-mcp-for-xiaozhi/8.png">
+
+3. 点击下载
+
+<img src="../../assets/img/ha-mcp-for-xiaozhi/9.png">
+
+4. 解压并上传ws_mcp_server这个文件夹到homeassistant/custom_components
+
+> [!NOTE]
+>
+> 可使用Filebrower上传，在设置->加载项中添加
+
+<img src="../../assets/img/ha-mcp-for-xiaozhi/10.png">
+
+5. 重启 Home Assistant
+
+## 启用插件
+
+1. 依次点击：设置 -> 设备与服务 -> 添加集成 -> 搜索“MCP” > 查找 Xiaozhi 的 MCP 服务器
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/3.png">
 
-5. 点击"下一步"，填写小智 MCP 接入点地址，查看[如何获取MCP接入点地址](./如何获取MCP接入点地址.md)
+2. 点击"下一步"，填写小智 MCP 接入点地址，查看[如何获取MCP接入点地址](./如何获取MCP接入点地址.md)
 
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/4.png">
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/5.png">
 
-配置完成！等一下，去小智的接入点页面，点击刷新查看
+3. 配置完成！等一下，去小智的接入点页面，点击刷新查看
 
 <img src="../../assets/img/ha-mcp-for-xiaozhi/6.png">
+
+## 如何使用
+
+重启完成后可以通过和Albee对话，语音控制比如：
+
+~~~~
+“帮我查看Home Assistant中的设备”
+“帮我打开Home Assistant中的设备x”
+~~~~
 
 ### 调试说明
 
