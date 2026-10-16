@@ -1,5 +1,5 @@
 # Home Assistant Integration Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 
 You can integrate Home Assistant through MCP plugins. Two MCP plugins are recommended below.

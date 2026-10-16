@@ -1,5 +1,5 @@
 # How to View the MAC Address
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 ## Method 1: Via the Web Page

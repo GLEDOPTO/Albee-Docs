@@ -1,5 +1,5 @@
 # MCP (Model Context Protocol) Interaction Flow
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 > [!WARNING]
 > For developers building their own server: this document is compiled from the current firmware source and details may change between versions — **always verify against the device-side source before integrating**. End users do not need to read this page.
 
@@ -151,6 +151,7 @@ MCP interaction revolves around the client (backend API) discovering and invokin
       }
       ```
     - **Pagination:** Responses are capped at roughly 8 KB. If `nextCursor` is present and non-empty, the client must send another `tools/list` request with that value in `params.cursor` to fetch the next page of tools.
+    - **Filtering:** tools disabled via the web "MCP Tools" page do not appear in `tools/list` responses (not reported to the backend, and they do not count against the backend's tool quota). If all tools on a page are disabled, that page is skipped and the next page's content is returned directly — this is normal. After a toggle changes, the device sends a `notifications/tools/list_changed` notification (see section 5).
 
 4.  **Invoking a Device Tool**
 
@@ -199,6 +200,7 @@ MCP interaction revolves around the client (backend API) discovering and invokin
       }
       ```
       Note: this implementation's error object carries a `message` field only, without a JSON-RPC numeric `code`.
+      Calling a tool disabled via the web "MCP Tools" page returns the error `Tool disabled: <tool name>` — enforced by the device, so even a backend that still caches an old tool list cannot bypass it.
 
 5.  **Device-Initiated Messages (Notifications)**
 
@@ -214,7 +216,14 @@ MCP interaction revolves around the client (backend API) discovering and invokin
         // No id field
       }
       ```
-    - **Status in this firmware:** the device currently only sends responses to backend requests (`ReplyResult` / `ReplyError` via `Application::SendMcpMessage`); no device-initiated MCP notifications are sent. The `SendMcpMessage` path exists if a future feature needs them.
+    - **Status in this firmware:** besides responses to backend requests (`ReplyResult` / `ReplyError`), when a tool toggle is switched on the web "MCP Tools" page the device sends a `notifications/tools/list_changed` notification, prompting the backend to run `tools/list` again:
+      ```json
+      {
+        "jsonrpc": "2.0",
+        "method": "notifications/tools/list_changed"
+      }
+      ```
+      The notification carries no `params` and no `id`; handling it is optional for the backend — unrecognized notifications are simply ignored (tool changes then take effect on the next `tools/list` or in a new session).
     - **Backend handling:** on receiving a notification, the backend processes it but does not reply.
 
 ## Sequence Diagram
@@ -264,15 +273,15 @@ sequenceDiagram
         Note over Device: error: { message: ... }
     end
 
-    opt Device Notification
+    opt Device Notification (actually sent on tool-toggle changes)
         Device->>BackendAPI: MCP Notification
-        Note over Device: method: notifications/...
-        Note over Device: params: { ... }
+        Note over Device: method: notifications/tools/list_changed
+        Note over Device: no params, no id; the backend may ignore it
     end
 ```
 
-This document outlines the main MCP interaction flow in this project. For parameter details and tool functionality, refer to `McpServer::AddCommonTools` in `main/mcp_server.cc` and the board-level registration sites (robot motion, lights, reminders, power) listed in [`mcp-usage.md`](mcp-usage.md).
+This document outlines the main MCP interaction flow in this project. For parameter details and tool functionality, refer to `McpServer::AddCommonTools` in `main/mcp_server.cc` and the board-level registration sites (robot motion, lights, reminders, power, screen emoji) listed in [`mcp-usage.md`](mcp-usage.md).
 
 ---
 
-**Last modified:** 2026-09-10
+**Last modified:** 2026-10-16

@@ -1,5 +1,5 @@
 # Knowledge Base Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 ## Overview

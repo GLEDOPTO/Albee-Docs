@@ -1,5 +1,5 @@
 # XiaoZhi Console Configuration Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 First, go to the console: <https://xiaozhi.me/>, then click **Configure**

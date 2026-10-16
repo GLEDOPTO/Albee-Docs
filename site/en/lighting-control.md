@@ -1,5 +1,5 @@
 # Lighting Control Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 > **Compatibility note**: The lighting control feature is **fully compatible with all GLEDOPTO 2.4G RF LED strip controllers** as well as **WLED-series controllers** — no adaptation needed. Once paired/added, they are fully controllable.

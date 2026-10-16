@@ -1,5 +1,5 @@
 # Head LED Effects Change Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 
 For what each effect means, see [Device States & LED Indicators](./device-led-states.md) — each effect corresponds to a different device state.

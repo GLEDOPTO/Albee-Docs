@@ -3,3 +3,4 @@
 
 # WorkBuddy local session data
 .workbuddy/
+*.patch

@@ -1,5 +1,5 @@
 # MQTT + UDP Hybrid Communication Protocol
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 > [!WARNING]
 > For developers building their own server: this document is compiled from the current firmware source and details may change between versions — **always verify against the device-side source before integrating**. End users do not need to read this page.
 

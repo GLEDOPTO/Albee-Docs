@@ -1,6 +1,6 @@
 # How to Get the MCP Access-Point Address
 
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 1. Log in to the XiaoZhi console: https://xiaozhi.me/
 2. Select your device

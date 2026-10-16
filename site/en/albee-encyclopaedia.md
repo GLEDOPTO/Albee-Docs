@@ -30,13 +30,13 @@
 |---|---|
 | [Lighting Control Guide](lighting-control.md) | Control GLEDOPTO 2.4G RF LED strips and WLED controllers from the built-in web page (`http://<robot-ip>/light`), by voice, or via the HTTP API. Covers pairing, groups, naming, and the full API reference. |
 | [Alarm & Reminder Guide](alarm-reminder.md) | Voice-controlled reminders: one-time countdown, daily, weekly, and interval repeats. Trigger behavior (ring pattern, pause between rounds, auto-stop), limits, and persistence. |
-| [Emoji Change Guide](expression-change-guide.md) | Two ways to change the screen emoji: online via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
+| [Emoji Change Guide](expression-change-guide.md) | Three ways to change the screen emoji: the device web page (`http://<device-ip>/emoji`) for online upload/replace/delete (v2.0.5+, recommended), via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
 | [Network Change Guide](change-network.md) | Three ways to switch Wi-Fi: single-click the function button during the blue flowing-LED phase, switch to a saved network via the web page (`http://<device-ip>/network`), or scan and join a new network (with password-box rules). |
 | [Device States & LED Indicators](device-led-states.md) | The mapping table of 11 device states to 9 LED behaviors, the factory-default state → effect mapping (scroll / blink / fade-out / solid / breathe / rainbow), and brightness scaling notes. |
 | [Head LED Effects Change Guide](head-led-effects.md) | Change the head LED effects online via the web page (`http://<device-ip>/led`); for developers: slots, effects, animation implementation, and NVS packing format in `led_config.cc` / `circular_strip.cc` (with a pitfall checklist). |
 | [Servo Calibration Guide](servo-calibration.md) | Correct the reset-pose deviation of the four servos: fine-tune by ±1° via the web page (`http://<device-ip>/robot`), servo-to-button mapping, and the leg scale mark (lay the robot down while adjusting). |
 | [Local OTA Upgrade Guide](local-ota.md) | Upgrade the firmware locally via the device's built-in web page (`http://<device-ip>/update`) by uploading a `.ota` file — no PC flashing needed. |
-| [Built-in Web Console Overview](web-console.md) | Entry point for the built-in pages: what `/light`, `/network`, `/led`, `/robot`, `/info` and `/update` do, prerequisites, and FAQ. |
+| [Built-in Web Console Overview](web-console.md) | Entry point for the built-in pages: what `/`, `/light`, `/network`, `/led`, `/emoji`, `/robot`, `/info`, `/update`, `/alarm`, `/mcp`, `/settings` and `/foot` do, prerequisites, and FAQ. |
 | [Find the Device IP Address](check-device-ip.md) | Read this before opening any web page: three ways to get the IP — ask by voice, router admin page, or serial log. |
 
 ## 3. Troubleshooting & Support
@@ -99,4 +99,4 @@
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-10-16

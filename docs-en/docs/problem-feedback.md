@@ -1,5 +1,5 @@
 # Device Freeze or Reboot Feedback Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 If your device freezes or reboots unexpectedly, please send an email to [service@gledopto.com](mailto:service@gledopto.com) with the following information:

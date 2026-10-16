@@ -1,5 +1,5 @@
 # OTA API
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 
 > End-user note: you don't need the server to upgrade the firmware — upload a `.ota` file via the device's built-in web page. See the [Local OTA Upgrade Guide](local-ota.md).

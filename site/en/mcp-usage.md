@@ -1,5 +1,5 @@
 # MCP IoT Control Usage Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.4+ (tool toggles and `self.screen.show_emoji` require v2.0.5+) ｜ Audience: Developer
 
 
 > This document explains how to control this ESP32 desktop robot via MCP (Model Context Protocol). For wire-level protocol details, see [`mcp-protocol.md`](mcp-protocol.md).
@@ -39,12 +39,13 @@ void AddUserOnlyTool(const std::string& name,
 - **callback**: execution logic invoked when the backend calls the tool. `ReturnValue` supports bool, int, string, JSON text (`cJSON*`), and image content (`ImageContent*`, e.g. screen snapshots).
 - **user-only tools**: registered via `AddUserOnlyTool`, these are device-owner/admin tools (e.g. `self.reboot`, `self.upgrade_firmware`, `self.screen.snapshot`). They only appear in `tools/list` responses when the request sets `"withUserTools": true`.
 
-Framework built-ins (device status, volume, brightness, camera, etc.) are registered in `McpServer::AddCommonTools()` / `AddUserOnlyTools()` in `main/mcp_server.cc`. Board-specific tools are registered at:
+Framework built-ins (device status, volume, brightness, etc.) are registered in `McpServer::AddCommonTools()` / `AddUserOnlyTools()` in `main/mcp_server.cc`. Board-specific tools are registered at:
 
 - `RobotController::RegisterMcpTools()` — `main/boards/gledopto-robot/robot_controller.cc` (motion, battery)
 - `LightController::RegisterMcpTools()` — `main/boards/gledopto-robot/light/light_controller.cc` (light groups, RF pairing)
 - `InitializeAlarmMcpTools()` — `main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc` (reminders/alarms)
 - `InitializePowerManager()` — `main/boards/gledopto-robot/gledopto_robot.cc` (power control)
+- `InitializeEmojiMcpTool()` — `main/boards/gledopto-robot/gledopto_robot.cc` (on-screen emoji playback `self.screen.show_emoji`, v2.0.5+)
 
 ## Tool Catalog
 
@@ -71,6 +72,12 @@ The complete set of tools registered by this firmware, grouped by module. Params
 | Tool | Parameters | Description |
 |---|---|---|
 | `self.power.control` | `action` str: `shutdown` (default) / `restart` (`reboot` is accepted as an alias of `restart`) | Power the robot off or reboot it. |
+
+### Screen-emoji tool (`main/boards/gledopto-robot/gledopto_robot.cc`, v2.0.5+)
+
+| Tool | Parameters | Description |
+|---|---|---|
+| `self.screen.show_emoji` | `name` str (emoji name, default `happy`; must match `^[a-z][a-z0-9_-]{0,26}$`) | Play an emoji animation by name on the screen — covers all built-in emoji (happy/sad/angry/sleepy, etc.) and custom emoji uploaded via the `/emoji` web page (see the [Emoji Change Guide](expression-change-guide.md)). Returns `true` on success; a name that is "uploaded but not applied" returns `error: '<name>' is staged but not applied yet — apply the pending list on the /emoji web page first`; an unknown name returns `error: unknown emoji '<name>'. Available: <all available emoji names>`. |
 
 ### Light tools (`main/boards/gledopto-robot/light/light_controller.cc`)
 
@@ -114,6 +121,32 @@ Only returned by `tools/list` when the request sets `"withUserTools": true`.
 | `self.camera.take_photo` | Not registered on this board (no camera). |
 | `self.screen.set_theme` | Removed from the source (historically disabled via `#if 0`). |
 | `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | Removed from the source (historically disabled via `#if 0`); RF pairing/clearing is done via the web page's HTTP endpoints (`/api/light/pair`, `/api/light/clear`), which are always available. |
+
+## Tool Toggles (web management, v2.0.5+)
+
+Starting from firmware v2.0.5 the built-in web adds an "MCP Tools" page (`http://<device-ip>/mcp`) where you can toggle individual MCP tools available to the voice assistant:
+
+- The **Manage tools** master switch at the top of the page defaults to **off** (NVS `mcp` namespace, `manage` key, default `false`). While it is off, the tool list is greyed out and non-operable, all tools stay enabled, and the voice assistant is unaffected.
+- Individual tools can only be toggled after the master switch is turned on; **turning the master switch off re-enables all tools automatically**.
+- User-only tools (registered via `AddUserOnlyTool`, e.g. `self.reboot`) never appear on this page and cannot be toggled here; tools on a backend-built MCP access point never pass through the device either and are out of scope.
+- Toggle states persist in the NVS `mcp` namespace `disabled_tools` key (a comma-separated list of tool names); a factory reset clears the namespace and restores all tools to enabled.
+
+Behavior details:
+
+- Disabled tools **do not appear in `tools/list` responses** — they are not reported to the backend and do not count against the backend's tool quota (equivalent to compile-time trimming, but reversible and without a reboot).
+- Even if the backend has cached an old tool list, a `tools/call` to a disabled tool is rejected by the device with the error `Tool disabled: <tool name>`.
+- After every toggle the device sends a `notifications/tools/list_changed` notification prompting the backend to re-fetch the list (the backend may ignore it; see section 5 of the [protocol document](mcp-protocol.md)).
+- **When it takes effect**: new sessions, no device reboot needed. If the AI still says "no such feature" after reopening the conversation, start a new conversation and try again.
+
+HTTP endpoints (`main/boards/gledopto-robot/web/web_mcp_api.cc`):
+
+| Request | Description |
+|---|---|
+| `GET /api/mcp/tools` | Returns `{"success":true,"manage":<bool>,"tools":[{"name","description","enabled"},...]}` (user-only tools not included) |
+| `POST /api/mcp/tools`, body `{"manage": true/false}` | Toggle the master switch; setting `false` re-enables all tools automatically |
+| `POST /api/mcp/tools`, body `{"name":"<tool>","enabled":true/false}` | Toggle one tool; with the master switch off it errors `tool management is off`, unknown tools error `unknown tool: <name>` |
+
+Note: if a console PIN is set on the device, POSTs must unlock first (`POST /api/auth/unlock`) before changing toggles; GET is unaffected.
 
 ## Registration Examples
 

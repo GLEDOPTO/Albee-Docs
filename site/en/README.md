@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project is a derivative development based on version 2.0.4 of the Xiaozhi AI chatbot.
+This project is a derivative development based on the Xiaozhi AI chatbot; the current firmware version is 2.0.5.
 
 > 🚀 **New user? Start here: [Device Activation Guide](device-activation.md)** — the complete walkthrough from unboxing to your first conversation.
 
@@ -60,7 +60,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 **Customization**
 
-- Customizable emojis and chat backgrounds: change online via the console, or replace the firmware emoji assets and rebuild (see the [Emoji Change Guide](expression-change-guide.md)); online editing also available with the [Custom Assets Generator](https://github.com/78/xiaozhi-assets-generator)
+- Customizable emojis and chat backgrounds: upload/replace/delete online via the device web page (`http://<device-ip>/emoji`, v2.0.5+), change via the console, or replace the firmware emoji assets and rebuild (see the [Emoji Change Guide](expression-change-guide.md)); online editing also available with the [Custom Assets Generator](https://github.com/78/xiaozhi-assets-generator)
 
 ## Hardware
 
@@ -147,7 +147,7 @@ We hope this project helps everyone understand AI hardware development and apply
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-10-16
 
 ---
 

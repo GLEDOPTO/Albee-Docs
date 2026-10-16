@@ -1,5 +1,5 @@
 # MCP IoT 控制使用指南
-> 适用固件：Albee v2.0.4 及以上 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
 
 
 > 本文档介绍如何通过 MCP（Model Context Protocol）控制这台 ESP32 桌面机器人。线级协议细节请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
@@ -39,12 +39,13 @@ void AddUserOnlyTool(const std::string& name,
 - **callback**：后端调用该工具时执行的逻辑。`ReturnValue` 支持 bool、int、string、JSON 文本（`cJSON*`）与图片内容（`ImageContent*`，如屏幕截图）。
 - **仅用户可用工具**：通过 `AddUserOnlyTool` 注册，属于设备所有者/管理员工具（如 `self.reboot`、`self.upgrade_firmware`、`self.screen.snapshot`）。只有当 `tools/list` 请求设置 `"withUserTools": true` 时才会出现在响应中。
 
-框架内置工具（设备状态、音量、亮度、摄像头等）注册在 `main/mcp_server.cc` 的 `McpServer::AddCommonTools()` / `AddUserOnlyTools()` 中。板级专用工具注册位置：
+框架内置工具（设备状态、音量、亮度等）注册在 `main/mcp_server.cc` 的 `McpServer::AddCommonTools()` / `AddUserOnlyTools()` 中。板级专用工具注册位置：
 
 - `RobotController::RegisterMcpTools()` —— `main/boards/gledopto-robot/robot_controller.cc`（运动、电池）
 - `LightController::RegisterMcpTools()` —— `main/boards/gledopto-robot/light/light_controller.cc`（灯组、RF 配对）
 - `InitializeAlarmMcpTools()` —— `main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc`（提醒/闹钟）
 - `InitializePowerManager()` —— `main/boards/gledopto-robot/gledopto_robot.cc`（电源控制）
+- `InitializeEmojiMcpTool()` —— `main/boards/gledopto-robot/gledopto_robot.cc`（屏幕表情点播 `self.screen.show_emoji`）
 
 ## 工具目录
 
@@ -71,6 +72,12 @@ void AddUserOnlyTool(const std::string& name,
 | 工具 | 参数 | 说明 |
 |---|---|---|
 | `self.power.control` | `action` str：`shutdown`（默认）/ `restart`（`reboot` 为 `restart` 的别名，同样受支持） | 机器人关机或重启。 |
+
+### 屏幕表情工具（`main/boards/gledopto-robot/gledopto_robot.cc`）
+
+| 工具 | 参数 | 说明 |
+|---|---|---|
+| `self.screen.show_emoji` | `name` str（表情名，默认 `happy`；须匹配 `^[a-z][a-z0-9_-]{0,26}$`） | 按名字在屏幕上播放表情动画，涵盖全部内置表情（happy/sad/angry/sleepy 等）与用户经 `/emoji` 网页上传的自定义表情（见[更改表情指南](更改表情指南.md)）。成功返回 `true`；名字"已上传未应用"时返回 `error: '<name>' is staged but not applied yet — apply the pending list on the /emoji web page first`；未知名字返回 `error: unknown emoji '<name>'. Available: <全部可用表情名>`。 |
 
 ### 灯光工具（`main/boards/gledopto-robot/light/light_controller.cc`）
 
@@ -114,6 +121,32 @@ void AddUserOnlyTool(const std::string& name,
 | `self.camera.take_photo` | 本板未注册（无摄像头）。 |
 | `self.screen.set_theme` | 源码中已移除（历史上曾以 `#if 0` 禁用）。 |
 | `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | 源码中已移除（历史上曾以 `#if 0` 禁用）；RF 配对/清除通过网页的 HTTP 接口完成（`/api/light/pair`、`/api/light/clear`），始终可用。 |
+
+## 工具开关（网页管理）
+
+内置网页提供 "MCP Tools" 页面（`http://<设备IP>/mcp`），可逐个开关语音助手可用的 MCP 工具：
+
+- 页面顶部的 **Manage tools** 总开关默认**关闭**（NVS `mcp` 命名空间 `manage` 键，默认 `false`）。总开关关闭时工具列表灰显、不可操作，所有工具保持开启，语音助手不受影响。
+- 打开总开关后才能单独启停工具；**关闭总开关会自动重新启用全部工具**。
+- 仅用户可用工具（`AddUserOnlyTool` 注册，如 `self.reboot`）不出现在该页面，也不能从这里开关；后端自建 MCP 接入点的工具同样不经设备、不在此列。
+- 开关状态持久化在 NVS `mcp` 命名空间 `disabled_tools` 键（逗号分隔的工具名列表）；恢复出厂设置会清空该命名空间，全部工具恢复默认开启。
+
+行为细节：
+
+- 被禁用的工具**不出现在 `tools/list` 响应中**——不上报后端，也不占用后端的工具数量配额（等同编译期裁掉，但可逆且免重启）。
+- 即使后端缓存了旧工具列表，`tools/call` 调用已禁用工具也会被设备拒绝，错误消息为 `Tool disabled: <工具名>`。
+- 每次切换后设备主动发送 `notifications/tools/list_changed` 通知，提示后端重新拉取列表（后端可忽略，详见[协议文档](MCP协议交互流程.md)第 5 节）。
+- **生效时机**：新会话生效，无需重启设备。若重新打开对话后 AI 仍说"没有这个功能"，请开启新对话再试。
+
+HTTP 接口（`main/boards/gledopto-robot/web/web_mcp_api.cc`）：
+
+| 请求 | 说明 |
+|---|---|
+| `GET /api/mcp/tools` | 返回 `{"success":true,"manage":<bool>,"tools":[{"name","description","enabled"},...]}`（不含仅用户可用工具） |
+| `POST /api/mcp/tools`，body `{"manage": true/false}` | 切换管理总开关；置 `false` 时自动重新启用全部工具 |
+| `POST /api/mcp/tools`，body `{"name":"<工具名>","enabled":true/false}` | 切换单个工具；总开关关闭时报错 `tool management is off`，未知工具报 `unknown tool: <名>` |
+
+注：若设备设置了控制台 PIN，POST 需先解锁（`POST /api/auth/unlock`）才能修改开关；GET 不受影响。
 
 ## 注册示例
 
@@ -201,4 +234,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**文档最新修改时间：** 2026-10-13
+**文档最新修改时间：** 2026-10-16

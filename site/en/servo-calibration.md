@@ -1,5 +1,5 @@
 # Servo Calibration Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 > Why calibrate? In the reset pose the robot stands upright with all four servos at 90°. For various reasons the reset pose may have a slight deviation, which can make the robot walk incorrectly.

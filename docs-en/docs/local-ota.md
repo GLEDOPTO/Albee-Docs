@@ -1,5 +1,5 @@
 # Local OTA Upgrade Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 > Developer note: to trigger OTA upgrades from a server (backend integration), see the [OTA API](./ota-api.md).

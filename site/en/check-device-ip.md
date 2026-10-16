@@ -1,12 +1,12 @@
 # Find the Device IP Address
 
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 Opening any of Albee's built-in web pages (lighting control, network switching, LED effects, servo calibration, local update) requires knowing its IP address. Pick whichever of the three methods below suits you.
 
 ## Method 1: just ask (quickest)
 
-Wake Albee (say "Hi Albee" or single-tap the function button), then say any of the following — it will speak the address and show it on screen:
+Wake Albee (say "Hi Albee" or single-tap the function button), then say any of the following — it will speak the address and show it on screen for about 15 seconds:
 
 - "What is your IP address?"
 - "Announce your IP address"
@@ -49,4 +49,4 @@ I (11563) WifiStation: Got IP: 192.168.0.171
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-16

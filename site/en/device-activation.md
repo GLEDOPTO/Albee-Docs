@@ -1,5 +1,5 @@
 # Device Activation Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 ## Part 1: Buttons and Controls
@@ -18,7 +18,7 @@ Albee has **two physical buttons** and **one touch area**:
 | --- | --- |
 | Single-click | ① stop a ringing alarm; ② start or end a conversation round; ③ if Wi-Fi never connects after power-on, single-click to re-enter provisioning mode (no power cycle needed) |
 | Double-click | Toggle **real-time barge-in** (once on, just speak to interrupt the reply) |
-| Long-press 10 s | Factory reset: erases Wi-Fi credentials, alarms, light groups and all other user settings, then reboots automatically; Wi-Fi provisioning is required again after the reboot |
+| Long-press 10 s | Factory reset: erases Wi-Fi credentials, alarms, light groups, MCP tool toggles and all other user settings, then reboots automatically; Wi-Fi provisioning is required again after the reboot |
 
 > [!WARNING]
 > A 10-second long-press wipes every user setting and reboots the robot immediately — **avoid pressing it by accident** (for example when the robot is packed in a bag or the button is held down).
@@ -29,11 +29,11 @@ Albee has **two physical buttons** and **one touch area**:
 
 <img src="assets/img/device-activation/1.png" width="560">
 
-2. **Connect to the device hotspot**: After startup, Albee's screen shows a Wi-Fi hotspot named **Albee-xxxx**. Find and connect to this hotspot in your phone's Wi-Fi settings.
+2. **Connect to the device hotspot**: After startup, Albee's screen shows a Wi-Fi hotspot named **Albee-xxxx** (from v2.0.5 the whole screen shows the hotspot name and the provisioning address `192.168.4.1`). Find and connect to this hotspot in your phone's Wi-Fi settings.
 
 <img src="assets/img/device-activation/8.png" width="360">
 
-3. **Open the configuration page**: Once connected, the configuration page usually opens automatically on your phone. If it does not pop up, open the browser on your phone, type `192.168.4.1` in the address bar, and visit it. On the configuration page, select or enter the Wi-Fi name (SSID) you want to connect to, and enter the corresponding password.
+3. **Open the configuration page**: Once connected, the configuration page usually opens automatically on your phone. If it does not pop up, open the browser on your phone, type `192.168.4.1` in the address bar, and visit it. On the configuration page, select or enter the Wi-Fi name (SSID) you want to connect to, and enter the corresponding password (click the eye icon next to the password box to show/hide it).
 
 <img src="assets/img/device-activation/9.png" width="480">
 
@@ -42,7 +42,7 @@ Albee has **two physical buttons** and **one touch area**:
 
 ## Part 3: Activate the Device
 
-After the Wi-Fi is configured, an unactivated device will announce a six-digit activation code after restarting; the code is also shown on the screen.
+After the Wi-Fi is configured, an unactivated device will speak the six-digit activation code digit by digit after restarting, and the screen shows it in full: large digits grouped in three (e.g. `482 917`), along with the login URL xiaozhi.me (from v2.0.5).
 
 1. Visit <https://xiaozhi.me/>
 
@@ -134,4 +134,4 @@ For more, see the [Albee Encyclopaedia](albee-encyclopaedia.md).
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-10-16

@@ -1,6 +1,6 @@
 # Firmware Flashing Guide
 
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 Two options: flash with the Flash Download Tool on a computer (no IDF environment required), or flash through a web browser. For routine upgrades, [local OTA](local-ota.md) is easier — upload an `.ota` file in the web page, no computer needed.
 

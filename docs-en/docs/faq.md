@@ -1,6 +1,6 @@
 # Albee Desktop Robot FAQ
 
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 Jump to a section: [Buttons and controls](#1-buttons-and-controls) · [Network](#2-network) · [Voice and conversation](#3-voice-and-conversation) · [Lights and motion](#4-lights-and-motion) · [Account and activation](#5-account-and-activation) · [Upgrade and troubleshooting](#6-upgrade-and-troubleshooting)
 
@@ -12,7 +12,7 @@ A: Two physical buttons plus one touch area. Long-press the power button for 3 s
 
 **Q: How do I perform a factory reset?**
 
-A: Long-press the function button for 10 s. The device erases Wi-Fi credentials, alarms, light groups and every other user setting, then reboots automatically; Wi-Fi must be configured again after the reboot. **Avoid pressing it by accident** (holding the button down triggers it).
+A: Long-press the function button for 10 s. The device erases Wi-Fi credentials, alarms, light groups, MCP tool toggles and every other user setting, then reboots automatically; Wi-Fi must be configured again after the reboot. **Avoid pressing it by accident** (holding the button down triggers it).
 
 ## 2. Network
 
@@ -32,7 +32,7 @@ A: See [Find the Device IP Address](./check-device-ip.md) — ask by voice, chec
 
 **Q: How do I adjust the volume?**
 
-A: Just say "set the volume to 50" or "turn the volume up a bit" (1–100%); you can also use the MCP tool `set_volume` — see the [MCP Usage Guide · Tool Catalog](./mcp-usage.md#tool-catalog).
+A: Just say "set the volume to 50" or "turn the volume up a bit" (1–100%); you can also use the MCP tool `self.audio_speaker.set_volume` — see the [MCP Usage Guide · Tool Catalog](./mcp-usage.md#tool-catalog).
 
 **Q: Can it play music?**
 
@@ -98,6 +98,10 @@ A: Contact support by email to unbind it — see [Account and Device Help](./acc
 
 A: Upload an `.ota` file through the built-in web page — no computer flashing required. See the [Local OTA Guide](./local-ota.md).
 
+**Q: The robot keeps saying it cannot connect to the server. What should I do?**
+
+A: First check whether Wi-Fi works and the router has internet. When the server is unreachable, Albee shows an error on screen and speaks "Cannot connect to the server, please check the network or restart the device"; if it stays unreachable, the prompt repeats about every 10 seconds, up to 6 times, then it waits quietly. **Usually no restart is needed** (v2.0.5+): the device retries automatically at intervals and usually recovers within a minute once the network or server is back; if the drop happens mid-conversation, the device ends the current conversation, returns to standby, and then reconnects. Only restart the device if it stays down for several minutes.
+
 **Q: The device freezes or reboots on its own?**
 
 A: Follow the [Freeze / Reboot Reporting Guide](./problem-feedback.md) to collect the boot reason and logs, then email them to support.
@@ -110,4 +114,4 @@ A: Follow the [Freeze / Reboot Reporting Guide](./problem-feedback.md) to collec
 
 ---
 
-**Last modified:** 2026-10-10
+**Last modified:** 2026-10-16

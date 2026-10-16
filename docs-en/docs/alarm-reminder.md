@@ -1,5 +1,5 @@
 # Alarm & Reminder Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 This document describes the voice usage and trigger behavior of the robot's alarm/reminder feature. The feature is implemented on top of the MCP protocol (the three tools `add_reminder` / `delete_reminder` / `list_reminders`; see [mcp-usage.md](./mcp-usage.md) for the protocol). The code lives in `main/boards/gledopto-robot/alarm/`.

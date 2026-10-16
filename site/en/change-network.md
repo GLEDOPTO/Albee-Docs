@@ -1,5 +1,5 @@
 # Network Change Guide
-> Firmware: Albee v2.0.4 or later ｜ Audience: End user
+> Firmware: Albee v2.0.5 ｜ Audience: End user
 
 
 ## Method 1: Switch via the Button

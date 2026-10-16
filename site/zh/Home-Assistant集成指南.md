@@ -1,5 +1,5 @@
 # Home Assistant 集成指南
-> 适用固件：Albee v2.0.4 及以上 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
 
 
 你可以通过 MCP 插件接入 Home Assistant。下面推荐两个 MCP 插件。

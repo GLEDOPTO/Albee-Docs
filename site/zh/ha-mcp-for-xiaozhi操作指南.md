@@ -1,6 +1,6 @@
 # ha-mcp-for-xiaozhi操作指南
 
-> 适用固件：Albee v2.0.4 及以上 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
 
 ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
@@ -89,7 +89,7 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 2. 尽量使用最新版本的homeassistant，单单看5月版本跟3月版本提供的工具就有明显差异
 
-3. 调试时未达到预期，优先看小智的聊天记录，看看小智对这句指令如何处理的，是否有调用homeassistant的工具。目前已知比较大的问题是灯光控制和音乐控制会和内置的屏幕控制、音乐控制逻辑冲突，需要等下个月虾哥服务器支持内置工具选择后可解。
+3. 调试时未达到预期，优先看小智的聊天记录，看看小智对这句指令如何处理的，是否有调用homeassistant的工具。目前已知比较大的问题是灯光控制和音乐控制会和内置的屏幕控制、音乐控制逻辑冲突，需要等下个月虾哥服务器支持内置工具选择后可解。也可直接在设备网页 `http://设备IP/mcp` 关闭冲突的内置工具（如灯组工具），让小智改用 Home Assistant 侧工具；开关在新对话中生效（参见[MCP控制使用指南](MCP控制使用指南.md)）。
 
 4. 如果流程正确的调用了ha内置的function，可以打开本插件的调试日志再去观测实际的执行情况
 
@@ -104,4 +104,4 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 ---
 
-**文档最新修改时间：** 2026-10-13
+**文档最新修改时间：** 2026-10-16

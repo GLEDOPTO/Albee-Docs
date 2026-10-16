@@ -1,5 +1,5 @@
 # Firmware Compilation Tutorial
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 
 This document describes how to compile and flash the GLEDOPTO Robot (ESP32-S3 desktop robot) firmware from source, and how to use the common build configurations and helper scripts.
@@ -88,13 +88,13 @@ The recommended way is Espressif's official VSCode extension, which downloads an
 
 | Path | Description |
 | ---------------------------------- | ------------------------------------------------------------ |
-| `CMakeLists.txt` | Project name `Albee`, version `PROJECT_VER` (currently 2.0.4; the merge script reads the version from here) |
+| `CMakeLists.txt` | Project name `Albee`, version `PROJECT_VER` (currently 2.0.5; the merge script reads the version from here) |
 | `main/` | Application source code; `main/Kconfig.projbuild` defines the project-specific build options |
 | `main/boards/gledopto-robot/` | The only supported board code (light control / alarm clock / foot sensor / web control, etc.) |
 | `partitions/v2/16m.csv` | Partition table (16 MB flash, dual OTA + assets partitions) |
 | `sdkconfig` / `sdkconfig.defaults` | Current active configuration / default baseline |
 | `scripts/` | Build helper scripts (language generation, assets packing, etc.) |
-| `extracted_emojis/` | Emoji assets (`normal/` ≈ 444 KB, `large/` ≈ 912 KB) |
+| `extracted_emojis/` | Emoji assets (`normal/` ≈ 444 KB; `large/` ≈ 752 KB with 26 GIFs — recompressed in v2.0.5 with a new `power-on.gif`) |
 | `managed_components/` | Third-party components downloaded automatically by the component manager — do not modify them manually |
 
 Partition table layout (`partitions/v2/16m.csv`):
@@ -215,6 +215,7 @@ If `generated_assets.bin` is missing, the script warns that "the device will boo
 | Tool | Purpose |
 | --------------------------- | ------------------------------------------------------------ |
 | `./robot_bin.sh` | Sync the 5 firmware artifacts from `build/` to `firmware/` (clears the directory first, then copies; errors out if any file is missing) |
+| `idf.py ota` (`scripts/make_ota.py`) | Produces the web-upload firmware package `OTA/Albee_<version>.ota` plus a `<build_time>.txt` in the same directory (build date/time + git tag + first 8 hex chars of the app elf sha256, matching the `build_time` in the device's `/api/system/info` — used to tell apart different builds of the same version); each run first clears the `OTA/` directory, keeping only the latest output |
 | `python scripts/release.py` | Calls `idf.py merge-bin` to merge the bootloader / partition table / OTA data / firmware / assets into a single file, automatically output to `releases/Albee_all_<version>.bin` (the version comes from `PROJECT_VER` in `CMakeLists.txt`); suitable for production flashing or distribution |
 
 `release.py` must be run with the ESP-IDF environment activated (it calls `idf.py` internally). Without arguments it runs in "package the current build directory" mode:
@@ -248,4 +249,4 @@ python scripts/release.py gledopto-robot --name gledopto-robot # build only the 
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-10-16

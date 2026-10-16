@@ -1,5 +1,5 @@
 # MCP（Model Context Protocol）交互流程
-> 适用固件：Albee v2.0.4 及以上 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
 > [!WARNING]
 > 面向自建服务端的开发者：本篇基于当前固件代码整理，协议细节可能随版本演进，**对接前请以设备端源码为准**。普通用户无需阅读本篇。
 
@@ -151,6 +151,7 @@ MCP 交互围绕客户端（后端 API）发现并调用设备上的"工具"展�
       }
       ```
     - **分页：** 响应大小上限约 8 KB。如果存在非空的 `nextCursor`，客户端必须以该值作为 `params.cursor` 再次发送 `tools/list` 请求，获取下一页工具。
+    - **过滤：** 通过网页 "MCP Tools" 页禁用的工具不会出现在 `tools/list` 响应中（不上报后端，也不占用后端的工具数量配额）。某页工具全部被禁用时该页被跳过、直接返回下一页内容，属正常现象。设备切换工具开关后会发送 `notifications/tools/list_changed` 通知（见第 5 节）。
 
 4.  **调用设备工具**
 
@@ -199,6 +200,7 @@ MCP 交互围绕客户端（后端 API）发现并调用设备上的"工具"展�
       }
       ```
       注意：本实现的错误对象只带 `message` 字段，没有 JSON-RPC 的数字 `code`。
+      调用被网页 "MCP Tools" 页禁用的工具时，错误消息为 `Tool disabled: <工具名>`——由设备端强制执行，即使后端仍缓存着旧的工具列表也无法绕过。
 
 5.  **设备主动消息（通知）**
 
@@ -214,7 +216,14 @@ MCP 交互围绕客户端（后端 API）发现并调用设备上的"工具"展�
         // 没有 id 字段
       }
       ```
-    - **本固件现状：** 设备目前只发送对后端请求的响应（通过 `Application::SendMcpMessage` 的 `ReplyResult` / `ReplyError`）；不发送设备主动的 MCP 通知。`SendMcpMessage` 通路已存在，未来功能需要时可用。
+    - **本固件现状：** 除对后端请求的响应（`ReplyResult` / `ReplyError`）外，当网页 "MCP Tools" 页切换工具开关时，设备会主动发送 `notifications/tools/list_changed` 通知，提示后端重新执行 `tools/list`：
+      ```json
+      {
+        "jsonrpc": "2.0",
+        "method": "notifications/tools/list_changed"
+      }
+      ```
+      该通知不带 `params` 和 `id`；后端是否处理是可选的，不识别则直接忽略（此时工具变化在下一次 `tools/list` 或新会话中生效）。
     - **后端处理：** 收到通知时，后端处理之但不回复。
 
 ## 时序图
@@ -264,15 +273,15 @@ sequenceDiagram
         Note over Device: error: { message: ... }
     end
 
-    opt 设备通知
+    opt 设备通知（工具开关切换时实际发送）
         Device->>BackendAPI: MCP 通知
-        Note over Device: method: notifications/...
-        Note over Device: params: { ... }
+        Note over Device: method: notifications/tools/list_changed
+        Note over Device: 无 params、无 id，后端可忽略
     end
 ```
 
-本文档概述了本项目的主要 MCP 交互流程。参数细节与工具功能请参见 `main/mcp_server.cc` 中的 `McpServer::AddCommonTools` 以及 [`MCP控制使用指南.md`](MCP控制使用指南.md) 中列出的板级注册位置（机器人运动、灯光、提醒、电源）。
+本文档概述了本项目的主要 MCP 交互流程。参数细节与工具功能请参见 `main/mcp_server.cc` 中的 `McpServer::AddCommonTools` 以及 [`MCP控制使用指南.md`](MCP控制使用指南.md) 中列出的板级注册位置（机器人运动、灯光、提醒、电源、屏幕表情）。
 
 ---
 
-**文档最新修改时间：** 2026-09-10
+**文档最新修改时间：** 2026-10-16

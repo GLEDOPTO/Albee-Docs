@@ -1,6 +1,6 @@
 # ha-mcp-for-xiaozhi Guide
 
-> Firmware: Albee v2.0.4 or later ｜ Audience: Developer
+> Firmware: Albee v2.0.5 ｜ Audience: Developer
 
 Official documentation of ha-mcp-for-xiaozhi: [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
@@ -85,7 +85,7 @@ Example of the tools available after exposing entities:/n/n<img src="assets/img/
 
 2. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 
-3. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month.
+3. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month. From firmware v2.0.5 you can also disable the conflicting built-in tools (e.g. the light-group tools) directly on the device web page `http://<device-ip>/mcp`, so XiaoZhi falls back to the Home Assistant tools; toggles take effect in a new conversation (see the [MCP Usage Guide](mcp-usage.md)).
 
 4. If the flow does call the HA built-in functions correctly, enable this integration's debug log to observe what actually executes
 
@@ -100,4 +100,4 @@ This project ships with some built-in MCP tools — for example the lighting-con
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-10-16
