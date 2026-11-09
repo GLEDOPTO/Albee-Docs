@@ -1,5 +1,5 @@
 # MCP IoT 控制使用指南
-> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.9 ｜ 适用对象：开发者
 
 
 > 本文档介绍如何通过 MCP（Model Context Protocol）控制这台 ESP32 桌面机器人。线级协议细节请参见 [`MCP协议交互流程.md`](./MCP协议交互流程.md)。
@@ -45,7 +45,6 @@ void AddUserOnlyTool(const std::string& name,
 - `LightController::RegisterMcpTools()` —— `main/boards/gledopto-robot/light/light_controller.cc`（灯组、RF 配对）
 - `InitializeAlarmMcpTools()` —— `main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc`（提醒/闹钟）
 - `InitializePowerManager()` —— `main/boards/gledopto-robot/gledopto_robot.cc`（电源控制）
-- `InitializeEmojiMcpTool()` —— `main/boards/gledopto-robot/gledopto_robot.cc`（屏幕表情点播 `self.screen.show_emoji`）
 
 ## 工具目录
 
@@ -72,12 +71,6 @@ void AddUserOnlyTool(const std::string& name,
 | 工具 | 参数 | 说明 |
 |---|---|---|
 | `self.power.control` | `action` str：`shutdown`（默认）/ `restart`（`reboot` 为 `restart` 的别名，同样受支持） | 机器人关机或重启。 |
-
-### 屏幕表情工具（`main/boards/gledopto-robot/gledopto_robot.cc`）
-
-| 工具 | 参数 | 说明 |
-|---|---|---|
-| `self.screen.show_emoji` | `name` str（表情名，默认 `happy`；须匹配 `^[a-z][a-z0-9_-]{0,26}$`） | 按名字在屏幕上播放表情动画，涵盖全部内置表情（happy/sad/angry/sleepy 等）与用户经 `/emoji` 网页上传的自定义表情（见[更改表情指南](更改表情指南.md)）。成功返回 `true`；名字"已上传未应用"时返回 `error: '<name>' is staged but not applied yet — apply the pending list on the /emoji web page first`；未知名字返回 `error: unknown emoji '<name>'. Available: <全部可用表情名>`。 |
 
 ### 灯光工具（`main/boards/gledopto-robot/light/light_controller.cc`）
 
@@ -119,6 +112,7 @@ void AddUserOnlyTool(const std::string& name,
 | 工具 | 状态 |
 |---|---|
 | `self.camera.take_photo` | 本板未注册（无摄像头）。 |
+| `self.screen.show_emoji` | 源码中已移除（v2.0.5 曾提供，用于按名字点播屏幕表情；v2.0.7 起不再注册，屏幕预览表情请用 `/emoji` 网页的预览功能）。 |
 | `self.screen.set_theme` | 源码中已移除（历史上曾以 `#if 0` 禁用）。 |
 | `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | 源码中已移除（历史上曾以 `#if 0` 禁用）；RF 配对/清除通过网页的 HTTP 接口完成（`/api/light/pair`、`/api/light/clear`），始终可用。 |
 
@@ -234,4 +228,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**文档最新修改时间：** 2026-10-16
+**文档最新修改时间：** 2026-11-09

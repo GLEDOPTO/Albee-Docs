@@ -1,5 +1,5 @@
 # Emoji Change Guide
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 
 ## 1. Via the Device Web Page (recommended, v2.0.5+)
@@ -19,7 +19,7 @@ No firmware rebuild needed — upload, replace, and delete emoji right in the br
 > **Tips:**
 > - The v2.0.5 asset package adds a boot emoji `power-on` (played for about 3 seconds before connecting, then back to neutral). It is also a built-in emoji and can be replaced on this page.
 > - Delivering an asset package via the XiaoZhi console (section 2), or recompiling and flashing the firmware (section 3), **overwrites the asset partition as a whole** — emoji uploaded via the web page will be lost.
-> - Custom emoji uploaded via the web page can also be triggered by voice: say "play emoji xxx" to the robot, or see the `self.screen.show_emoji` tool in the [MCP Usage Guide](mcp-usage.md).
+> - Tapping an emoji thumbnail on the page previews it instantly on the robot's screen (`/api/emoji/play`).
 
 ## 2. Via the XiaoZhi Console
 
@@ -65,4 +65,4 @@ Errors are uniformly `{"success":false,"error":"<reason>"}`.
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-09

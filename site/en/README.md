@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project is a derivative development based on the Xiaozhi AI chatbot; the current firmware version is 2.0.5.
+This project is a derivative development based on the Xiaozhi AI chatbot; the current firmware version is 2.0.9.
 
 > 🚀 **New user? Start here: [Device Activation Guide](device-activation.md)** — the complete walkthrough from unboxing to your first conversation.
 
@@ -147,7 +147,7 @@ We hope this project helps everyone understand AI hardware development and apply
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-09
 
 ---
 

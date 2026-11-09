@@ -1,5 +1,5 @@
 # XiaoZhi AI Developer Authentication
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 
 ## Quick Access

@@ -1,5 +1,5 @@
 # Firmware Compilation Tutorial
-> Firmware: Albee v2.0.5 ｜ Audience: Developer
+> Firmware: Albee v2.0.9 ｜ Audience: Developer
 
 
 This document describes how to compile and flash the GLEDOPTO Robot (ESP32-S3 desktop robot) firmware from source, and how to use the common build configurations and helper scripts.
@@ -88,25 +88,27 @@ The recommended way is Espressif's official VSCode extension, which downloads an
 
 | Path | Description |
 | ---------------------------------- | ------------------------------------------------------------ |
-| `CMakeLists.txt` | Project name `Albee`, version `PROJECT_VER` (currently 2.0.5; the merge script reads the version from here) |
+| `CMakeLists.txt` | Project name `Albee`, version `PROJECT_VER` (currently 2.0.9; the merge script reads the version from here) |
 | `main/` | Application source code; `main/Kconfig.projbuild` defines the project-specific build options |
 | `main/boards/gledopto-robot/` | The only supported board code (light control / alarm clock / foot sensor / web control, etc.) |
-| `partitions/v2/16m.csv` | Partition table (16 MB flash, dual OTA + assets partitions) |
+| `partitions/v3/16m.csv` | Partition table (16 MB flash, dual OTA + assets partitions) |
 | `sdkconfig` / `sdkconfig.defaults` | Current active configuration / default baseline |
 | `scripts/` | Build helper scripts (language generation, assets packing, etc.) |
-| `extracted_emojis/` | Emoji assets (`normal/` ≈ 444 KB; `large/` ≈ 752 KB with 26 GIFs — recompressed in v2.0.5 with a new `power-on.gif`) |
+| `extracted_emojis/` | Emoji assets (`normal/` — 22 GIFs (21 expressions + clock), ≈ 405 KB; `large/` — 27 GIFs (21 expressions + 6 status animations, including `power-on.gif` and `cloud_slash.gif`), ≈ 720 KB) |
 | `managed_components/` | Third-party components downloaded automatically by the component manager — do not modify them manually |
 
-Partition table layout (`partitions/v2/16m.csv`):
+Partition table layout (`partitions/v3/16m.csv`):
 
 | Partition | Type | Offset | Size |
 | -------- | ----------- | -------- | -------- |
 | nvs | data/nvs | 0x9000 | 0x4000 |
 | otadata | data/ota | 0xd000 | 0x2000 |
 | phy_init | data/phy | 0xf000 | 0x1000 |
-| ota_0 | app | 0x20000 | 0x3f0000 |
-| ota_1 | app | auto | 0x3f0000 |
-| assets | data/spiffs | 0x800000 | 8M |
+| ota_0 | app | 0x20000 | 0x4f0000 |
+| ota_1 | app | auto | 0x4f0000 |
+| assets | data/spiffs | 0xa00000 | 6M |
+
+> The v2 partition table (`partitions/v2/16m.csv`, OTA slots of 0x3f0000 each and an 8 MB assets partition at 0x800000) is the legacy layout, kept for reference only; the current `sdkconfig` points to v3.
 
 ## 4. Building
 
@@ -166,6 +168,7 @@ The project-specific options are under the **Albee** menu (defined in `main/Kcon
 | `emojis status gifs` | **y** | New status emoji hooks (low battery / WiFi / charging GIF) |
 | `enable web robot control` | **y** | The built-in web page includes the robot motion control panel (otherwise only the light control page) |
 | `robot low power limit` | y | Limit gait speed at low battery; recommended to keep enabled |
+| `mcp slim tool prompts` | **y** | Slim MCP tool prompts: shortens the tool description text reported to the backend, saving prompt overhead |
 | `foot sensor cfg download` | **y** | Compile in the foot LTR-553 register configuration download (enable only when tuning sensor parameters) |
 | `enable debug log` | y | Master switch for all module logs |
 
@@ -198,7 +201,7 @@ If flashing repeatedly prints `Connecting........_____` and never connects, ente
 ./robot_flash.sh /dev/ttyUSB0 # specify the serial port
 ```
 
-This script calls esptool directly and flashes at fixed addresses (16 MB flash, DIO, 80 MHz):
+This script calls esptool directly (16 MB flash, DIO, 80 MHz). Flash addresses are **no longer hard-coded**: the script reads them from `build/flash_args`, which is generated from the partition table, so the real assets offset follows the layout. Addresses under the current v3 layout:
 
 | Image | Flash address |
 | -------------------- | -------- |
@@ -206,7 +209,10 @@ This script calls esptool directly and flashes at fixed addresses (16 MB flash, 
 | partition-table.bin | 0x8000 |
 | ota_data_initial.bin | 0xd000 |
 | Albee.bin | 0x20000 |
-| generated_assets.bin | 0x800000 |
+| generated_assets.bin | 0xa00000 |
+
+> [!WARNING]
+> Never reuse the v2-era hand-copied `0x800000` for the assets image — under the v3 layout that address falls inside the ota_1 app partition, writing the emoji image into the app slot and leaving the assets partition blank.
 
 If `generated_assets.bin` is missing, the script warns that "the device will boot without emojis" and asks for confirmation.
 
@@ -234,7 +240,7 @@ python scripts/release.py gledopto-robot                       # build all varia
 python scripts/release.py gledopto-robot --name gledopto-robot # build only the specified variant
 ```
 
-> Note: Board mode resets and appends configuration according to `config.json` (gledopto-robot variants append `CONFIG_USE_DEVICE_AEC=y`, `CONFIG_USE_WAKE_WORD_DETECT=n`, etc.), so the result may differ from your daily build artifacts after manually editing `sdkconfig`.
+> Note: Board mode resets and appends configuration according to `config.json` (gledopto-robot variants append `CONFIG_USE_DEVICE_AEC=y`, `CONFIG_USE_AUDIO_CODEC_ENCODE_OPUS=y`, `CONFIG_WAKE_WORD_DISABLED=y`, `CONFIG_USE_AUDIO_PROCESSOR=n`), so the result may differ from your daily build artifacts after manually editing `sdkconfig`.
 
 ## 8. FAQ
 
@@ -249,4 +255,4 @@ python scripts/release.py gledopto-robot --name gledopto-robot # build only the 
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-09

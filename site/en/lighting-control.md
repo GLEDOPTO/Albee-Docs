@@ -1,5 +1,5 @@
 # Lighting Control Guide
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 
 > **Compatibility note**: The lighting control feature is **fully compatible with all GLEDOPTO 2.4G RF LED strip controllers** as well as **WLED-series controllers** — no adaptation needed. Once paired/added, they are fully controllable.
@@ -85,14 +85,14 @@ Click a group name input box to open the edit dialog:
 
   **Other notes**
 
-  - Renaming takes effect immediately and does not require re-pairing: RF lights keep working after a rename; for WLED lights, the devices in the group automatically migrate to the new name, with no need to re-add them.
+  - Renaming takes effect immediately and does not require re-pairing: RF lights keep working after a rename; for WLED lights, the devices in the group automatically migrate to the new name, with no need to re-add them. Renames are pushed instantly to any other open lighting pages (other devices with the page open see the new name right away).
   - Voice matching is fairly lenient: spaces and punctuation are ignored, case is ignored, and Chinese numerals are converted automatically ("the first group" equals "group 1"). A similarity of 80% or more is enough to hit. The more colloquial the name, the smoother the voice control.
   - A group name is a label stored on the robot itself; it is not written into the light's pairing code. After replacing the robot, you must rename and re-pair on the new one.
   - After renaming groups or changing the number of groups, voice control follows the names currently shown on the web page; if you say a wrong name, the robot suggests similar group names.
 
 ### 3.4 Number of Displayed Groups (+/-)
 
-The **+ / -** buttons at the bottom of the last group card increase or decrease the number of groups shown on the page (1–4). This is only a **browser-local display setting** (stored in localStorage) and does not affect the groups already paired inside the robot.
+The **+ / -** buttons at the bottom of the last group card increase or decrease the number of groups shown on the page (1–4). The count is stored **on the robot** (NVS key `gcount` — the same state the `POST /api/light/count` endpoint writes), so every browser or phone sees the same number; it only controls how many group cards the page renders and never touches the lamps already paired in each group. Older firmware stored this count in the browser's localStorage; the new version migrates the legacy value to the robot and clears the local copy on first visit.
 
 ### 3.5 Clearing Pairing (Clear / Clear All)
 
@@ -206,4 +206,4 @@ curl -X POST http://192.168.1.50/api/wled/group/control \
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-11-09

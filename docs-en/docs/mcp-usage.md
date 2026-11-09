@@ -1,5 +1,5 @@
 # MCP IoT Control Usage Guide
-> Firmware: Albee v2.0.4+ (tool toggles and `self.screen.show_emoji` require v2.0.5+) ｜ Audience: Developer
+> Firmware: Albee v2.0.9 ｜ Audience: Developer
 
 
 > This document explains how to control this ESP32 desktop robot via MCP (Model Context Protocol). For wire-level protocol details, see [`mcp-protocol.md`](./mcp-protocol.md).
@@ -45,7 +45,6 @@ Framework built-ins (device status, volume, brightness, etc.) are registered in 
 - `LightController::RegisterMcpTools()` — `main/boards/gledopto-robot/light/light_controller.cc` (light groups, RF pairing)
 - `InitializeAlarmMcpTools()` — `main/boards/gledopto-robot/alarm/alarm_mcp_tools.cc` (reminders/alarms)
 - `InitializePowerManager()` — `main/boards/gledopto-robot/gledopto_robot.cc` (power control)
-- `InitializeEmojiMcpTool()` — `main/boards/gledopto-robot/gledopto_robot.cc` (on-screen emoji playback `self.screen.show_emoji`, v2.0.5+)
 
 ## Tool Catalog
 
@@ -72,12 +71,6 @@ The complete set of tools registered by this firmware, grouped by module. Params
 | Tool | Parameters | Description |
 |---|---|---|
 | `self.power.control` | `action` str: `shutdown` (default) / `restart` (`reboot` is accepted as an alias of `restart`) | Power the robot off or reboot it. |
-
-### Screen-emoji tool (`main/boards/gledopto-robot/gledopto_robot.cc`, v2.0.5+)
-
-| Tool | Parameters | Description |
-|---|---|---|
-| `self.screen.show_emoji` | `name` str (emoji name, default `happy`; must match `^[a-z][a-z0-9_-]{0,26}$`) | Play an emoji animation by name on the screen — covers all built-in emoji (happy/sad/angry/sleepy, etc.) and custom emoji uploaded via the `/emoji` web page (see the [Emoji Change Guide](expression-change-guide.md)). Returns `true` on success; a name that is "uploaded but not applied" returns `error: '<name>' is staged but not applied yet — apply the pending list on the /emoji web page first`; an unknown name returns `error: unknown emoji '<name>'. Available: <all available emoji names>`. |
 
 ### Light tools (`main/boards/gledopto-robot/light/light_controller.cc`)
 
@@ -119,6 +112,7 @@ Only returned by `tools/list` when the request sets `"withUserTools": true`.
 | Tool | Status |
 |---|---|
 | `self.camera.take_photo` | Not registered on this board (no camera). |
+| `self.screen.show_emoji` | Removed from the source (offered in v2.0.5 for playing an emoji by name; no longer registered as of v2.0.7 — use the preview feature of the `/emoji` web page instead). |
 | `self.screen.set_theme` | Removed from the source (historically disabled via `#if 0`). |
 | `self.light.rf_pair_group` / `rf_clear_group` / `rf_clear_all` | Removed from the source (historically disabled via `#if 0`); RF pairing/clearing is done via the web page's HTTP endpoints (`/api/light/pair`, `/api/light/clear`), which are always available. |
 
@@ -234,4 +228,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-11-09

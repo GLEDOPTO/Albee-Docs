@@ -1,6 +1,6 @@
 # Find the Device IP Address
 
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 Opening any of Albee's built-in web pages (lighting control, network switching, LED effects, servo calibration, local update) requires knowing its IP address. Pick whichever of the three methods below suits you.
 

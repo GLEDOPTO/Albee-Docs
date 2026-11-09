@@ -1,6 +1,6 @@
 # ha-mcp-for-xiaozhi操作指南
 
-> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.9 ｜ 适用对象：开发者
 
 ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 

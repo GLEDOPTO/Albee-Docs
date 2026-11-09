@@ -1,6 +1,6 @@
 # ha-mcp-for-xiaozhi Guide
 
-> Firmware: Albee v2.0.5 ｜ Audience: Developer
+> Firmware: Albee v2.0.9 ｜ Audience: Developer
 
 Official documentation of ha-mcp-for-xiaozhi: [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 

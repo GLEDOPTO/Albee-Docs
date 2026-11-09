@@ -1,6 +1,6 @@
 # Albee Desktop Robot FAQ
 
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 Jump to a section: [Buttons and controls](#1-buttons-and-controls) · [Network](#2-network) · [Voice and conversation](#3-voice-and-conversation) · [Lights and motion](#4-lights-and-motion) · [Account and activation](#5-account-and-activation) · [Upgrade and troubleshooting](#6-upgrade-and-troubleshooting)
 
@@ -18,11 +18,11 @@ A: Long-press the function button for 10 s. The device erases Wi-Fi credentials,
 
 **Q: How do I re-configure or switch Wi-Fi?**
 
-A: Restart Albee, then short-press the function button once while the blue LED is blinking during the Wi-Fi connection phase — you will hear a prompt tone and Albee re-enters provisioning mode. It also re-enters provisioning automatically after three failed connection attempts. For switching between saved networks or scanning for a new one, see the [Change Network Guide](./change-network.md).
+A: Restart Albee, then short-press the function button once while the blue LED is blinking during the Wi-Fi connection phase — you will hear a prompt tone and Albee re-enters provisioning mode. If it still cannot connect to the saved Wi-Fi within about 60 seconds of booting, the device also enters provisioning mode automatically. For switching between saved networks or scanning for a new one, see the [Change Network Guide](./change-network.md).
 
 **Q: It never connects to Wi-Fi after power-on. What should I do?**
 
-A: No need to power-cycle — just **single-click the function button** to re-enter provisioning mode; the device also re-enters provisioning automatically after three failed connection attempts. Other options (switch saved networks, scan and join a new one) are in the [Change Network Guide](./change-network.md).
+A: No need to power-cycle — just **single-click the function button** to re-enter provisioning mode; if the saved network cannot be joined within about 60 seconds, the device also enters provisioning mode automatically. Other options (switch saved networks, scan and join a new one) are in the [Change Network Guide](./change-network.md).
 
 **Q: How do I find the device IP address?**
 
@@ -114,4 +114,4 @@ A: Follow the [Freeze / Reboot Reporting Guide](./problem-feedback.md) to collec
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-09

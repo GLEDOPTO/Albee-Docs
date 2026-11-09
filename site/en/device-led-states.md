@@ -1,5 +1,5 @@
 # Device States & LED Indicators
-> Firmware: Albee v2.0.5 ｜ Audience: Developer
+> Firmware: Albee v2.0.9 ｜ Audience: Developer
 
 
 ## Part 1: State Overview

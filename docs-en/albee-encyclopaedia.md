@@ -29,7 +29,7 @@
 | Document | Description |
 |---|---|
 | [Lighting Control Guide](./docs/lighting-control.md) | Control GLEDOPTO 2.4G RF LED strips and WLED controllers from the built-in web page (`http://<robot-ip>/light`), by voice, or via the HTTP API. Covers pairing, groups, naming, and the full API reference. |
-| [Alarm & Reminder Guide](./docs/alarm-reminder.md) | Voice-controlled reminders: one-time countdown, daily, weekly, and interval repeats. Trigger behavior (ring pattern, pause between rounds, auto-stop), limits, and persistence. |
+| [Alarm & Reminder Guide](./docs/alarm-reminder.md) | Reminders by voice or web page (`http://<device-ip>/alarm`): one-time countdown, daily, weekly, and interval repeats (light tasks included). Trigger behavior (ring pattern, pause between rounds, auto-stop), limits, and persistence. |
 | [Emoji Change Guide](./docs/expression-change-guide.md) | Three ways to change the screen emoji: the device web page (`http://<device-ip>/emoji`) for online upload/replace/delete (v2.0.5+, recommended), via the XiaoZhi console, or replace the GIFs under `extracted_emojis/` and rebuild the firmware. |
 | [Network Change Guide](./docs/change-network.md) | Three ways to switch Wi-Fi: single-click the function button during the blue flowing-LED phase, switch to a saved network via the web page (`http://<device-ip>/network`), or scan and join a new network (with password-box rules). |
 | [Device States & LED Indicators](./docs/device-led-states.md) | The mapping table of 11 device states to 9 LED behaviors, the factory-default state → effect mapping (scroll / blink / fade-out / solid / breathe / rainbow), and brightness scaling notes. |
@@ -62,7 +62,7 @@
 |---|---|
 | [Firmware Flashing Guide](./docs/firmware-flashing-guide.md) | Flash the robot with the Flash Download Tool on a PC (no IDF environment needed) or via a web browser, plus flashing troubleshooting. |
 | [Firmware Compilation Tutorial](./docs/compilation-tutorial.md) | Build the firmware from source: ESP-IDF v5.4.3 environment setup (Linux command line / Windows VSCode), project layout, partition table, build options (menuconfig), flashing methods, firmware merging and release scripts, and a build FAQ. |
-| [Pin Mapping](./docs/pin-mapping.md) | Complete GPIO table for every peripheral: power management, buttons, I2C bus, LCD, LT8900 RF, servos, WS2811 LED ring, voice codec — plus notes on the shared SPI lines and I2C devices. |
+| [Pin Mapping](./docs/pin-mapping.md) | Complete GPIO table for every peripheral: power management, buttons, I2C bus, LCD, 2.4 GHz RF chip, servos, WS2811 LED ring, voice codec — plus notes on the shared SPI lines and I2C devices. |
 | [OTA API](./docs/ota-api.md) | The device OTA upgrade REST API: request headers, request body, and full request/response examples. |
 
 ## 6. Communication Protocols & MCP
@@ -99,4 +99,4 @@
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-02

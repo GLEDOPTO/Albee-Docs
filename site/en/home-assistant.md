@@ -1,10 +1,20 @@
 # Home Assistant Integration Guide
-> Firmware: Albee v2.0.5 ｜ Audience: Developer
+> Firmware: Albee v2.0.9 ｜ Audience: Developer
 
 
-You can integrate Home Assistant through MCP plugins. Two MCP plugins are recommended below.
+You can integrate Home Assistant through MCP plugins. Several MCP plugins are recommended below.
 
-## 1. HA MCP for XiaoZhi
+## 1. XiaoZhi-MCP-HA
+
+### Description
+
+A custom Home Assistant integration (installable via HACS) that connects the Xiaozhi ESP32 AI chatbot to Home Assistant through MCP (Model Context Protocol).
+
+### Repository & Documentation
+
+Please see: [xiaozhi-mcp-ha](https://github.com/mac8005/xiaozhi-mcp-ha)
+
+## 2. HA MCP for XiaoZhi
 
 ### Description
 
@@ -18,7 +28,7 @@ You can integrate Home Assistant through MCP plugins. Two MCP plugins are recomm
 
 Please see: [ha-mcp-for-xiaozhi Guide](ha-mcp-for-xiaozhi.md) (installation and configuration tutorial); the repository and official documentation are at [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
-## 2. Home MCP
+## 3. Home MCP
 
 ### Description
 
@@ -30,4 +40,4 @@ Please see: [Home MCP](https://github.com/shenjingnan/home-mcp)
 
 ---
 
-**Last modified:** 2026-10-13
+**Last modified:** 2026-11-09

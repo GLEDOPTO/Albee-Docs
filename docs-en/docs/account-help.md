@@ -1,5 +1,5 @@
 # Account & Device Issues
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 
 This page covers common account problems: not receiving the SMS verification code, forgetting your password or username, and unbinding a device.

@@ -1,6 +1,6 @@
 # Built-in Web Console Overview
 
-> Firmware: Albee v2.0.5 ｜ Audience: End user
+> Firmware: Albee v2.0.9 ｜ Audience: End user
 
 Once Albee is online it serves a set of web pages on your local network. You can manage the robot straight from a phone or computer browser — no app required. This page is the entry point for all of them.
 
@@ -22,11 +22,11 @@ Once Albee is online it serves a set of web pages on your local network. You can
 | `http://<device-IP>/robot` | Servo calibration: ±1° trim for the four servos | [Servo Calibration Guide](./servo-calibration.md) |
 | `http://<device-IP>/info` | Device info: MAC address, firmware version, boot reason | [How to Check the MAC Address](./check-mac-address.md) |
 | `http://<device-IP>/update` | Local OTA: upload an `.ota` file to upgrade firmware | [Local OTA Guide](./local-ota.md) |
-| `http://<device-IP>/alarm` | Alarm / reminder management | [Alarm & Reminder Guide](./alarm-reminder.md) |
+| `http://<device-IP>/alarm` | Alarm / reminder management: add and delete reminders on the web (light tasks included), fully shared with voice | [Alarm & Reminder Guide](./alarm-reminder.md) |
 | `http://<device-IP>/emoji` | Emoji management: preview installed emoji, upload / replace / delete custom emoji online (v2.0.5+) | [Emoji Change Guide](./expression-change-guide.md) |
 | `http://<device-IP>/mcp` | MCP tool management: toggle the tools available to the voice assistant; turn on the Manage tools master switch at the top first (v2.0.5+) | [MCP Usage Guide](./mcp-usage.md) |
-| `http://<device-IP>/settings` | Device settings | — |
-| `http://<device-IP>/foot` | Foot-sensor debugging | — |
+| `http://<device-IP>/settings` | Device settings: volume, screen brightness, real-time interrupt, lively idle, full-screen emoji, web PIN lock | — |
+| `http://<device-IP>/foot` | Foot-sensor debugging: per-foot sensor status and fault masking, plus the **fall-protection master switch** (when off, the robot no longer auto-brakes at table edges or drop-offs — use with caution) | — |
 
 > [!NOTE]
 > `/robot` (motion control and servo calibration) and `/foot` (foot-sensor debugging) are gated by the build option `enable web robot control`, which is **enabled by default**; the two pages are only unavailable if you disabled the option when compiling your own firmware. All other pages are unaffected.
@@ -35,7 +35,7 @@ Once Albee is online it serves a set of web pages on your local network. You can
 
 - **Page won't open:** check that you are on the same LAN and the IP has not changed; AP isolation on the router blocks access between devices.
 - **Page says activation is required:** an unactivated device only serves provisioning pages — complete [Device Activation](./device-activation.md) first.
-- **My change didn't take effect:** LED effect and network changes apply immediately; console-side settings (role, voice, model) only apply after restarting the device. MCP tool toggles (the `/mcp` page, v2.0.5+) take effect in a **new conversation** without a reboot; if the AI still says the feature is missing, start a new conversation and try again.
+- **My change didn't take effect:** volume, screen brightness (kept in sync with voice adjustments in real time), LED effect, and network changes apply immediately; console-side settings (role, voice, model) only apply after restarting the device. MCP tool toggles (the `/mcp` page, v2.0.5+) take effect in a **new conversation** without a reboot; if the AI still says the feature is missing, start a new conversation and try again.
 - **Upgrade failed:** make sure you upload an `.ota` file, not a `.bin`, and keep the device powered during the process — see the [Local OTA Guide](./local-ota.md).
 
 ---
@@ -46,4 +46,4 @@ Once Albee is online it serves a set of web pages on your local network. You can
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-09

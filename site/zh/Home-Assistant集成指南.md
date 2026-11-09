@@ -1,10 +1,19 @@
 # Home Assistant 集成指南
-> 适用固件：Albee v2.0.5 ｜ 适用对象：开发者
+> 适用固件：Albee v2.0.9 ｜ 适用对象：开发者
 
+你可以通过 MCP 插件接入 Home Assistant。下面推荐几个MCP 插件。
 
-你可以通过 MCP 插件接入 Home Assistant。下面推荐两个 MCP 插件。
+## 1.XiaoZhi-MCP-HA
 
-## 1. HA MCP for XiaoZhi
+### 简介
+
+一个 Home Assistant 定制集成（HACS），通过 MCP（模型上下文协议）将 Xiaozhi ESP32 AI 聊天机器人连接到 Home Assistant。
+
+### 仓库与文档
+
+请参见：[xiaozhi-mcp-ha](https://github.com/mac8005/xiaozhi-mcp-ha)
+
+## 2. HA MCP for XiaoZhi
 
 ### 简介
 
@@ -18,7 +27,7 @@
 
 请参见：[ha-mcp-for-xiaozhi操作指南](ha-mcp-for-xiaozhi操作指南.md)（安装与配置教程），仓库与官方文档见 [ha-mcp-for-xiaozhi](https://github.com/c1pher-cn/ha-mcp-for-xiaozhi/blob/main/README.en.md)
 
-## 2. Home MCP
+## 3. Home MCP
 
 ### 简介
 
@@ -30,4 +39,4 @@ Home-MCP 是一个基于 [Model Context Protocol (MCP)](https://modelcontextprot
 
 ---
 
-**文档最新修改时间：** 2026-10-13
+**文档最新修改时间：** 2026-11-09
