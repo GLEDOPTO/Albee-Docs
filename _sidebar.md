@@ -41,4 +41,5 @@
 - Smart home
   - [Home Assistant Integration](docs-en/docs/home-assistant.md)
   - [ha-mcp-for-xiaozhi Guide](docs-en/docs/ha-mcp-for-xiaozhi.md)
+  - [Expose Home Assistant Devices](docs-en/docs/expose-home-assistant-devices.md)
   - [Get the MCP Access-Point Address](docs-en/docs/mcp-access-point-address.md)

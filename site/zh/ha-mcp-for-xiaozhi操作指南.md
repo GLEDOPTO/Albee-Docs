@@ -69,34 +69,25 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 “帮我打开Home Assistant中的设备x”
 ~~~~
 
+### 如何公开设备
+
+> [!IMPORTANT]
+>
+> 需要先公开（添加）你 Home Assistant 中已有的设备，才能通过语音去控制 —— 步骤见[如何公开 Home Assistant 设备](如何公开Home-Assistant设备.md)。
+
 ### 调试说明
 
-1. 暴露的工具取决于你公开给Homeassistant语音助手的实体的种类
+1. 尽量使用最新版本的homeassistant，单单看5月版本跟3月版本提供的工具就有明显差异
 
-```
-设置 -> 语音助手 -> 公开
-```
+2. 调试时未达到预期，优先看小智的聊天记录，看看小智对这句指令如何处理的，是否有调用homeassistant的工具。目前已知比较大的问题是灯光控制和音乐控制会和内置的屏幕控制、音乐控制逻辑冲突，需要等下个月虾哥服务器支持内置工具选择后可解。也可直接在设备网页 `http://设备IP/mcp` 关闭冲突的内置工具（如灯组工具），让小智改用 Home Assistant 侧工具；开关在新对话中生效（参见[MCP控制使用指南](MCP控制使用指南.md)）。
 
-<img src="../assets/img/ha-mcp-for-xiaozhi/7.png">
-
-"语音助手 -> 公开"页面：
-
-<img src="../assets/img/ha-mcp-for-xiaozhi/11.png">
-
-公开实体后可用的工具示例：
-
-<img src="../assets/img/ha-mcp-for-xiaozhi/12.png">
-
-2. 尽量使用最新版本的homeassistant，单单看5月版本跟3月版本提供的工具就有明显差异
-
-3. 调试时未达到预期，优先看小智的聊天记录，看看小智对这句指令如何处理的，是否有调用homeassistant的工具。目前已知比较大的问题是灯光控制和音乐控制会和内置的屏幕控制、音乐控制逻辑冲突，需要等下个月虾哥服务器支持内置工具选择后可解。也可直接在设备网页 `http://设备IP/mcp` 关闭冲突的内置工具（如灯组工具），让小智改用 Home Assistant 侧工具；开关在新对话中生效（参见[MCP控制使用指南](MCP控制使用指南.md)）。
-
-4. 如果流程正确的调用了ha内置的function，可以打开本插件的调试日志再去观测实际的执行情况
+3. 如果流程正确的调用了ha内置的function，可以打开本插件的调试日志再去观测实际的执行情况
 
 ## 常见问题
 
 - **MCP集成错误**：需要确保HomeAssistant是最新的版本
-- **可用工具少：**需要暴露你的实体设备
+- **可用工具少**：需要暴露你的实体设备（见[如何公开 Home Assistant 设备](如何公开Home-Assistant设备.md)）
+- **控制不了设备**：确保你已经公开你的设备（见[如何公开 Home Assistant 设备](如何公开Home-Assistant设备.md)）
 
 ## 注意事项
 
@@ -104,4 +95,4 @@ ha-mcp-for-xiaozhi官方文档：[ha-mcp-for-xiaozhi](https://github.com/c1pher-
 
 ---
 
-**文档最新修改时间：** 2026-10-16
+**文档最新修改时间：** 2026-11-12

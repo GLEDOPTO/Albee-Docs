@@ -4,6 +4,10 @@
 
 You can integrate Home Assistant through MCP plugins. Several MCP plugins are recommended below.
 
+> [!IMPORTANT]
+>
+> After integrating, **you must first expose your devices in Home Assistant** before Albee can control them by voice — see [Exposing Home Assistant Devices](./expose-home-assistant-devices.md).
+
 ## 1. XiaoZhi-MCP-HA
 
 ### Description
@@ -40,4 +44,4 @@ Please see: [Home MCP](https://github.com/shenjingnan/home-mcp)
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-12

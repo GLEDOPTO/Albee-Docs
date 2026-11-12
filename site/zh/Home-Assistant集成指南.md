@@ -3,6 +3,10 @@
 
 你可以通过 MCP 插件接入 Home Assistant。下面推荐几个MCP 插件。
 
+> [!IMPORTANT]
+>
+> 接入后，**必须先在 Home Assistant 中公开你的设备**，Albee 才能通过语音控制它们 —— 步骤见[如何公开 Home Assistant 设备](如何公开Home-Assistant设备.md)。
+
 ## 1.XiaoZhi-MCP-HA
 
 ### 简介
@@ -39,4 +43,4 @@ Home-MCP 是一个基于 [Model Context Protocol (MCP)](https://modelcontextprot
 
 ---
 
-**文档最新修改时间：** 2026-11-09
+**文档最新修改时间：** 2026-11-12

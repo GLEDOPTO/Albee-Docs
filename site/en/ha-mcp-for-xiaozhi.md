@@ -69,30 +69,25 @@ Once the restart finishes, talk to Albee to control your home by voice, for exam
 "Turn on device x in Home Assistant"
 ~~~~
 
+### Exposing Devices
+
+> [!IMPORTANT]
+>
+> You must expose (add) your existing Home Assistant devices before they can be controlled by voice — see [Exposing Home Assistant Devices](expose-home-assistant-devices.md).
+
 ### Troubleshooting Notes
 
-1. The exposed tools depend on which kinds of entities you expose to the Home Assistant voice assistant
+1. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 
-```
-Settings -> Voice assistants -> Expose
-```
+2. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month. From firmware v2.0.5 you can also disable the conflicting built-in tools (e.g. the light-group tools) directly on the device web page `http://<device-ip>/mcp`, so XiaoZhi falls back to the Home Assistant tools; toggles take effect in a new conversation (see the [MCP Usage Guide](mcp-usage.md)).
 
-<img src="assets/img/ha-mcp-for-xiaozhi/7.png">
-
-The "Voice assistants -> Expose" page:/n/n<img src="assets/img/ha-mcp-for-xiaozhi/11.png">
-
-Example of the tools available after exposing entities:/n/n<img src="assets/img/ha-mcp-for-xiaozhi/12.png">
-
-2. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
-
-3. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month. From firmware v2.0.5 you can also disable the conflicting built-in tools (e.g. the light-group tools) directly on the device web page `http://<device-ip>/mcp`, so XiaoZhi falls back to the Home Assistant tools; toggles take effect in a new conversation (see the [MCP Usage Guide](mcp-usage.md)).
-
-4. If the flow does call the HA built-in functions correctly, enable this integration's debug log to observe what actually executes
+3. If the flow does call the HA built-in functions correctly, enable this integration's debug log to observe what actually executes
 
 ## FAQ
 
 - **MCP integration error**: make sure Home Assistant is up to date
-- **Few tools available**: you need to expose your entity devices
+- **Few tools available**: you need to expose your entity devices (see [Exposing Home Assistant Devices](expose-home-assistant-devices.md))
+- **Cannot control a device**: make sure you have exposed it (see [Exposing Home Assistant Devices](expose-home-assistant-devices.md))
 
 ## Notes
 
@@ -100,4 +95,4 @@ This project ships with some built-in MCP tools — for example the lighting-con
 
 ---
 
-**Last modified:** 2026-10-16
+**Last modified:** 2026-11-12
