@@ -62,9 +62,11 @@ The complete set of tools registered by this firmware, grouped by module. Params
 
 | Tool | Parameters | Description |
 |---|---|---|
-| `self.robot.action` | `action` str: `walk`/`turn`/`spin`/`home` (default `home`); `steps` str (default `"4"`; spin uses 0.1–2.0 = circle count (0.5 = half a turn, 1 = one full turn, 2 = two turns)); `speed` int 500–2000 (default 800, smaller = faster); `direction` int 1/-1 (default 1) | Execute a motion action and wait for completion. |
+| `self.robot.action` | `action` str: `walk`/`turn`/`spin`/`home` (default `home`); `steps` str (default `"4"`; spin uses 0.1–2.0 = circle count (0.5 = half a turn, 1 = one full turn, 2 = two turns)); `speed` int 500–2000 (default 1080, smaller = faster); `direction` int 1/-1 (default 1) | Execute a motion action and wait for completion. |
 | `self.robot.stop` | — | Stop all actions immediately and reset. |
 | `self.battery.get_level` | — | Battery level and charging status (JSON). |
+
+> **Gait speed note**: `speed` is the gait period in milliseconds — smaller is faster, default 1080. Servo torque droops as the battery sags, so MCP calls automatically clamp the speed floor up on low battery to keep the gait stable: at least 1350 ms at 20–25% charge, 1620 ms at 15–20%, and 2025 ms below 15% (no limit while charging; the web console's robot control applies its own limits).
 
 ### Power tool (`main/boards/gledopto-robot/gledopto_robot.cc`)
 
@@ -73,6 +75,8 @@ The complete set of tools registered by this firmware, grouped by module. Params
 | `self.power.control` | `action` str: `shutdown` (default) / `restart` (`reboot` is accepted as an alias of `restart`) | Power the robot off or reboot it. |
 
 ### Light tools (`main/boards/gledopto-robot/light/light_controller.cc`)
+
+> **Platform routing**: when an external smart-home MCP server (e.g. Home Assistant via ha-mcp-for-xiaozhi) is connected, the cloud LLM sees both tool sets and may mis-route light requests to that platform. Every light control tool description carries a routing clause: the on-device `self.light.*` tools are the default path, and external platform tools are used only when the user explicitly names that platform. `control_group` goes further: when an external platform reports "entity not found" it instructs the LLM to re-check via `get_all_group_name` and fall back to the on-device tools instead of telling the user the device does not exist.
 
 | Tool | Parameters | Description |
 |---|---|---|
@@ -140,7 +144,7 @@ HTTP endpoints (`main/boards/gledopto-robot/web/web_mcp_api.cc`):
 | `POST /api/mcp/tools`, body `{"manage": true/false}` | Toggle the master switch; setting `false` re-enables all tools automatically |
 | `POST /api/mcp/tools`, body `{"name":"<tool>","enabled":true/false}` | Toggle one tool; with the master switch off it errors `tool management is off`, unknown tools error `unknown tool: <name>` |
 
-Note: if a console PIN is set on the device, POSTs must unlock first (`POST /api/auth/unlock`) before changing toggles; GET is unaffected.
+Note: if a console PIN is set on the device, both GET and POST require unlocking first (`POST /api/auth/unlock`); locked requests return 401. The console re-locks automatically after 10 minutes of inactivity.
 
 ## Registration Examples
 
@@ -201,7 +205,7 @@ mcp.AddTool("self.power.control",
   "method": "tools/call",
   "params": {
     "name": "self.robot.action",
-    "arguments": { "action": "walk", "steps": "4", "speed": 800, "direction": 1 }
+    "arguments": { "action": "walk", "steps": "4", "speed": 1080, "direction": 1 }
   },
   "id": 2
 }
@@ -228,4 +232,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-23

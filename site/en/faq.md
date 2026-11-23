@@ -12,7 +12,7 @@ A: Two physical buttons plus one touch area. Long-press the power button for 3 s
 
 **Q: How do I perform a factory reset?**
 
-A: Long-press the function button for 10 s. The device erases Wi-Fi credentials, alarms, light groups, MCP tool toggles and every other user setting, then reboots automatically; Wi-Fi must be configured again after the reboot. **Avoid pressing it by accident** (holding the button down triggers it).
+A: Long-press the function button for 10 s. The device erases Wi-Fi credentials, alarms, light groups, MCP tool toggles and other user settings, then reboots automatically; Wi-Fi must be configured again after the reboot. A factory reset also **re-rolls the device identity** (a new MAC and device ID are generated, so the server treats it as a brand-new device), while **servo trims and foot-sensor calibration are kept**. **Avoid pressing it by accident** (holding the button down triggers it).
 
 ## 2. Network
 
@@ -100,7 +100,7 @@ A: Upload an `.ota` file through the built-in web page — no computer flashing 
 
 **Q: The robot keeps saying it cannot connect to the server. What should I do?**
 
-A: First check whether Wi-Fi works and the router has internet. When the server is unreachable, Albee shows an error on screen and speaks "Cannot connect to the server, please check the network or restart the device"; if it stays unreachable, the prompt repeats about every 10 seconds, up to 6 times, then it waits quietly. **Usually no restart is needed** (v2.0.5+): the device retries automatically at intervals and usually recovers within a minute once the network or server is back; if the drop happens mid-conversation, the device ends the current conversation, returns to standby, and then reconnects. Only restart the device if it stays down for several minutes.
+A: First check whether Wi-Fi works and the router has internet. When the server is unreachable, Albee shows an error on screen and speaks "Cannot connect to the server, please check the network or restart the device" — when Wi-Fi is fine but the server is unreachable the spoken prompt plays only once; if Wi-Fi itself is disconnected it repeats about every 10 seconds, up to 6 times, then it waits quietly. **Usually no restart is needed** (v2.0.5+): the device retries automatically at intervals and usually recovers within a minute once the network or server is back; if the drop happens mid-conversation, the device ends the current conversation, returns to standby, and then reconnects. Only restart the device if it stays down for several minutes.
 
 **Q: The device freezes or reboots on its own?**
 
@@ -114,4 +114,4 @@ A: Follow the [Freeze / Reboot Reporting Guide](problem-feedback.md) to collect 
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-23

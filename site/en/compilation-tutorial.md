@@ -156,21 +156,22 @@ Common parameters: `-p` selects the serial port; `-b` sets the flashing baud rat
 idf.py menuconfig
 ```
 
-The project-specific options are under the **Albee** menu (defined in `main/Kconfig.projbuild`):
+The project-specific options are under the **Xiaozhi Assistant** menu (defined in `main/Kconfig.projbuild`):
 
 | Option | Default | Description |
 | -------------------------- | --------------------- | ------------------------------------------------------------ |
 | `Board Type` | gledopto-robot | The only supported board — do not change |
 | `Language` | Chinese (Simplified) | Voice / prompt-sound language; 30+ languages available (server-side options) |
 | `Assets` | Generate default assets at build time | Can also select a custom `assets.bin` or skip flashing assets |
-| `full emojis display` | **y** | Pack the large emoji set (`large/`) and enable the full-screen emoji display style; uses more flash |
-| `sleep show clock` | **y** | Alternate emoji and clock display during power-saving sleep (depends on the option above) |
-| `emojis status gifs` | **y** | New status emoji hooks (low battery / WiFi / charging GIF) |
-| `enable web robot control` | **y** | The built-in web page includes the robot motion control panel (otherwise only the light control page) |
 | `robot low power limit` | y | Limit gait speed at low battery; recommended to keep enabled |
+| `robot servo auto detach` | y | Auto power off the servos when idle (two-stage detach) — saves power and prevents random jumps during sleep |
+| `foot sensor auto reset` / `zero self-heal` / `fault masking` | all y | Foot-sensor self-healing trio: reset on re-registration, all-zero-frame config self-heal, single-sensor fault masking |
+| `robot identity reset` | y | Full factory reset by holding BOOT for 10 s at power-on (device identity is re-rolled) |
 | `mcp slim tool prompts` | **y** | Slim MCP tool prompts: shortens the tool description text reported to the backend, saving prompt overhead |
-| `foot sensor cfg download` | **y** | Compile in the foot LTR-553 register configuration download (enable only when tuning sensor parameters) |
+| `mcp reconnect when tools/list never pulled` | y | Reconnect the MCP session automatically when `tools/list` has not been pulled for a long time |
 | `enable debug log` | y | Master switch for all module logs |
+
+> Options from earlier versions — `full emojis display`, `sleep show clock`, `emojis status gifs`, `enable web robot control`, `foot sensor cfg download` — are now compiled in **unconditionally** and no longer appear in menuconfig.
 
 > Note: `USE_ENGLISH_ENABLE` (which switches the output language of MCP tool descriptions, etc.) is not a Kconfig option — it is a macro in `main/boards/gledopto-robot/config.h`. Modify it there and rebuild.
 
@@ -255,4 +256,4 @@ python scripts/release.py gledopto-robot --name gledopto-robot # build only the 
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-23

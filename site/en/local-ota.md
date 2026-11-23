@@ -13,6 +13,11 @@
 
 <img src="assets/img/local-ota/1.png" width="560">
 
+> Notes:
+> - If a web PIN lock is set on the device, unlock it first before uploading firmware.
+> - Uploading firmware of the same or a lower version triggers an extra confirmation on the page.
+> - Uploads are rejected within about 15 seconds after the device boots — wait a moment and try again.
+
 ---
 
-**Last modified:** 2026-10-09
+**Last modified:** 2026-11-23

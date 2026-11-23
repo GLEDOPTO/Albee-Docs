@@ -62,9 +62,11 @@ void AddUserOnlyTool(const std::string& name,
 
 | 工具 | 参数 | 说明 |
 |---|---|---|
-| `self.robot.action` | `action` str：`walk`/`turn`/`spin`/`home`（默认 `home`）；`steps` str（默认 `"4"`；spin 用 0.1–2.0 表示圈数，0.5=半圈、1=一圈、2=两圈）；`speed` int 500–2000（默认 800，越小越快）；`direction` int 1/-1（默认 1） | 执行动作并等待完成。 |
+| `self.robot.action` | `action` str：`walk`/`turn`/`spin`/`home`（默认 `home`）；`steps` str（默认 `"4"`；spin 用 0.1–2.0 表示圈数，0.5=半圈、1=一圈、2=两圈）；`speed` int 500–2000（默认 1080，越小越快）；`direction` int 1/-1（默认 1） | 执行动作并等待完成。 |
 | `self.robot.stop` | — | 立即停止所有动作并复位。 |
 | `self.battery.get_level` | — | 电量与充电状态（JSON）。 |
+
+> **步速说明**：`speed` 是步态周期（毫秒），越小越快，默认 1080。低电量时舵机扭矩下降，设备会对 MCP 调用自动抬高速度下限以防低电快步失稳：电量 20–25% 时不低于 1350，15–20% 不低于 1620，低于 15% 不低于 2025（充电时不限制；网页端机器人控制的步速另有限制，不受此影响）。
 
 ### 电源工具（`main/boards/gledopto-robot/gledopto_robot.cc`）
 
@@ -73,6 +75,8 @@ void AddUserOnlyTool(const std::string& name,
 | `self.power.control` | `action` str：`shutdown`（默认）/ `restart`（`reboot` 为 `restart` 的别名，同样受支持） | 机器人关机或重启。 |
 
 ### 灯光工具（`main/boards/gledopto-robot/light/light_controller.cc`）
+
+> **平台路由（防误路由）**：当接入了外部智能家居 MCP（如通过 ha-mcp-for-xiaozhi 接入的 Home Assistant）时，云端 LLM 会同时看到两套工具，可能把灯光请求误发给外部平台。为此每个灯光工具的描述都带有路由条款：本机 `self.light.*` 工具是默认路径，仅当用户明确点名外部平台时才使用外部平台工具。其中 `control_group` 更进一步：外部平台报告"实体不存在"时，会提示 LLM 先用 `get_all_group_name` 核对分组名并回退到本机工具，而不是直接告诉用户设备不存在。
 
 | 工具 | 参数 | 说明 |
 |---|---|---|
@@ -140,7 +144,7 @@ HTTP 接口（`main/boards/gledopto-robot/web/web_mcp_api.cc`）：
 | `POST /api/mcp/tools`，body `{"manage": true/false}` | 切换管理总开关；置 `false` 时自动重新启用全部工具 |
 | `POST /api/mcp/tools`，body `{"name":"<工具名>","enabled":true/false}` | 切换单个工具；总开关关闭时报错 `tool management is off`，未知工具报 `unknown tool: <名>` |
 
-注：若设备设置了控制台 PIN，POST 需先解锁（`POST /api/auth/unlock`）才能修改开关；GET 不受影响。
+注：若设备设置了控制台 PIN，GET 与 POST 均需先解锁（`POST /api/auth/unlock`）才能访问，未解锁时返回 401；解锁后 10 分钟无操作会自动重新锁定。
 
 ## 注册示例
 
@@ -201,7 +205,7 @@ mcp.AddTool("self.power.control",
   "method": "tools/call",
   "params": {
     "name": "self.robot.action",
-    "arguments": { "action": "walk", "steps": "4", "speed": 800, "direction": 1 }
+    "arguments": { "action": "walk", "steps": "4", "speed": 1080, "direction": 1 }
   },
   "id": 2
 }
@@ -228,4 +232,4 @@ mcp.AddTool("self.power.control",
 
 ---
 
-**文档最新修改时间：** 2026-11-09
+**文档最新修改时间：** 2026-11-23

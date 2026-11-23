@@ -83,7 +83,7 @@ Besides voice, you can manage reminders directly in a browser at `http://<device
 - **Target**: above the form you can switch between **Reminder** (a ringing reminder) and **Light** (a light task). A Light entry does not ring — at the scheduled moment it turns the chosen light group on/off or toggles it (light-schedule linkage; see [Lighting Control Guide](lighting-control.md)). The Light tab only appears when the firmware was built with light-schedule linkage, which the stock firmware includes.
 - **Quota**: ordinary ringing reminders and light tasks get 5 slots each (they do not crowd each other out) and share the same storage as voice-set reminders.
 
-> If the device has a web PIN lock, adding or deleting reminders requires unlocking first; viewing the list does not.
+> If the device has a web PIN lock, the whole alarm page — including viewing the list, adding, and deleting — requires unlocking first.
 
 The HTTP endpoints behind the page (`main/boards/gledopto-robot/web/web_alarm_api.cc`), for scripts and third-party integrations:
 
@@ -164,4 +164,4 @@ A: They are equivalent. "Every day" means all weekdays are selected.
 
 ---
 
-**Last modified:** 2026-10-20
+**Last modified:** 2026-11-23

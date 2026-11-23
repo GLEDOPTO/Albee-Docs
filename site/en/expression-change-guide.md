@@ -14,7 +14,7 @@ No firmware rebuild needed — upload, replace, and delete emoji right in the br
 3. Upload new emoji: pick one or more `.gif` / `.png` files. The file name (without extension) becomes the emoji name. Rules: must start with a lowercase letter; only `a-z`, `0-9`, `-`, `_`; at most 27 characters. A name that matches an installed emoji replaces it; a new name adds a new emoji. Max 1 MB per file, image size ≤ 240×240.
 4. Uploads and deletions first go into a "Pending" list and do not take effect immediately; click **Apply & reboot** to apply all changes at once (the device rebuilds the asset package and reboots), or **Discard** to drop them all. The pending list survives power loss/reboots; losing power during the apply step cannot brick the device — it resumes or rolls back after reboot.
 5. Limits: the emoji asset package ≤ 2 MB in total, the pending staging area ≤ 1 MB; the page shows current usage and the estimated size after applying — delete some emoji first if over the limit.
-6. If a web PIN lock is set on the device, unlock it first to upload/delete/apply/preview; browsing the list and thumbnails needs no unlock.
+6. If a web PIN lock is set on the device, unlock it first — the whole emoji page (browsing the list, thumbnails, uploading, deleting, applying, previewing) requires unlocking.
 
 > **Tips:**
 > - The v2.0.5 asset package adds a boot emoji `power-on` (played for about 3 seconds before connecting, then back to neutral). It is also a built-in emoji and can be replaced on this page.
@@ -47,7 +47,7 @@ For compiling, flashing, and verification, see: [Firmware Compilation Tutorial](
 
 ## Appendix: Emoji Management HTTP API (advanced)
 
-The endpoints behind the `/emoji` page (`main/boards/gledopto-robot/web/web_emoji_api.cc`), for scripts or third-party integrations. GET requests need no unlock; write operations require unlocking first if a PIN is set.
+The endpoints behind the `/emoji` page (`main/boards/gledopto-robot/web/web_emoji_api.cc`), for scripts or third-party integrations. If a PIN is set, both GET and write requests require unlocking first.
 
 | Endpoint | Method | Request | Response / behavior |
 |---|---|---|---|
@@ -65,4 +65,4 @@ Errors are uniformly `{"success":false,"error":"<reason>"}`.
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-23

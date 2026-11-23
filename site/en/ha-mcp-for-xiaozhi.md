@@ -79,7 +79,7 @@ Once the restart finishes, talk to Albee to control your home by voice, for exam
 
 1. Use the latest version of Home Assistant whenever possible — even between the May and March builds, the tools offered differ noticeably
 
-2. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. The biggest known issue so far: light control and music control conflict with the built-in screen-control and music-control logic. This should be resolved once the server-side built-in tool selection ships next month. From firmware v2.0.5 you can also disable the conflicting built-in tools (e.g. the light-group tools) directly on the device web page `http://<device-ip>/mcp`, so XiaoZhi falls back to the Home Assistant tools; toggles take effect in a new conversation (see the [MCP Usage Guide](mcp-usage.md)).
+2. If things do not behave as expected while debugging, check XiaoZhi's chat log first: see how it handled the command and whether it called a Home Assistant tool. Light control is the known friction point (XiaoZhi sees both the built-in light tools and the HA tools): current firmware embeds a **platform-routing clause** in every built-in light tool — external platform tools are used only when the user explicitly names Home Assistant, otherwise the on-device tools handle it; when HA reports "entity not found", `control_group` even re-checks the group name and falls back on-device, so mis-routing is largely mitigated. If you prefer XiaoZhi to use the HA lights by default, you can also disable the built-in light-group tools on the device web page `http://<device-ip>/mcp` so XiaoZhi falls back to the Home Assistant tools; toggles take effect in a new conversation (see the [MCP Usage Guide](mcp-usage.md)). The music-control conflict still awaits server-side built-in tool selection.
 
 3. If the flow does call the HA built-in functions correctly, enable this integration's debug log to observe what actually executes
 
@@ -95,4 +95,4 @@ This project ships with some built-in MCP tools — for example the lighting-con
 
 ---
 
-**Last modified:** 2026-11-12
+**Last modified:** 2026-11-23

@@ -118,12 +118,13 @@ The device limit is **8**; the title bar shows the current count `(n/8)`.
 
 - Each device shows its IP; click **Edit** to change its group or delete the device;
 - Deleting a group (the **-** button in the WLED section): if the group contains devices, a confirmation dialog pops up; once confirmed, the devices in that group are deleted too;
-- Group names are clickable to rename (defaults: Living Room / Bedroom / Kitchen / Study); renames are saved in the robot's NVS, and the devices in the group automatically migrate to the renamed group.
+- Group names are clickable to rename (defaults: Living Room / Bedroom / Kitchen / Study); renames are saved in the robot's NVS, and the devices in the group automatically migrate to the renamed group. If the persistent write fails during a rename, the change rolls back to the original group name automatically — the group name and the device table can never diverge;
 
 ### 4.3 On/Off and Advanced Control
 
 - The web page provides group switches and a master switch (same as RF);
 - **Color, brightness, color temperature, and effects** are controlled by voice.
+- Unreachable-device protection (fuse): a single HTTP request to a WLED device times out after **1.5 s**; the device then enters a **60-second offline cooldown**, during which requests targeting it are skipped instead of waiting repeatedly. Voice and web feedback list offline devices on a separate line, and the remaining devices execute as usual (partial success is reported).
 
 ## 5. Voice (AI) Control
 
@@ -201,9 +202,10 @@ curl -X POST http://192.168.1.50/api/wled/group/control \
 - **Control page won't open**: confirm the robot has joined Wi-Fi and that your phone/computer is on the same network segment; check the IP printed as `Access URL` in the serial log; the router's DHCP may change the IP, so it is recommended to bind a static IP for the robot on the router.
 - **RF pairing keeps failing**: the power-cycle must be completed **within 5 seconds** after clicking Pair; lights with a dying battery or insufficient power supply may also fail to receive the pairing code.
 - **WLED not found by scanning**: confirm the WLED device is on the same LAN as the robot (watch out for routers with AP isolation enabled); you can also use Add Device to enter the IP manually.
+- **WLED device offline / never responds**: after a single request times out (1.5 s) the device enters a 60-second offline cooldown — it is skipped automatically and retried after the cooldown; check whether the device is powered off or on a different network segment. Feedback marks offline devices separately and reports partial success for the remaining ones.
 - **Voice commands with a group name get no response**: group names are exactly as shown on the web page; use `get_all_group_name` or the web page to check the actual names; overly casual phrasing may fall below the 80% similarity threshold.
 - **RF and WLED groups with the same name get controlled together "by mistake"**: this is by design (same-name groups are linked); rename them if you need independent control.
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-23
