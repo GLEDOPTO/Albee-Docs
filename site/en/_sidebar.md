@@ -13,6 +13,7 @@
   - [Device States & LED Indicators](device-led-states.md)
   - [Head LED Effects Guide](head-led-effects.md)
   - [Servo Calibration Guide](servo-calibration.md)
+  - [Foot Sensor Calibration Guide](foot-sensor-calibration.md)
   - [Local OTA Upgrade Guide](local-ota.md)
 
 - Troubleshooting & support

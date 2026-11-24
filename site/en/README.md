@@ -31,6 +31,7 @@ As a voice interaction entry, the XiaoZhi AI chatbot leverages the AI capabiliti
 
 - Bipedal walking driven by four digital servos: walk forward/backward, turn left/right, with adjustable step count and speed
 - Desktop anti-fall protection: four IR distance sensors on the feet detect table edges and automatically brake or turn away
+- Online foot-sensor calibration: after moving to a different desk, recalibrate in two sampling steps on the device web page (`http://<device-ip>/foot`) — no return to the factory needed (see the [Foot Sensor Calibration Guide](foot-sensor-calibration.md))
 - 6-axis IMU emotional reactions — shake it and it gets angry; pick it up and it happily swings its feet
 
 **Display & Emotion**
@@ -147,7 +148,7 @@ We hope this project helps everyone understand AI hardware development and apply
 
 ---
 
-**Last modified:** 2026-11-09
+**Last modified:** 2026-11-24
 
 ---
 

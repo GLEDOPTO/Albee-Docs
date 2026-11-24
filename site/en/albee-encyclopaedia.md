@@ -11,7 +11,7 @@
 | Category | What it covers | Documents |
 |---|---|---|
 | [Getting Started](albee-encyclopaedia.md?id=_1-getting-started) | Unbox → power on & Wi-Fi → activation → first conversation | 1 document |
-| [Feature Guides](albee-encyclopaedia.md?id=_2-feature-guides) | Web console overview, finding the device IP, lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, local OTA upgrade | 10 documents |
+| [Feature Guides](albee-encyclopaedia.md?id=_2-feature-guides) | Web console overview, finding the device IP, lighting control, alarms & reminders, emoji change, network change, LED states, head LED effects, servo calibration, foot sensor calibration, local OTA upgrade | 11 documents |
 | [Troubleshooting & Support](albee-encyclopaedia.md?id=_3-troubleshooting-support) | FAQ, device freeze or reboot feedback | 2 documents |
 | [Console & Account](albee-encyclopaedia.md?id=_4-console-account) | xiaozhi.me console, developer auth, account issues, knowledge base, MAC address | 5 documents |
 | [Firmware & Hardware Development](albee-encyclopaedia.md?id=_5-firmware-hardware-development) | Firmware flashing, compiling from source, pin mapping, OTA API | 4 documents |
@@ -35,6 +35,7 @@
 | [Device States & LED Indicators](device-led-states.md) | The mapping table of 11 device states to 9 LED behaviors, the factory-default state → effect mapping (scroll / blink / fade-out / solid / breathe / rainbow), and brightness scaling notes. |
 | [Head LED Effects Change Guide](head-led-effects.md) | Change the head LED effects online via the web page (`http://<device-ip>/led`); for developers: slots, effects, animation implementation, and NVS packing format in `led_config.cc` / `circular_strip.cc` (with a pitfall checklist). |
 | [Servo Calibration Guide](servo-calibration.md) | Correct the reset-pose deviation of the four servos: fine-tune by ±1° via the web page (`http://<device-ip>/robot`), servo-to-button mapping, and the leg scale mark (lay the robot down while adjusting). |
+| [Foot Sensor Calibration Guide](foot-sensor-calibration.md) | Recalibrate the fall-detection thresholds after moving to a different desk: two-step sampling on the web page (`http://<device-ip>/foot` — flat on the desk + held 15 cm in the air), applying and restoring the default thresholds, and troubleshooting every failure message. |
 | [Local OTA Upgrade Guide](local-ota.md) | Upgrade the firmware locally via the device's built-in web page (`http://<device-ip>/update`) by uploading a `.ota` file — no PC flashing needed. |
 | [Built-in Web Console Overview](web-console.md) | Entry point for the built-in pages: what `/`, `/light`, `/network`, `/led`, `/emoji`, `/robot`, `/info`, `/update`, `/alarm`, `/mcp`, `/settings` and `/foot` do, prerequisites, and FAQ. |
 | [Find the Device IP Address](check-device-ip.md) | Read this before opening any web page: three ways to get the IP — ask by voice, router admin page, or serial log. |
@@ -43,7 +44,7 @@
 
 | Document | Description |
 |---|---|
-| [FAQ](faq.md) | Volume, Wi-Fi reconfiguration, music, Bluetooth, wake word, voice/timbre, voiceprint recognition, custom voice, voice control of other devices, LLM support, freeze/reboot feedback, servo calibration. |
+| [FAQ](faq.md) | Volume, Wi-Fi reconfiguration, music, Bluetooth, wake word, voice/timbre, voiceprint recognition, custom voice, voice control of other devices, LLM support, freeze/reboot feedback, servo calibration, foot sensor calibration, fall-protection switch. |
 | [Device Freeze or Reboot Feedback Guide](problem-feedback.md) | How to report an unexpected freeze or reboot: describing what happened, getting the boot reason via `http://<device-ip>/info`, and serial run logs. |
 
 ## 4. Console & Account
@@ -89,6 +90,7 @@
 
 - **I want to open the built-in web pages:** [Built-in Web Console Overview](web-console.md) → [Find the Device IP Address](check-device-ip.md)
 - **I just got the robot:** [Device Activation Guide](device-activation.md) → [Console Configuration](xiaozhi-console.md) → [FAQ](faq.md)
+- **The walking posture looks off / the robot reports it is suspended on the desk:** [Servo Calibration Guide](servo-calibration.md) → [Foot Sensor Calibration Guide](foot-sensor-calibration.md)
 - **I want to control my lights:** [Lighting Control Guide](lighting-control.md)
 - **Something goes wrong with the device:** [FAQ](faq.md) → [Device Freeze or Reboot Feedback Guide](problem-feedback.md)
 - **I want to upgrade the firmware:** [Local OTA Upgrade Guide](local-ota.md) (upload a `.ota` file via the web page, no PC flashing)
@@ -100,4 +102,4 @@
 
 ---
 
-**Last modified:** 2026-11-02
+**Last modified:** 2026-11-24

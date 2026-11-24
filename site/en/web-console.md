@@ -26,7 +26,7 @@ Once Albee is online it serves a set of web pages on your local network. You can
 | `http://<device-IP>/emoji` | Emoji management: preview installed emoji, upload / replace / delete custom emoji online (v2.0.5+) | [Emoji Change Guide](expression-change-guide.md) |
 | `http://<device-IP>/mcp` | MCP tool management: toggle the tools available to the voice assistant; turn on the Manage tools master switch at the top first (v2.0.5+) | [MCP Usage Guide](mcp-usage.md) |
 | `http://<device-IP>/settings` | Device settings: volume, screen brightness, real-time interrupt, lively idle, full-screen emoji, web PIN lock | — |
-| `http://<device-IP>/foot` | Foot-sensor debugging: per-foot sensor status and fault masking, the **fall-protection master switch** (when off, the robot no longer auto-brakes at table edges or drop-offs — use with caution), and **online recalibration** (two-stage sampling: sample once with the robot flat on its working surface, then once held about 15 cm in the air; click **Apply Calibration** after both stages pass judgment to store it. A failed recalibration stores nothing, and **Reset Calibration** erases the stored data and falls back to the default thresholds at any time. While the device sleeps the sensor rail is powered off — the page guides you to wake it first) | — |
+| `http://<device-IP>/foot` | Foot sensors: per-foot sensor status and fault masking, online foot-sensor calibration, and the **fall-protection master switch** (when off, the robot no longer auto-brakes at table edges or drop-offs — use with caution) | [Foot Sensor Calibration Guide](foot-sensor-calibration.md) |
 
 ## 3. FAQ
 
@@ -43,4 +43,4 @@ Once Albee is online it serves a set of web pages on your local network. You can
 
 ---
 
-**Last modified:** 2026-11-23
+**Last modified:** 2026-11-24

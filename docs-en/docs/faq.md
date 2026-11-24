@@ -78,6 +78,14 @@ A: Yes — 4 RF groups and 4 WLED groups. See the [Lighting Control Guide](./lig
 
 A: The servo reset position may be slightly off. Use `http://<device-ip>/robot` to trim each of the four servos by ±1° — see the [Servo Calibration Guide](./servo-calibration.md).
 
+**Q: The robot reports it is suspended while standing on the desk, or does not stop at a table edge?**
+
+A: The foot-sensor thresholds may not match the current desk surface. Recalibrate via the web page `http://<device-ip>/foot` (sample once flat on the desk, once held about 15 cm in the air, then apply once both pass) — see the [Foot Sensor Calibration Guide](./foot-sensor-calibration.md).
+
+**Q: Can I turn off fall protection?**
+
+A: Yes. Fall Protection at the top of the web page `http://<device-ip>/foot` is the fall-protection master switch. When off, the robot no longer auto-brakes or turns away when it detects a table edge or a drop, and the setting persists across reboots. Use it with caution and turn it back on when it is not needed; a factory reset restores it to on.
+
 ## 5. Account and activation
 
 **Q: The SMS verification code never arrives?**
@@ -114,4 +122,4 @@ A: Follow the [Freeze / Reboot Reporting Guide](./problem-feedback.md) to collec
 
 ---
 
-**Last modified:** 2026-11-23
+**Last modified:** 2026-11-24
